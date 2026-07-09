@@ -49,22 +49,22 @@ document.addEventListener('DOMContentLoaded', () => {
     {
       title: 'Curated Selection',
       text: 'We handpick only the most exceptional homes in Marbella.',
-      icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M6 11L14 3L22 11L14 25L6 11Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M6 11H22M10.5 11L14 3L17.5 11M10.5 11L14 25M17.5 11L14 25" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>`
+      icon: `<svg width="30" height="30" viewBox="0 0 30 30" fill="none"><path d="M8 11L15 4L22 11L15 26L8 11Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/><path d="M8 11H22" stroke="currentColor" stroke-width="1.2"/><path d="M11.5 11L15 4L18.5 11" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/><path d="M11.5 11L15 26M18.5 11L15 26" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>`
     },
     {
       title: 'Direct Opportunities',
       text: 'Direct connections with owners and developers. No intermediaries.',
-      icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M9 4H19V24L14 21.5L9 24V4Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M9 4C9 4 6 4 6 7V21C6 24 9 24 9 24" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>`
+      icon: `<svg width="30" height="30" viewBox="0 0 30 30" fill="none"><path d="M9 25V6.5C9 5.7 9.6 5.1 10.4 5L18.4 3.6C19.2 3.5 20 4.1 20 5V25" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/><path d="M6 25H24" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><path d="M20 25V8L24 9V25" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/><circle cx="17" cy="15" r="0.9" fill="currentColor"/></svg>`
     },
     {
       title: 'Local Insight',
       text: 'In-depth knowledge of Marbella to help you make the right choice.',
-      icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 4C14 4 17 8 17 12C17 14.7614 15.7614 17 13 17C10.2386 17 9 14.7614 9 12C9 8 14 4 14 4Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M14 17V25" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M14 21C14 21 8 20 8 15" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M14 21C14 21 20 20 20 15" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>`
+      icon: `<svg width="30" height="30" viewBox="0 0 30 30" fill="none"><path d="M15 27V16" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><path d="M15 16C15 16 5 15 5 6C13 6 15 12 15 16Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/><path d="M15 16C15 16 25 15 25 6C17 6 15 12 15 16Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/><path d="M15 13C15 13 10 11 8.5 5" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/><path d="M15 13C15 13 20 11 21.5 5" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></svg>`
     },
     {
       title: 'Premium Experience',
       text: 'A discreet, personal and seamless experience from start to finish.',
-      icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="5" stroke="currentColor" stroke-width="1.3"/><path d="M14 3V6M14 22V25M25 14H22M6 14H3M21.1 6.9L19 9M9 19L6.9 21.1M21.1 21.1L19 19M9 9L6.9 6.9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>`
+      icon: `<svg width="30" height="30" viewBox="0 0 30 30" fill="none"><circle cx="15" cy="15" r="4.5" stroke="currentColor" stroke-width="1.2"/><path d="M15 2.5V6.5M15 23.5V27.5M27.5 15H23.5M6.5 15H2.5M23.9 6.1L21.1 8.9M8.9 21.1L6.1 23.9M23.9 23.9L21.1 21.1M8.9 8.9L6.1 6.1" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>`
     }
   ];
 
