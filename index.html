@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MarbellaNext.com — Discover Marbella's Finest Homes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Mobile URL bar simulation is NOT included; this is a real responsive site -->
+
+<header class="site-header" id="siteHeader">
+  <div class="header-inner">
+    <a href="#" class="logo">
+      <span class="logo-bold">MARBELLA</span><span class="logo-light">NEXT</span><span class="logo-dot">.com</span>
+    </a>
+
+    <nav class="main-nav" id="mainNav">
+      <a href="#properties">PROPERTIES</a>
+      <a href="#areas">AREAS</a>
+      <a href="#lifestyle">LIFESTYLE</a>
+      <a href="#about">ABOUT</a>
+      <a href="#journal">JOURNAL</a>
+    </nav>
+
+    <div class="header-actions">
+      <a href="#contact" class="btn btn-primary btn-small">Get in Touch</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="mobile-nav" id="mobileNav">
+    <a href="#properties">Properties</a>
+    <a href="#areas">Areas</a>
+    <a href="#lifestyle">Lifestyle</a>
+    <a href="#about">About</a>
+    <a href="#journal">Journal</a>
+    <a href="#contact" class="btn btn-primary">Get in Touch</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-media">
+      <img src="images/hero-banner.png" alt="Villa de lujo con piscina infinita en Marbella al atardecer">
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>Discover<br>Marbella's<br>Finest Homes</h1>
+      <p>Curated villas and exceptional properties.<br>No agency. Just the best opportunities.</p>
+      <a href="#properties" class="btn btn-primary">
+        Explore Properties
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- HANDPICKED PROPERTIES -->
+  <section class="section properties" id="properties">
+    <div class="section-header">
+      <h2>Handpicked Properties</h2>
+      <a href="#" class="link-arrow">
+        View all properties
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+
+    <div class="property-grid" id="propertyGrid">
+      <!-- Cards injected by script.js -->
+    </div>
+  </section>
+
+  <!-- WHY MARBELLANEXT -->
+  <section class="section why">
+    <div class="why-card">
+      <h2>Why MarbellaNext?</h2>
+      <div class="why-grid" id="whyGrid">
+        <!-- Items injected by script.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- LIFESTYLE -->
+  <section class="section lifestyle" id="lifestyle">
+    <div class="lifestyle-inner">
+      <div class="lifestyle-text">
+        <h2>The Marbella Lifestyle</h2>
+        <p>Marbella is more than a destination. It's a way of life. Sun, sea, gastronomy, golf and a vibrant international community.</p>
+        <a href="#" class="btn btn-primary">
+          Explore Lifestyle
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+      <div class="lifestyle-gallery" id="lifestyleGallery">
+        <!-- Items injected by script.js -->
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <a href="#" class="logo">
+      <span class="logo-bold">MARBELLA</span><span class="logo-light">NEXT</span><span class="logo-dot">.com</span>
+    </a>
+    <p>&copy; <span id="year"></span> MarbellaNext.com — Curated real estate in Marbella, Spain.</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
