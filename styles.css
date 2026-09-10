@@ -633,6 +633,60 @@ button { cursor: pointer; }
   color: var(--muted);
 }
 
+/* ---------- Lifestyle guide / areas ---------- */
+.lifestyle-guide {
+  margin-top: clamp(56px, 7vw, 96px);
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.lifestyle-guide p {
+  color: var(--muted);
+  font-size: 15.5px;
+  line-height: 1.8;
+  margin-top: 16px;
+}
+
+.lifestyle-lead {
+  font-family: var(--serif);
+  font-size: clamp(20px, 2.4vw, 28px);
+  color: var(--ink);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+}
+
+.lifestyle-divider {
+  border: none;
+  border-top: 1px solid var(--line);
+  margin: clamp(36px, 4.5vw, 52px) 0;
+}
+
+.lifestyle-area-name {
+  font-family: var(--serif);
+  font-size: clamp(22px, 2.6vw, 30px);
+  color: var(--ink);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.lifestyle-area-sub {
+  font-family: var(--serif);
+  font-size: 17px;
+  color: var(--olive);
+  font-style: italic;
+  margin-top: 10px;
+}
+
+.lifestyle-close-cta {
+  font-family: var(--serif);
+  font-size: clamp(22px, 2.6vw, 30px);
+  color: var(--olive);
+  font-weight: 500;
+  margin-top: 28px;
+}
+
 /* ---------- Social proof strip ---------- */
 .social-strip {
   border-top: 1px solid var(--line);
@@ -883,6 +937,13 @@ button { cursor: pointer; }
 }
 
 .about-text p + p { margin-top: 14px; }
+
+.about-heading {
+  margin-top: 28px;
+  font-size: clamp(20px, 2.2vw, 26px);
+  font-weight: 500;
+  color: var(--olive);
+}
 
 .about-stats {
   display: flex;
