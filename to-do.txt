@@ -1,0 +1,26 @@
+# MarbellaNest — To-do / change log
+Track every structural change so nothing is lost.
+
+## In progress
+- Reorder page sections to final layout.
+
+## Final target layout (after hero)
+1. Handpicked Properties
+2. From first click to keys in hand (For Buyers)
+3. Why buyers work with us
+4. Find your Marbella  ->  REWORK INTO CAROUSEL (left/right arrows to alternate areas)
+5. About ("Buying Is Step One", split: image left / text right)
+6. Refycon (trusted partner / build + renovate)
+7. Selling department (List your property / packages)
+8. Contact + footer
+
+## Tasks
+- [x] Contact phone number set to +34 711 095 254 everywhere (was +34 600 000 000 placeholder)
+- [x] Move "Selling" packages section down to be the selling department (before contact)
+- [x] Move "Find your Marbella" up (after "Why buyers")
+- [x] Rework "Find your Marbella" into a carousel with prev/next arrows + dots (areas: East, Golden Mile, Nueva Andalucia, San Pedro, Benahavis, Estepona)
+- [x] Move About up (after "Find your Marbella")
+- [x] Move Refycon (trusted partner) after About
+- [x] JS: make renderLifestyle safe (lifestyleGallery removed) + add carousel logic (prev/next/dots)
+- [x] JS syntax check passed (node --check) for script.js and i18n.js
+- [x] Final structural check: order = Hero > Properties > Buyers(funnel) > Why > Find your Marbella (carousel) > About > Refycon > Sell > Contact > Footer

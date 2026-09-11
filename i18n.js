@@ -9,7 +9,7 @@ const TRANSLATIONS = {
   en: {
     "nav.properties": "Properties",
     "nav.buyers": "For Buyers",
-    "nav.lifestyle": "Lifestyle",
+    "nav.lifestyle": "Find your Marbella",
     "nav.about": "About",
     "nav.contact": "Contact",
     "nav.cta": "Book a Viewing",
@@ -95,7 +95,7 @@ const TRANSLATIONS = {
     "contact.whatsapp.title": "WhatsApp us",
     "contact.whatsapp.sub": "Fastest response, any time zone",
     "contact.phone.title": "Call us",
-    "contact.phone.sub": "+34 600 000 000",
+    "contact.phone.sub": "+34 711 095 254",
     "form.firstName": "First name",
     "form.lastName": "Last name",
     "form.email": "Email",
@@ -167,7 +167,6 @@ const TRANSLATIONS = {
         ]
       }
     ],
-    "partner.badge": "Trusted Partner",
     "partner.eyebrow": "Reform & Construction",
     "partner.title": "Buying is step one. We help you make it home.",
     "partner.body": "For buyers who want to renovate, extend or build from the ground up, we work alongside REFYCON — a Marbella-based construction and design studio with 25+ years on the Costa del Sol, from full villa renovations to bathrooms, kitchens and bespoke new builds.",
@@ -200,9 +199,9 @@ const TRANSLATIONS = {
       { title: "International Service", text: "A discreet, personal experience in your language, wherever you're based." }
     ],
     "properties": [
-      { tag: "Golden Mile", title: "Elegant Villa in Lomas del Rey", price: "€5,950,000" },
-      { tag: "Sierra Blanca", title: "Contemporary Villa with Sea Views", price: "€8,750,000" },
-      { tag: "Nueva Andalucía", title: "Andalusian Charm in Nueva Andalucía", price: "€3,650,000" }
+      { title: "Elegant Villa in Lomas del Rey", price: "€5,950,000" },
+      { title: "Contemporary Villa with Sea Views", price: "€8,750,000" },
+      { title: "Andalusian Charm in Nueva Andalucía", price: "€3,650,000" }
     ],
     "cta.enquire": "Enquire",
     "cta.whatsapp": "WhatsApp",
@@ -212,7 +211,7 @@ const TRANSLATIONS = {
   es: {
     "nav.properties": "Propiedades",
     "nav.buyers": "Para Compradores",
-    "nav.lifestyle": "Estilo de Vida",
+    "nav.lifestyle": "Encuentra tu Marbella",
     "nav.about": "Nosotros",
     "nav.contact": "Contacto",
     "nav.cta": "Reservar Visita",
@@ -298,7 +297,7 @@ const TRANSLATIONS = {
     "contact.whatsapp.title": "Escríbenos por WhatsApp",
     "contact.whatsapp.sub": "Respuesta más rápida, cualquier zona horaria",
     "contact.phone.title": "Llámanos",
-    "contact.phone.sub": "+34 600 000 000",
+    "contact.phone.sub": "+34 711 095 254",
     "form.firstName": "Nombre",
     "form.lastName": "Apellidos",
     "form.email": "Correo electrónico",
@@ -370,7 +369,6 @@ const TRANSLATIONS = {
         ]
       }
     ],
-    "partner.badge": "Colaborador de Confianza",
     "partner.eyebrow": "Reforma y Construcción",
     "partner.title": "Comprar es el primer paso. Te ayudamos a convertirlo en tu hogar.",
     "partner.body": "Para compradores que quieren reformar, ampliar o construir desde cero, colaboramos con REFYCON — un estudio de construcción y diseño con sede en Marbella y más de 25 años en la Costa del Sol, desde reformas integrales de villas hasta baños, cocinas y obra nueva a medida.",
@@ -403,9 +401,9 @@ const TRANSLATIONS = {
       { title: "Servicio Internacional", text: "Una experiencia discreta y personal en tu idioma, estés donde estés." }
     ],
     "properties": [
-      { tag: "Milla de Oro", title: "Elegante Villa en Lomas del Rey", price: "5.950.000 €" },
-      { tag: "Sierra Blanca", title: "Villa Contemporánea con Vistas al Mar", price: "8.750.000 €" },
-      { tag: "Nueva Andalucía", title: "Encanto Andaluz en Nueva Andalucía", price: "3.650.000 €" }
+      { title: "Elegante Villa en Lomas del Rey", price: "5.950.000 €" },
+      { title: "Villa Contemporánea con Vistas al Mar", price: "8.750.000 €" },
+      { title: "Encanto Andaluz en Nueva Andalucía", price: "3.650.000 €" }
     ],
     "cta.enquire": "Consultar",
     "cta.whatsapp": "WhatsApp",
@@ -415,7 +413,7 @@ const TRANSLATIONS = {
   de: {
     "nav.properties": "Immobilien",
     "nav.buyers": "Für Käufer",
-    "nav.lifestyle": "Lifestyle",
+    "nav.lifestyle": "Finde dein Marbella",
     "nav.about": "Über uns",
     "nav.contact": "Kontakt",
     "nav.cta": "Besichtigung buchen",
@@ -501,7 +499,7 @@ const TRANSLATIONS = {
     "contact.whatsapp.title": "WhatsApp schreiben",
     "contact.whatsapp.sub": "Schnellste Antwort, jede Zeitzone",
     "contact.phone.title": "Anrufen",
-    "contact.phone.sub": "+34 600 000 000",
+    "contact.phone.sub": "+34 711 095 254",
     "form.firstName": "Vorname",
     "form.lastName": "Nachname",
     "form.email": "E-Mail",
@@ -573,7 +571,6 @@ const TRANSLATIONS = {
         ]
       }
     ],
-    "partner.badge": "Vertrauenspartner",
     "partner.eyebrow": "Renovierung & Bau",
     "partner.title": "Kaufen ist der erste Schritt. Wir helfen, ein Zuhause daraus zu machen.",
     "partner.body": "Für Käufer, die renovieren, erweitern oder von Grund auf bauen möchten, arbeiten wir mit REFYCON zusammen — einem Bau- und Designstudio mit Sitz in Marbella und über 25 Jahren Erfahrung an der Costa del Sol, von kompletten Villenrenovierungen bis zu Bädern, Küchen und maßgeschneiderten Neubauten.",
@@ -606,9 +603,9 @@ const TRANSLATIONS = {
       { title: "Internationaler Service", text: "Eine diskrete, persönliche Erfahrung in Ihrer Sprache, wo auch immer Sie sind." }
     ],
     "properties": [
-      { tag: "Golden Mile", title: "Elegante Villa in Lomas del Rey", price: "5.950.000 €" },
-      { tag: "Sierra Blanca", title: "Zeitgenössische Villa mit Meerblick", price: "8.750.000 €" },
-      { tag: "Nueva Andalucía", title: "Andalusischer Charme in Nueva Andalucía", price: "3.650.000 €" }
+      { title: "Elegante Villa in Lomas del Rey", price: "5.950.000 €" },
+      { title: "Zeitgenössische Villa mit Meerblick", price: "8.750.000 €" },
+      { title: "Andalusischer Charme in Nueva Andalucía", price: "3.650.000 €" }
     ],
     "cta.enquire": "Anfragen",
     "cta.whatsapp": "WhatsApp",
@@ -618,7 +615,7 @@ const TRANSLATIONS = {
   fr: {
     "nav.properties": "Propriétés",
     "nav.buyers": "Pour Acheteurs",
-    "nav.lifestyle": "Art de Vivre",
+    "nav.lifestyle": "Trouvez votre Marbella",
     "nav.about": "À Propos",
     "nav.contact": "Contact",
     "nav.cta": "Réserver une Visite",
@@ -704,7 +701,7 @@ const TRANSLATIONS = {
     "contact.whatsapp.title": "Écrivez-nous sur WhatsApp",
     "contact.whatsapp.sub": "Réponse la plus rapide, tous fuseaux horaires",
     "contact.phone.title": "Appelez-nous",
-    "contact.phone.sub": "+34 600 000 000",
+    "contact.phone.sub": "+34 711 095 254",
     "form.firstName": "Prénom",
     "form.lastName": "Nom",
     "form.email": "E-mail",
@@ -776,7 +773,6 @@ const TRANSLATIONS = {
         ]
       }
     ],
-    "partner.badge": "Partenaire de Confiance",
     "partner.eyebrow": "Rénovation & Construction",
     "partner.title": "Acheter n'est que la première étape. Nous vous aidons à en faire votre maison.",
     "partner.body": "Pour les acheteurs qui souhaitent rénover, agrandir ou construire, nous collaborons avec REFYCON — un studio de construction et de design basé à Marbella, fort de plus de 25 ans d'expérience sur la Costa del Sol, des rénovations complètes de villas aux salles de bains, cuisines et constructions neuves sur mesure.",
@@ -809,9 +805,9 @@ const TRANSLATIONS = {
       { title: "Service International", text: "Une expérience discrète et personnelle dans votre langue, où que vous soyez." }
     ],
     "properties": [
-      { tag: "Golden Mile", title: "Villa Élégante à Lomas del Rey", price: "5 950 000 €" },
-      { tag: "Sierra Blanca", title: "Villa Contemporaine avec Vue sur Mer", price: "8 750 000 €" },
-      { tag: "Nueva Andalucía", title: "Charme Andalou à Nueva Andalucía", price: "3 650 000 €" }
+      { title: "Villa Élégante à Lomas del Rey", price: "5 950 000 €" },
+      { title: "Villa Contemporaine avec Vue sur Mer", price: "8 750 000 €" },
+      { title: "Charme Andalou à Nueva Andalucía", price: "3 650 000 €" }
     ],
     "cta.enquire": "Se renseigner",
     "cta.whatsapp": "WhatsApp",
@@ -821,7 +817,7 @@ const TRANSLATIONS = {
   nl: {
     "nav.properties": "Woningen",
     "nav.buyers": "Voor Kopers",
-    "nav.lifestyle": "Lifestyle",
+    "nav.lifestyle": "Vind jouw Marbella",
     "nav.about": "Over Ons",
     "nav.contact": "Contact",
     "nav.cta": "Bezichtiging Boeken",
@@ -907,7 +903,7 @@ const TRANSLATIONS = {
     "contact.whatsapp.title": "WhatsApp ons",
     "contact.whatsapp.sub": "Snelste reactie, elke tijdzone",
     "contact.phone.title": "Bel ons",
-    "contact.phone.sub": "+34 600 000 000",
+    "contact.phone.sub": "+34 711 095 254",
     "form.firstName": "Voornaam",
     "form.lastName": "Achternaam",
     "form.email": "E-mail",
@@ -979,7 +975,6 @@ const TRANSLATIONS = {
         ]
       }
     ],
-    "partner.badge": "Vertrouwde Partner",
     "partner.eyebrow": "Renovatie & Bouw",
     "partner.title": "Kopen is stap één. Wij helpen er een thuis van te maken.",
     "partner.body": "Voor kopers die willen renoveren, uitbreiden of vanaf de grond willen bouwen, werken we samen met REFYCON — een bouw- en ontwerpstudio uit Marbella met meer dan 25 jaar ervaring aan de Costa del Sol, van complete villarenovaties tot badkamers, keukens en op maat gemaakte nieuwbouw.",
@@ -1012,9 +1007,9 @@ const TRANSLATIONS = {
       { title: "Internationale Service", text: "Een discrete, persoonlijke ervaring in uw taal, waar u ook bent." }
     ],
     "properties": [
-      { tag: "Golden Mile", title: "Elegante Villa in Lomas del Rey", price: "€ 5.950.000" },
-      { tag: "Sierra Blanca", title: "Eigentijdse Villa met Zeezicht", price: "€ 8.750.000" },
-      { tag: "Nueva Andalucía", title: "Andalusische Charme in Nueva Andalucía", price: "€ 3.650.000" }
+      { title: "Elegante Villa in Lomas del Rey", price: "€ 5.950.000" },
+      { title: "Eigentijdse Villa met Zeezicht", price: "€ 8.750.000" },
+      { title: "Andalusische Charme in Nueva Andalucía", price: "€ 3.650.000" }
     ],
     "cta.enquire": "Aanvragen",
     "cta.whatsapp": "WhatsApp",

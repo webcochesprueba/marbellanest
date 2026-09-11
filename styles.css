@@ -687,6 +687,86 @@ button { cursor: pointer; }
   margin-top: 28px;
 }
 
+/* ---------- Lifestyle carousel ---------- */
+.lifestyle-carousel {
+  margin-top: clamp(28px, 4vw, 56px);
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: clamp(16px, 2.5vw, 32px);
+  align-items: center;
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.lifestyle-arrow {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: var(--card);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 30px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: border-color 0.2s var(--ease), background-color 0.2s var(--ease), color 0.2s var(--ease);
+}
+.lifestyle-arrow:hover { border-color: var(--ink); background: var(--ink); color: var(--white); }
+.lifestyle-arrow:focus-visible { outline: 2px solid var(--brass); outline-offset: 2px; }
+
+.lifestyle-carousel-track {
+  position: relative;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: clamp(26px, 3.2vw, 42px) clamp(24px, 3vw, 40px);
+  min-height: 240px;
+}
+
+.lifestyle-slide { display: none; }
+.lifestyle-slide.is-active {
+  display: block;
+  animation: lifestyleFade 0.4s var(--ease);
+}
+
+@keyframes lifestyleFade {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
+
+.lifestyle-slide p {
+  color: var(--muted);
+  font-size: 15.5px;
+  line-height: 1.8;
+  margin-top: 14px;
+}
+
+.lifestyle-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 22px auto 0;
+}
+
+.lifestyle-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+}
+.lifestyle-dot.is-active { background: var(--brass); border-color: var(--brass); }
+.lifestyle-dot:focus-visible { outline: 2px solid var(--brass); outline-offset: 2px; }
+
 /* ---------- Social proof strip ---------- */
 .social-strip {
   border-top: 1px solid var(--line);

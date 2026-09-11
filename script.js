@@ -259,6 +259,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderPackages();
     renderLifestyle();
     renderPartnerServices();
+    initLifestyleCarousel();
     updateLangActiveStates();
   }
 
@@ -279,7 +280,6 @@ document.addEventListener('DOMContentLoaded', () => {
           </button>
         </div>
         <div class="property-body">
-          <span class="property-tag">${p.tag}</span>
           <h3 class="property-title">${p.title}</h3>
           <div class="property-meta">
             <div class="property-stats">
@@ -291,7 +291,7 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
           <div class="property-card-cta">
             <a href="#contact" class="btn btn-outline">${enquireLabel}</a>
-            <a href="https://wa.me/34600000000?text=${encodeURIComponent('Hi, I\'m interested in: ' + p.title)}" target="_blank" rel="noopener" class="btn btn-whatsapp" data-track="lead" data-lead-type="whatsapp_property">${waLabel}</a>
+            <a href="https://wa.me/34711095254?text=${encodeURIComponent('Hi, I\'m interested in: ' + p.title)}" target="_blank" rel="noopener" class="btn btn-whatsapp" data-track="lead" data-lead-type="whatsapp_property">${waLabel}</a>
           </div>
         </div>
       </article>
@@ -362,7 +362,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function renderLifestyle() {
-    document.getElementById('lifestyleGallery').innerHTML = lifestyleImages.map(item => `
+    const gallery = document.getElementById('lifestyleGallery');
+    if (!gallery) return;
+    gallery.innerHTML = lifestyleImages.map(item => `
       <div class="lifestyle-item">
         <figure>
           <div class="lifestyle-media">
@@ -379,6 +381,37 @@ document.addEventListener('DOMContentLoaded', () => {
     const el = document.getElementById('partnerServices');
     if (!el || !Array.isArray(services)) return;
     el.innerHTML = services.map(s => `<span>${s}</span>`).join('');
+  }
+
+  function initLifestyleCarousel() {
+    const track = document.getElementById('lifestyleTrack');
+    const prev = document.getElementById('lifestylePrev');
+    const next = document.getElementById('lifestyleNext');
+    const pagination = document.getElementById('lifestylePagination');
+    if (!track || !pagination) return;
+
+    const slides = Array.from(track.querySelectorAll('.lifestyle-slide'));
+    const total = slides.length;
+    let index = 0;
+
+    pagination.innerHTML = slides.map((_, i) =>
+      `<button type="button" class="lifestyle-dot${i === 0 ? ' is-active' : ''}" data-index="${i}" aria-label="Slide ${i + 1}" aria-pressed="${i === 0}"></button>`
+    ).join('');
+    const dots = Array.from(pagination.querySelectorAll('.lifestyle-dot'));
+
+    function show(i) {
+      index = (i + total) % total;
+      slides.forEach((s, n) => s.classList.toggle('is-active', n === index));
+      dots.forEach((d, n) => {
+        d.classList.toggle('is-active', n === index);
+        d.setAttribute('aria-pressed', String(n === index));
+      });
+    }
+
+    if (prev) prev.addEventListener('click', () => show(index - 1));
+    if (next) next.addEventListener('click', () => show(index + 1));
+    dots.forEach((d) => d.addEventListener('click', () => show(Number(d.getAttribute('data-index')))));
+    show(0);
   }
 
   /* ---------------- Enquiry form ---------------- */
