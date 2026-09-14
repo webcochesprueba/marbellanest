@@ -123,7 +123,7 @@
   <section class="section properties" id="properties">
     <div class="section-header">
       <div>
-        <h2 data-i18n="properties.title">Handpicked properties</h2>
+        <h2 data-i18n="properties.title">Our properties</h2>
         <p data-i18n="properties.subtitle">A rotating selection of Marbella's most compelling homes, chosen for location, quality and value.</p>
       </div>
       <a href="#" class="link-arrow" data-i18n="properties.viewAll">
@@ -246,6 +246,9 @@
       </div>
       <div class="about-text">
         <h2 data-i18n="about.title">Local expertise, international standards</h2>
+        <h3 class="about-heading" data-i18n="about.qualityHeading">We believe in quality over quantity.</h3>
+        <p data-i18n="about.quality1">That's why we deliberately work with a limited number of listings at any given time. This allows us to give each property the attention, strategy and commitment it deserves, rather than simply adding another listing to a long portfolio.</p>
+        <p data-i18n="about.quality2">Our goal is not to collect properties — it's to sell them.</p>
         <p data-i18n="about.p1">With expertise across four international markets and more than a decade of experience in the Marbella area since 2012, we combine genuine local knowledge with an international perspective.</p>
         <p data-i18n="about.p2">Our experience allows us to share practical, market-driven knowledge in a transparent and straightforward way. Step by step, we provide our expertise and experience with a no-nonsense approach across every aspect of the process — with one clear objective: making well-informed decisions with confidence.</p>
         <h3 class="about-heading" data-i18n="about.heading">Buying Is Step One.</h3>
@@ -311,7 +314,8 @@
       <!-- Cards injected by script.js -->
     </div>
 
-    <p class="packages-note" data-i18n="packages.note">All packages include a free property valuation and listing on MarbellaNest.com. Prices are a starting guide — final scope is confirmed after an initial walkthrough.</p>
+    <p class="packages-note" data-i18n="packages.note">The Essential and Signature packages are focused on preparation and professional presentation only. Once completed, the property can be launched through us, another agent or your preferred marketing channel.</p>
+    <p class="packages-note" data-i18n="packages.brokerage">If you choose to work with us for the brokerage, our standard brokerage fee is 5% + VAT. Depending on the level of exclusivity, the type of property and the specific requirements of the assignment, we can also offer a tailored fee structure. Should the property be sold through our brokerage, the fee paid for your chosen service package will be fully credited against the brokerage fee.</p>
   </section>
 
   <!-- CONTACT / LEAD FORM -->
@@ -472,6 +476,23 @@
    data-track="lead" data-lead-type="whatsapp_float">
   <svg width="27" height="27" viewBox="0 0 24 24" fill="none"><path d="M20 4a10.5 10.5 0 0 0-16.7 12.6L2 22l5.6-1.3A10.5 10.5 0 1 0 20 4Z" fill="white"/><path d="M20 4a10.5 10.5 0 0 0-16.7 12.6L2 22l5.6-1.3A10.5 10.5 0 1 0 20 4Z" stroke="#3DA845" stroke-width="0"/><path d="M8.5 8.7c.2-.5.5-.5.8-.5h.6c.2 0 .4 0 .6.4.2.5.7 1.6.7 1.8.1.1.1.3 0 .4-.1.2-.2.3-.3.5-.1.1-.3.3-.1.6.2.4.9 1.4 1.9 2.3 1.3 1.1 2.2 1.4 2.6 1.6.3.1.5.1.6-.1.2-.2.7-.8.9-1 .2-.2.4-.2.6-.1l1.8.9c.2.1.4.2.4.4.1.5-.2 1.3-.7 1.7-.6.5-1.4.8-2.5.5-2.1-.6-4-1.9-5.4-3.9-1-1.4-1.6-2.7-1.7-3.3-.1-.4-.4-1.4.1-2.2Z" fill="#3DA845"/></svg>
 </a>
+
+<!-- Property detail modal -->
+<div class="property-modal-overlay" id="propertyModalOverlay">
+  <div class="property-modal" id="propertyModal" role="dialog" aria-modal="true">
+    <div class="property-modal-media">
+      <img id="propertyModalImg" src="" alt="">
+      <button type="button" class="property-modal-close" id="propertyModalClose" aria-label="Close">&times;</button>
+    </div>
+    <div class="property-modal-body">
+      <span class="property-modal-status" id="propertyModalStatus">No Longer Available</span>
+      <h3 class="property-modal-title" id="propertyModalTitle"></h3>
+      <div class="property-modal-meta" id="propertyModalMeta"></div>
+      <div class="property-modal-price" id="propertyModalPrice"></div>
+      <p class="property-modal-note" id="propertyModalNote">This property has already been sold and is no longer available. Get in touch with us to see our current listings.</p>
+    </div>
+  </div>
+</div>
 
 <!-- Cookie / tracking consent banner (required for EU ad targeting + retargeting pixels) -->
 <div class="consent-banner" id="consentBanner">

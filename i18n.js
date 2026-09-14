@@ -19,9 +19,10 @@ const TRANSLATIONS = {
     "hero.cta2": "Speak to an Advisor",
     "hero.markets": "Trusted by buyers from the Netherlands, Belgium, Germany, France, the Nordics, Switzerland & the UK",
     "social.strip": "<strong>Follow the properties, not just the listings.</strong> Video tours, Marbella lifestyle content and new arrivals — first on Instagram, YouTube and TikTok.",
-    "properties.title": "Handpicked properties",
+    "properties.title": "Our properties",
     "properties.subtitle": "A rotating selection of Marbella's most compelling homes, chosen for location, quality and value.",
     "properties.viewAll": "View all properties",
+    "properties.soldNote": "This property has already been sold and is no longer available. Get in touch with us to see our current listings.",
     "funnel.title": "From first click to keys in hand",
     "funnel.subtitle": "A clear, guided process for international buyers purchasing from abroad.",
     "why.title": "Why buyers work with us",
@@ -80,6 +81,9 @@ const TRANSLATIONS = {
     "lifestyle.close.p9": "Because finding the right property in Marbella starts with finding the right way to live.",
     "lifestyle.close.cta": "Find Your Marbella.",
     "about.title": "Local expertise, international standards",
+    "about.qualityHeading": "We believe in quality over quantity.",
+    "about.quality1": "That's why we deliberately work with a limited number of listings at any given time. This allows us to give each property the attention, strategy and commitment it deserves, rather than simply adding another listing to a long portfolio.",
+    "about.quality2": "Our goal is not to collect properties — it's to sell them.",
     "about.p1": "With expertise across four international markets and more than a decade of experience in the Marbella area since 2012, we combine genuine local knowledge with an international perspective.",
     "about.p2": "Our experience allows us to share practical, market-driven knowledge in a transparent and straightforward way. Step by step, we provide our expertise and experience with a no-nonsense approach across every aspect of the process — with one clear objective: making well-informed decisions with confidence.",
     "about.heading": "Buying Is Step One.",
@@ -114,56 +118,52 @@ const TRANSLATIONS = {
     "nav.sell": "Sell",
     "packages.eyebrow": "Selling with MarbellaNest",
     "packages.title": "List your property, the right way",
-    "packages.subtitle": "Three service levels, from professional presentation to a full international ad campaign across Instagram, YouTube and TikTok.",
-    "packages.note": "All packages include a free property valuation and listing on MarbellaNest.com. Prices are a starting guide — final scope is confirmed after an initial walkthrough.",
+    "packages.subtitle": "Our three service packages are designed to prepare your property professionally for the market. They are not brokerage or listing packages.",
+    "packages.note": "The Essential and Signature packages are focused on preparation and professional presentation only. Once completed, the property can be launched through us, another agent or your preferred marketing channel.",
+    "packages.brokerage": "If you choose to work with us for the brokerage, our standard brokerage fee is 5% + VAT. Depending on the level of exclusivity, the type of property and the specific requirements of the assignment, we can also offer a tailored fee structure. Should the property be sold through our brokerage, the fee paid for your chosen service package will be fully credited against the brokerage fee.",
     "packages.featuredBadge": "Most Popular",
     "packages.items": [
       {
         name: "Essential",
         title: "Essential Listing",
-        tagline: "Professional presentation to get your property live and looking its best.",
+        tagline: "Professional photography, video footage and the essential property documentation required to prepare the property for market.",
         price: "€950",
         priceNote: "one-time, per property",
         cta: "Enquire",
         features: [
-          "Professional photography (up to 25 images)",
-          "Listing on MarbellaNest.com",
-          "Written property description in EN + ES",
-          "Syndication to partner portals",
-          "1 dedicated advisor for enquiries"
+          "Professional photography",
+          "Video footage",
+          "Essential property documentation",
+          "Preparation for market"
         ]
       },
       {
         name: "Signature",
-        title: "Signature Marketing",
-        tagline: "Everything in Essential, plus video and organic social content to drive real visibility.",
+        title: "Signature Listing",
+        tagline: "A more comprehensive professional presentation, including photography, video and additional marketing materials. The property is still not publicly listed or marketed at this stage.",
         price: "€2,400",
         priceNote: "one-time, per property",
         cta: "Enquire",
         featured: true,
         features: [
           "Everything in Essential",
-          "Cinematic property video + drone footage",
-          "Vertical Reels/TikTok cut-downs (3 clips)",
-          "Featured placement on homepage & socials",
-          "Listing translated into EN, ES, DE, FR, NL",
-          "Dedicated WhatsApp line for enquiries"
+          "More comprehensive professional presentation",
+          "Additional marketing materials",
+          "Property not yet publicly listed or marketed"
         ]
       },
       {
         name: "International",
         title: "International Campaign",
-        tagline: "Everything in Signature, plus paid advertising targeted at buyers in your chosen markets.",
-        price: "From €4,800",
+        tagline: "The complete launch of your property to the international market, including listing on our own website, Marbella Nest and selected property platforms, together with a full international marketing campaign.",
+        price: "€4,800",
         priceNote: "setup + monthly ad spend not included",
         cta: "Book a Strategy Call",
         features: [
           "Everything in Signature",
-          "Paid campaigns on Instagram, YouTube & TikTok",
-          "Country-by-country targeting (choose from all 9 markets)",
-          "Retargeting for website & video viewers",
-          "Monthly performance report by country",
-          "Priority placement in buyer enquiry follow-up"
+          "Full public launch to the international market",
+          "Listing on MarbellaNest.com and selected property platforms",
+          "Full international marketing campaign"
         ]
       }
     ],
@@ -205,7 +205,8 @@ const TRANSLATIONS = {
     ],
     "cta.enquire": "Enquire",
     "cta.whatsapp": "WhatsApp",
-    "status.new": "New listing"
+    "status.new": "New listing",
+    "status.unavailable": "No Longer Available"
   },
 
   es: {
@@ -221,8 +222,9 @@ const TRANSLATIONS = {
     "hero.cta2": "Hablar con un Asesor",
     "hero.markets": "Confiado por compradores de Países Bajos, Bélgica, Alemania, Francia, los países nórdicos, Suiza y el Reino Unido",
     "social.strip": "<strong>Sigue las propiedades, no solo los anuncios.</strong> Tours en vídeo, contenido de estilo de vida de Marbella y nuevas llegadas — primero en Instagram, YouTube y TikTok.",
-    "properties.title": "Propiedades seleccionadas",
+    "properties.title": "Nuestras propiedades",
     "properties.subtitle": "Una selección rotativa de las casas más interesantes de Marbella, elegidas por ubicación, calidad y valor.",
+    "properties.soldNote": "Esta propiedad ya se ha vendido y ya no está disponible. Contáctenos para ver nuestras propiedades actuales.",
     "properties.viewAll": "Ver todas las propiedades",
     "funnel.title": "Del primer clic a las llaves en mano",
     "funnel.subtitle": "Un proceso claro y guiado para compradores internacionales que compran desde el extranjero.",
@@ -264,6 +266,9 @@ const TRANSLATIONS = {
     "lifestyle.be.p3": "Es una elección natural para compradores que valoran las vistas, la naturaleza y un ritmo de vida más tranquilo, queriendo seguir teniendo Marbella y la costa cerca.",
     "lifestyle.be.p4": "Con una buena oferta y una reputación establecida en propiedades de calidad, Benahavís ofrece un perfil de inversión duradero.",
     "about.title": "Experiencia local, estándares internacionales",
+    "about.qualityHeading": "Creemos en la calidad antes que en la cantidad.",
+    "about.quality1": "Por eso trabajamos deliberadamente con un número limitado de propiedades en cada momento. Esto nos permite dar a cada propiedad la atención, la estrategia y el compromiso que merece, en lugar de simplemente añadir un anuncio más a una larga cartera.",
+    "about.quality2": "Nuestro objetivo no es coleccionar propiedades, sino venderlas.",
 "lifestyle.est.title": "Estepona",
     "lifestyle.est.sub": "Carácter español",
     "lifestyle.est.p1": "Más al oeste, Estepona ofrece una interpretación más claramente española de la vida en la Costa del Sol.",
@@ -316,56 +321,52 @@ const TRANSLATIONS = {
     "nav.sell": "Vender",
     "packages.eyebrow": "Vender con MarbellaNest",
     "packages.title": "Publica tu propiedad, de la forma correcta",
-    "packages.subtitle": "Tres niveles de servicio, desde una presentación profesional hasta una campaña publicitaria internacional en Instagram, YouTube y TikTok.",
-    "packages.note": "Todos los paquetes incluyen una tasación gratuita y publicación en MarbellaNest.com. Los precios son orientativos — el alcance final se confirma tras una visita inicial.",
+    "packages.subtitle": "Nuestros tres paquetes de servicio están diseñados para preparar tu propiedad profesionalmente para el mercado. No son paquetes de intermediación ni de publicación.",
+    "packages.note": "Los paquetes Essential y Signature se centran únicamente en la preparación y presentación profesional. Una vez completados, la propiedad puede lanzarse a través de nosotros, de otra agencia o del canal de marketing que prefieras.",
+    "packages.brokerage": "Si decides trabajar con nosotros para la intermediación, nuestra comisión estándar es del 5% + IVA. Según el nivel de exclusividad, el tipo de propiedad y los requisitos específicos del encargo, también podemos ofrecer una estructura de honorarios personalizada. Si la propiedad se vende a través de nuestra intermediación, el importe abonado por el paquete de servicio elegido se descontará íntegramente de la comisión de intermediación.",
     "packages.featuredBadge": "Más Popular",
     "packages.items": [
       {
         name: "Essential",
         title: "Publicación Essential",
-        tagline: "Presentación profesional para publicar tu propiedad con la mejor imagen.",
+        tagline: "Fotografía profesional, vídeo y la documentación esencial de la propiedad necesaria para prepararla para el mercado.",
         price: "950 €",
         priceNote: "pago único, por propiedad",
         cta: "Consultar",
         features: [
-          "Fotografía profesional (hasta 25 imágenes)",
-          "Publicación en MarbellaNest.com",
-          "Descripción escrita en EN + ES",
-          "Distribución a portales asociados",
-          "1 asesor dedicado para consultas"
+          "Fotografía profesional",
+          "Vídeo",
+          "Documentación esencial de la propiedad",
+          "Preparación para el mercado"
         ]
       },
       {
         name: "Signature",
-        title: "Marketing Signature",
-        tagline: "Todo lo de Essential, más vídeo y contenido orgánico en redes para más visibilidad real.",
+        title: "Publicación Signature",
+        tagline: "Una presentación profesional más completa, con fotografía, vídeo y materiales de marketing adicionales. La propiedad aún no se publica ni se comercializa en esta fase.",
         price: "2.400 €",
         priceNote: "pago único, por propiedad",
         cta: "Consultar",
         featured: true,
         features: [
           "Todo lo de Essential",
-          "Vídeo cinematográfico + imágenes de dron",
-          "Cortes verticales para Reels/TikTok (3 clips)",
-          "Posición destacada en la web y redes",
-          "Anuncio traducido a EN, ES, DE, FR, NL",
-          "Línea de WhatsApp dedicada para consultas"
+          "Presentación profesional más completa",
+          "Materiales de marketing adicionales",
+          "La propiedad aún no se publica ni se comercializa"
         ]
       },
       {
         name: "International",
         title: "Campaña Internacional",
-        tagline: "Todo lo de Signature, más publicidad de pago dirigida a compradores en tus mercados elegidos.",
-        price: "Desde 4.800 €",
+        tagline: "El lanzamiento completo de tu propiedad al mercado internacional, incluyendo su publicación en nuestra propia web, Marbella Nest, y plataformas inmobiliarias seleccionadas, junto con una campaña de marketing internacional completa.",
+        price: "4.800 €",
         priceNote: "configuración + inversión publicitaria mensual no incluida",
         cta: "Reservar Llamada Estratégica",
         features: [
           "Todo lo de Signature",
-          "Campañas de pago en Instagram, YouTube y TikTok",
-          "Segmentación por país (elige entre los 9 mercados)",
-          "Retargeting para visitantes web y de vídeo",
-          "Informe mensual de resultados por país",
-          "Prioridad en el seguimiento de consultas de compradores"
+          "Lanzamiento público completo al mercado internacional",
+          "Publicación en MarbellaNest.com y plataformas seleccionadas",
+          "Campaña de marketing internacional completa"
         ]
       }
     ],
@@ -407,7 +408,8 @@ const TRANSLATIONS = {
     ],
     "cta.enquire": "Consultar",
     "cta.whatsapp": "WhatsApp",
-    "status.new": "Nuevo"
+    "status.new": "Nuevo",
+    "status.unavailable": "Ya No Disponible"
   },
 
   de: {
@@ -423,8 +425,9 @@ const TRANSLATIONS = {
     "hero.cta2": "Berater kontaktieren",
     "hero.markets": "Vertraut von Käufern aus den Niederlanden, Belgien, Deutschland, Frankreich, den nordischen Ländern, der Schweiz und UK",
     "social.strip": "<strong>Folgen Sie den Immobilien, nicht nur den Anzeigen.</strong> Video-Touren, Marbella-Lifestyle-Content und Neuheiten — zuerst auf Instagram, YouTube und TikTok.",
-    "properties.title": "Ausgewählte Immobilien",
+    "properties.title": "Unsere Immobilien",
     "properties.subtitle": "Eine wechselnde Auswahl der interessantesten Häuser Marbellas — nach Lage, Qualität und Wert ausgewählt.",
+    "properties.soldNote": "Diese Immobilie wurde bereits verkauft und ist nicht mehr verfügbar. Kontaktieren Sie uns, um unsere aktuellen Angebote zu sehen.",
     "properties.viewAll": "Alle Immobilien ansehen",
     "funnel.title": "Vom ersten Klick bis zum Schlüssel",
     "funnel.subtitle": "Ein klarer, begleiteter Prozess für internationale Käufer aus dem Ausland.",
@@ -484,6 +487,9 @@ const TRANSLATIONS = {
     "lifestyle.close.p9": "Denn die richtige Immobilie in Marbella zu finden, beginnt damit, den richtigen Weg zu leben zu finden.",
     "lifestyle.close.cta": "Finde dein Marbella.",
     "about.title": "Lokale Expertise, internationale Standards",
+    "about.qualityHeading": "Wir glauben an Qualität statt Quantität.",
+    "about.quality1": "Deshalb arbeiten wir bewusst mit einer begrenzten Anzahl an Objekten gleichzeitig. So können wir jeder Immobilie die Aufmerksamkeit, Strategie und Hingabe widmen, die sie verdient — statt sie einfach einem langen Portfolio hinzuzufügen.",
+    "about.quality2": "Unser Ziel ist es nicht, Immobilien zu sammeln, sondern sie zu verkaufen.",
     "about.p1": "Mit Expertise in vier internationalen Märkten und mehr als einem Jahrzehnt Erfahrung in der Region Marbella seit 2012 verbinden wir echtes Ortswissen mit einer internationalen Perspektive.",
     "about.p2": "Unsere Erfahrung erlaubt es uns, praktisches, marktorientiertes Wissen transparent und unkompliziert weiterzugeben. Schritt für Schritt bieten wir unsere Expertise in allen Phasen des Prozesses — ohne Umschweife, mit einem klaren Ziel: gut informierte Entscheidungen in vollem Vertrauen zu treffen.",
     "about.heading": "Kaufen ist nur der erste Schritt.",
@@ -518,56 +524,52 @@ const TRANSLATIONS = {
     "nav.sell": "Verkaufen",
     "packages.eyebrow": "Verkaufen mit MarbellaNest",
     "packages.title": "Inserieren Sie Ihre Immobilie richtig",
-    "packages.subtitle": "Drei Servicestufen, von professioneller Präsentation bis zur vollständigen internationalen Werbekampagne auf Instagram, YouTube und TikTok.",
-    "packages.note": "Alle Pakete beinhalten eine kostenlose Immobilienbewertung und ein Inserat auf MarbellaNest.com. Preise sind Richtwerte — der endgültige Umfang wird nach einer ersten Besichtigung festgelegt.",
+    "packages.subtitle": "Unsere drei Servicepakete bereiten Ihre Immobilie professionell für den Markt vor. Es handelt sich nicht um Makler- oder Vermarktungspakete.",
+    "packages.note": "Die Pakete Essential und Signature konzentrieren sich ausschließlich auf Vorbereitung und professionelle Präsentation. Nach Abschluss kann die Immobilie über uns, einen anderen Makler oder Ihren bevorzugten Vermarktungskanal gestartet werden.",
+    "packages.brokerage": "Wenn Sie sich für die Maklertätigkeit mit uns entscheiden, beträgt unsere Standard-Maklerprovision 5% + MwSt. Je nach Exklusivität, Immobilientyp und spezifischen Anforderungen des Auftrags können wir auch eine maßgeschneiderte Gebührenstruktur anbieten. Wird die Immobilie über unsere Maklertätigkeit verkauft, wird die Gebühr für das gewählte Servicepaket vollständig auf die Maklerprovision angerechnet.",
     "packages.featuredBadge": "Am Beliebtesten",
     "packages.items": [
       {
         name: "Essential",
         title: "Essential-Inserat",
-        tagline: "Professionelle Präsentation, damit Ihre Immobilie von Anfang an gut aussieht.",
+        tagline: "Professionelle Fotografie, Videomaterial und die wesentliche Objektdokumentation zur Marktvorbereitung der Immobilie.",
         price: "950 €",
         priceNote: "einmalig, pro Immobilie",
         cta: "Anfragen",
         features: [
-          "Professionelle Fotografie (bis zu 25 Bilder)",
-          "Inserat auf MarbellaNest.com",
-          "Beschreibungstext auf EN + ES",
-          "Verbreitung an Partnerportale",
-          "1 fester Ansprechpartner für Anfragen"
+          "Professionelle Fotografie",
+          "Videomaterial",
+          "Wesentliche Objektdokumentation",
+          "Marktvorbereitung"
         ]
       },
       {
         name: "Signature",
-        title: "Signature-Marketing",
-        tagline: "Alles aus Essential, plus Video und organische Social-Media-Inhalte für echte Sichtbarkeit.",
+        title: "Signature-Inserat",
+        tagline: "Eine umfassendere professionelle Präsentation mit Fotografie, Video und zusätzlichem Marketingmaterial. Die Immobilie wird in dieser Phase noch nicht öffentlich gelistet oder vermarktet.",
         price: "2.400 €",
         priceNote: "einmalig, pro Immobilie",
         cta: "Anfragen",
         featured: true,
         features: [
           "Alles aus Essential",
-          "Filmreifes Immobilienvideo + Drohnenaufnahmen",
-          "Vertikale Reels/TikTok-Clips (3 Videos)",
-          "Hervorgehobene Platzierung auf Startseite & Social Media",
-          "Inserat übersetzt in EN, ES, DE, FR, NL",
-          "Eigene WhatsApp-Nummer für Anfragen"
+          "Umfassendere professionelle Präsentation",
+          "Zusätzliches Marketingmaterial",
+          "Noch keine öffentliche Listung oder Vermarktung"
         ]
       },
       {
         name: "International",
         title: "Internationale Kampagne",
-        tagline: "Alles aus Signature, plus bezahlte Werbung, gezielt für Käufer in Ihren gewählten Märkten.",
-        price: "Ab 4.800 €",
+        tagline: "Der vollständige Launch Ihrer Immobilie auf dem internationalen Markt, inklusive Inserat auf unserer eigenen Website, Marbella Nest, und ausgewählten Immobilienplattformen, zusammen mit einer vollständigen internationalen Marketingkampagne.",
+        price: "4.800 €",
         priceNote: "Einrichtung + monatliches Werbebudget nicht enthalten",
         cta: "Strategiegespräch buchen",
         features: [
           "Alles aus Signature",
-          "Bezahlte Kampagnen auf Instagram, YouTube & TikTok",
-          "Länderweises Targeting (aus allen 9 Märkten wählbar)",
-          "Retargeting für Website- und Videobesucher",
-          "Monatlicher Ergebnisbericht nach Land",
-          "Priorität bei der Nachverfolgung von Käuferanfragen"
+          "Vollständiger öffentlicher Launch auf dem internationalen Markt",
+          "Inserat auf MarbellaNest.com und ausgewählten Plattformen",
+          "Vollständige internationale Marketingkampagne"
         ]
       }
     ],
@@ -609,7 +611,8 @@ const TRANSLATIONS = {
     ],
     "cta.enquire": "Anfragen",
     "cta.whatsapp": "WhatsApp",
-    "status.new": "Neu"
+    "status.new": "Neu",
+    "status.unavailable": "Nicht Mehr Verfügbar"
   },
 
   fr: {
@@ -625,8 +628,9 @@ const TRANSLATIONS = {
     "hero.cta2": "Parler à un Conseiller",
     "hero.markets": "La confiance d'acheteurs des Pays-Bas, de Belgique, d'Allemagne, de France, des pays nordiques, de Suisse et du Royaume-Uni",
     "social.strip": "<strong>Suivez les propriétés, pas seulement les annonces.</strong> Visites en vidéo, contenu lifestyle de Marbella et nouveautés — d'abord sur Instagram, YouTube et TikTok.",
-    "properties.title": "Propriétés sélectionnées",
+    "properties.title": "Nos propriétés",
     "properties.subtitle": "Une sélection tournante des maisons les plus intéressantes de Marbella, choisies pour leur emplacement, leur qualité et leur valeur.",
+    "properties.soldNote": "Cette propriété a déjà été vendue et n'est plus disponible. Contactez-nous pour découvrir nos biens actuels.",
     "properties.viewAll": "Voir toutes les propriétés",
     "funnel.title": "Du premier clic aux clés en main",
     "funnel.subtitle": "Un processus clair et accompagné pour les acheteurs internationaux qui achètent depuis l'étranger.",
@@ -686,6 +690,9 @@ const TRANSLATIONS = {
     "lifestyle.close.p9": "Parce que trouver la bonne propriété à Marbella commence par trouver la bonne façon de vivre.",
     "lifestyle.close.cta": "Trouvez votre Marbella.",
     "about.title": "Expertise locale, standards internationaux",
+    "about.qualityHeading": "Nous croyons en la qualité plutôt qu'en la quantité.",
+    "about.quality1": "C'est pourquoi nous travaillons délibérément avec un nombre limité de biens à la fois. Cela nous permet d'accorder à chaque propriété l'attention, la stratégie et l'engagement qu'elle mérite, plutôt que d'ajouter simplement une annonce de plus à un long portefeuille.",
+    "about.quality2": "Notre objectif n'est pas de collectionner des propriétés, mais de les vendre.",
     "about.p1": "Fortes d'une expérience sur quatre marchés internationaux et de plus d'une décennie dans la région de Marbella depuis 2012, nous combinons une véritable connaissance locale avec une perspective internationale.",
     "about.p2": "Notre expérience nous permet de transmettre une connaissance pratique et orientée marché, de manière transparente et directe. Pas à pas, nous mettons notre expertise au service de chaque étape du processus, sans détour — avec un seul et clair objectif : prendre des décisions éclairées en toute confiance.",
     "about.heading": "L'achat n'est que la première étape.",
@@ -720,56 +727,52 @@ const TRANSLATIONS = {
     "nav.sell": "Vendre",
     "packages.eyebrow": "Vendre avec MarbellaNest",
     "packages.title": "Mettez votre bien en vente, comme il se doit",
-    "packages.subtitle": "Trois niveaux de service, d'une présentation professionnelle à une campagne publicitaire internationale sur Instagram, YouTube et TikTok.",
-    "packages.note": "Tous les forfaits incluent une estimation gratuite et une publication sur MarbellaNest.com. Les prix sont indicatifs — le périmètre final est confirmé après une première visite.",
+    "packages.subtitle": "Nos trois forfaits de service sont conçus pour préparer votre bien professionnellement pour le marché. Ce ne sont pas des forfaits de courtage ou de mise en vente.",
+    "packages.note": "Les forfaits Essential et Signature se concentrent uniquement sur la préparation et la présentation professionnelle. Une fois terminé, le bien peut être lancé par nous, une autre agence ou le canal marketing de votre choix.",
+    "packages.brokerage": "Si vous choisissez de travailler avec nous pour le courtage, nos honoraires standards sont de 5% + TVA. Selon le niveau d'exclusivité, le type de bien et les exigences spécifiques de la mission, nous pouvons également proposer une structure d'honoraires sur mesure. Si le bien est vendu par notre intermédiaire, le montant payé pour le forfait de service choisi sera intégralement déduit des honoraires de courtage.",
     "packages.featuredBadge": "Le Plus Populaire",
     "packages.items": [
       {
         name: "Essential",
         title: "Annonce Essential",
-        tagline: "Une présentation professionnelle pour mettre votre bien en ligne sous son meilleur jour.",
+        tagline: "Photographie professionnelle, vidéo et la documentation essentielle du bien nécessaire pour le préparer au marché.",
         price: "950 €",
         priceNote: "paiement unique, par bien",
         cta: "Se renseigner",
         features: [
-          "Photographie professionnelle (jusqu'à 25 photos)",
-          "Publication sur MarbellaNest.com",
-          "Description rédigée en EN + ES",
-          "Diffusion vers les portails partenaires",
-          "1 conseiller dédié pour les demandes"
+          "Photographie professionnelle",
+          "Vidéo",
+          "Documentation essentielle du bien",
+          "Préparation pour le marché"
         ]
       },
       {
         name: "Signature",
-        title: "Marketing Signature",
-        tagline: "Tout ce qu'inclut Essential, plus vidéo et contenu organique pour une vraie visibilité.",
+        title: "Annonce Signature",
+        tagline: "Une présentation professionnelle plus complète, incluant photographie, vidéo et supports marketing additionnels. Le bien n'est pas encore publiquement mis en vente ou commercialisé à ce stade.",
         price: "2 400 €",
         priceNote: "paiement unique, par bien",
         cta: "Se renseigner",
         featured: true,
         features: [
           "Tout ce qu'inclut Essential",
-          "Vidéo cinématique du bien + images par drone",
-          "Extraits verticaux Reels/TikTok (3 clips)",
-          "Mise en avant sur la page d'accueil et les réseaux",
-          "Annonce traduite en EN, ES, DE, FR, NL",
-          "Ligne WhatsApp dédiée pour les demandes"
+          "Présentation professionnelle plus complète",
+          "Supports marketing additionnels",
+          "Pas encore mis en vente ou commercialisé publiquement"
         ]
       },
       {
         name: "International",
         title: "Campagne Internationale",
-        tagline: "Tout ce qu'inclut Signature, plus de la publicité payante ciblant les acheteurs de vos marchés choisis.",
-        price: "À partir de 4 800 €",
+        tagline: "Le lancement complet de votre bien sur le marché international, incluant la mise en vente sur notre propre site, Marbella Nest, et des plateformes immobilières sélectionnées, avec une campagne marketing internationale complète.",
+        price: "4 800 €",
         priceNote: "mise en place + budget publicitaire mensuel non inclus",
         cta: "Réserver un appel stratégique",
         features: [
           "Tout ce qu'inclut Signature",
-          "Campagnes payantes sur Instagram, YouTube et TikTok",
-          "Ciblage pays par pays (parmi les 9 marchés)",
-          "Retargeting des visiteurs du site et des vidéos",
-          "Rapport mensuel de performance par pays",
-          "Suivi prioritaire des demandes des acheteurs"
+          "Lancement public complet sur le marché international",
+          "Mise en vente sur MarbellaNest.com et plateformes sélectionnées",
+          "Campagne marketing internationale complète"
         ]
       }
     ],
@@ -811,7 +814,8 @@ const TRANSLATIONS = {
     ],
     "cta.enquire": "Se renseigner",
     "cta.whatsapp": "WhatsApp",
-    "status.new": "Nouveau"
+    "status.new": "Nouveau",
+    "status.unavailable": "Plus Disponible"
   },
 
   nl: {
@@ -827,8 +831,9 @@ const TRANSLATIONS = {
     "hero.cta2": "Spreek een Adviseur",
     "hero.markets": "Vertrouwd door kopers uit Nederland, België, Duitsland, Frankrijk, Scandinavië, Zwitserland en het VK",
     "social.strip": "<strong>Volg de woningen, niet alleen de advertenties.</strong> Videorondleidingen, Marbella-lifestylecontent en nieuwe aanbiedingen — het eerst op Instagram, YouTube en TikTok.",
-    "properties.title": "Zorgvuldig geselecteerde woningen",
+    "properties.title": "Onze woningen",
     "properties.subtitle": "Een wisselende selectie van de interessantste huizen van Marbella, gekozen op locatie, kwaliteit en waarde.",
+    "properties.soldNote": "Deze woning is al verkocht en niet meer beschikbaar. Neem contact met ons op voor ons actuele aanbod.",
     "properties.viewAll": "Bekijk alle woningen",
     "funnel.title": "Van eerste klik tot sleuteloverdracht",
     "funnel.subtitle": "Een duidelijk, begeleid proces voor internationale kopers die vanuit het buitenland kopen.",
@@ -888,6 +893,9 @@ const TRANSLATIONS = {
     "lifestyle.close.p9": "Want de juiste woning in Marbella vinden begint bij het vinden van de juiste manier van leven.",
     "lifestyle.close.cta": "Vind je Marbella.",
     "about.title": "Lokale expertise, internationale standaarden",
+    "about.qualityHeading": "Wij geloven in kwaliteit boven kwantiteit.",
+    "about.quality1": "Daarom werken we bewust met een beperkt aantal woningen tegelijk. Zo kunnen we elke woning de aandacht, strategie en toewijding geven die ze verdient, in plaats van simpelweg nog een woning aan een lang portfolio toe te voegen.",
+    "about.quality2": "Ons doel is niet om woningen te verzamelen — het is om ze te verkopen.",
     "about.p1": "Met expertise in vier internationale markten en meer dan een decennium ervaring in de omgeving van Marbella sinds 2012, combineren we echte lokale kennis met een internationaal perspectief.",
     "about.p2": "Onze ervaring stelt ons in staat om praktische, marktgestuurde kennis op een transparante en rechtstreekse manier te delen. Stap voor stap bieden we onze expertise in elke fase van het proces — zonder omwegen, met één duidelijk doel: weloverwogen beslissingen nemen met vertrouwen.",
     "about.heading": "Kopen is slechts de eerste stap.",
@@ -922,56 +930,52 @@ const TRANSLATIONS = {
     "nav.sell": "Verkopen",
     "packages.eyebrow": "Verkopen met MarbellaNest",
     "packages.title": "Zet uw woning op de juiste manier te koop",
-    "packages.subtitle": "Drie serviceniveaus, van professionele presentatie tot een volledige internationale advertentiecampagne op Instagram, YouTube en TikTok.",
-    "packages.note": "Alle pakketten omvatten een gratis taxatie en vermelding op MarbellaNest.com. Prijzen zijn indicatief — de definitieve omvang wordt na een eerste bezichtiging bevestigd.",
+    "packages.subtitle": "Onze drie servicepakketten zijn ontworpen om uw woning professioneel voor te bereiden op de markt. Het zijn geen makelaars- of verkooppakketten.",
+    "packages.note": "De pakketten Essential en Signature richten zich uitsluitend op voorbereiding en professionele presentatie. Na afronding kan de woning via ons, een andere makelaar of uw voorkeurskanaal worden gelanceerd.",
+    "packages.brokerage": "Als u ervoor kiest met ons samen te werken voor de bemiddeling, bedraagt onze standaard makelaarscourtage 5% + btw. Afhankelijk van het niveau van exclusiviteit, het type woning en de specifieke vereisten van de opdracht, kunnen we ook een op maat gemaakte vergoedingsstructuur aanbieden. Wordt de woning via onze bemiddeling verkocht, dan wordt het bedrag dat voor het gekozen servicepakket is betaald volledig verrekend met de makelaarscourtage.",
     "packages.featuredBadge": "Meest Gekozen",
     "packages.items": [
       {
         name: "Essential",
         title: "Essential Vermelding",
-        tagline: "Professionele presentatie om uw woning meteen goed op de kaart te zetten.",
+        tagline: "Professionele fotografie, video en de essentiële woningdocumentatie die nodig is om de woning marktklaar te maken.",
         price: "€ 950",
         priceNote: "eenmalig, per woning",
         cta: "Aanvragen",
         features: [
-          "Professionele fotografie (tot 25 foto's)",
-          "Vermelding op MarbellaNest.com",
-          "Beschrijving in EN + ES",
-          "Verspreiding naar partnerportalen",
-          "1 vaste adviseur voor aanvragen"
+          "Professionele fotografie",
+          "Video",
+          "Essentiële woningdocumentatie",
+          "Voorbereiding voor de markt"
         ]
       },
       {
         name: "Signature",
-        title: "Signature Marketing",
-        tagline: "Alles uit Essential, plus video en organische social content voor echte zichtbaarheid.",
+        title: "Signature Vermelding",
+        tagline: "Een uitgebreidere professionele presentatie, inclusief fotografie, video en extra marketingmateriaal. De woning wordt in dit stadium nog niet publiekelijk te koop aangeboden of vermarkt.",
         price: "€ 2.400",
         priceNote: "eenmalig, per woning",
         cta: "Aanvragen",
         featured: true,
         features: [
           "Alles uit Essential",
-          "Cinematische video + drone-beelden",
-          "Verticale Reels/TikTok-clips (3 stuks)",
-          "Uitgelichte plaatsing op homepage & social media",
-          "Vertaald naar EN, ES, DE, FR, NL",
-          "Eigen WhatsApp-lijn voor aanvragen"
+          "Uitgebreidere professionele presentatie",
+          "Extra marketingmateriaal",
+          "Nog niet publiekelijk vermeld of vermarkt"
         ]
       },
       {
         name: "International",
         title: "Internationale Campagne",
-        tagline: "Alles uit Signature, plus betaalde advertenties gericht op kopers in uw gekozen markten.",
-        price: "Vanaf € 4.800",
+        tagline: "De volledige lancering van uw woning op de internationale markt, inclusief vermelding op onze eigen website, Marbella Nest, en geselecteerde vastgoedplatforms, samen met een volledige internationale marketingcampagne.",
+        price: "€ 4.800",
         priceNote: "opzet + maandelijks advertentiebudget niet inbegrepen",
         cta: "Boek een Strategiegesprek",
         features: [
           "Alles uit Signature",
-          "Betaalde campagnes op Instagram, YouTube & TikTok",
-          "Targeting per land (kies uit alle 9 markten)",
-          "Retargeting voor website- en videobezoekers",
-          "Maandelijkse resultatenrapportage per land",
-          "Prioriteit bij opvolging van koperaanvragen"
+          "Volledige publieke lancering op de internationale markt",
+          "Vermelding op MarbellaNest.com en geselecteerde platforms",
+          "Volledige internationale marketingcampagne"
         ]
       }
     ],
@@ -1013,7 +1017,8 @@ const TRANSLATIONS = {
     ],
     "cta.enquire": "Aanvragen",
     "cta.whatsapp": "WhatsApp",
-    "status.new": "Nieuw"
+    "status.new": "Nieuw",
+    "status.unavailable": "Niet Meer Beschikbaar"
   }
 };
 

@@ -73,6 +73,7 @@ button { cursor: pointer; }
   max-width: var(--max-width);
   margin: 0 auto;
   padding: clamp(56px, 8vw, 120px) var(--gutter);
+  scroll-margin-top: 88px;
 }
 
 .section-tight { padding-top: 0; }
@@ -522,6 +523,124 @@ button { cursor: pointer; }
 }
 
 .property-card-cta .btn { flex: 1; justify-content: center; padding: 10px 16px; font-size: 13px; }
+
+.property-card { cursor: pointer; }
+
+.property-card.is-unavailable .property-media img {
+  filter: grayscale(1) contrast(1.02);
+}
+
+.property-card.is-unavailable .property-title,
+.property-card.is-unavailable .property-price,
+.property-card.is-unavailable .property-stats {
+  color: var(--muted);
+}
+
+.property-sold-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: rgba(20, 20, 15, 0.82);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+}
+
+/* ---------- Property detail modal ---------- */
+.property-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 15, 12, 0.62);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  z-index: 1000;
+}
+
+.property-modal-overlay.open { display: flex; }
+
+.property-modal {
+  background: #fff;
+  border-radius: var(--radius-md);
+  max-width: 560px;
+  width: 100%;
+  max-height: 88vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.property-modal-media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+}
+
+.property-modal-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1);
+}
+
+.property-modal-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(20, 20, 15, 0.5);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.property-modal-body { padding: 24px 26px 28px; }
+
+.property-modal-status {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: var(--card);
+  padding: 5px 11px;
+  border-radius: var(--radius-pill);
+  margin-bottom: 10px;
+}
+
+.property-modal-title {
+  font-family: var(--serif);
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.property-modal-meta {
+  display: flex;
+  gap: 16px;
+  color: var(--muted);
+  font-size: 14px;
+  margin-bottom: 14px;
+}
+
+.property-modal-meta span { display: inline-flex; align-items: center; gap: 5px; }
+
+.property-modal-price { font-weight: 600; font-size: 17px; margin-bottom: 16px; }
+
+.property-modal-note { color: var(--muted); font-size: 14px; line-height: 1.6; }
 
 /* ---------- Funnel / process ---------- */
 .funnel {

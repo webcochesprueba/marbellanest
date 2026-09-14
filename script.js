@@ -268,13 +268,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const propertyGrid = document.getElementById('propertyGrid');
     const enquireLabel = I18n.t('cta.enquire');
     const waLabel = I18n.t('cta.whatsapp');
-    const newLabel = I18n.t('status.new');
 
     propertyGrid.innerHTML = properties.map((p, i) => `
-      <article class="property-card">
+      <article class="property-card is-unavailable" data-index="${i}">
         <div class="property-media">
           <img src="${propertyImages[i] || PLACEHOLDER}" alt="${p.title}" loading="lazy">
-          ${i === 0 ? `<span class="property-status">${newLabel}</span>` : ''}
+          <span class="property-sold-badge">${I18n.t('status.unavailable')}</span>
           <button class="fav-btn" data-index="${i}" aria-label="Save property" aria-pressed="false">
             ${iconHeart}
           </button>
@@ -290,8 +289,8 @@ document.addEventListener('DOMContentLoaded', () => {
             <span class="property-price">${p.price}</span>
           </div>
           <div class="property-card-cta">
-            <a href="#contact" class="btn btn-outline">${enquireLabel}</a>
-            <a href="https://wa.me/34711095254?text=${encodeURIComponent('Hi, I\'m interested in: ' + p.title)}" target="_blank" rel="noopener" class="btn btn-whatsapp" data-track="lead" data-lead-type="whatsapp_property">${waLabel}</a>
+            <a href="#contact" class="btn btn-outline" onclick="event.stopPropagation()">${enquireLabel}</a>
+            <a href="https://wa.me/34711095254?text=${encodeURIComponent('Hi, I\'m interested in: ' + p.title)}" target="_blank" rel="noopener" class="btn btn-whatsapp" data-track="lead" data-lead-type="whatsapp_property" onclick="event.stopPropagation()">${waLabel}</a>
           </div>
         </div>
       </article>
@@ -303,12 +302,59 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     propertyGrid.addEventListener('click', (e) => {
-      const btn = e.target.closest('.fav-btn');
-      if (!btn) return;
-      const isActive = btn.classList.toggle('active');
-      btn.setAttribute('aria-pressed', String(isActive));
-    }, { once: true });
+      const favBtn = e.target.closest('.fav-btn');
+      if (favBtn) {
+        e.stopPropagation();
+        const isActive = favBtn.classList.toggle('active');
+        favBtn.setAttribute('aria-pressed', String(isActive));
+        return;
+      }
+      const card = e.target.closest('.property-card');
+      if (card) {
+        const idx = Number(card.getAttribute('data-index'));
+        openPropertyModal(idx);
+      }
+    });
   }
+
+  /* ---------------- Property detail modal ---------------- */
+
+  const propertyModalOverlay = document.getElementById('propertyModalOverlay');
+  const propertyModalClose = document.getElementById('propertyModalClose');
+
+  function openPropertyModal(i) {
+    const properties = I18n.t('properties');
+    const p = properties[i];
+    if (!p) return;
+
+    document.getElementById('propertyModalImg').src = propertyImages[i] || PLACEHOLDER;
+    document.getElementById('propertyModalImg').alt = p.title;
+    document.getElementById('propertyModalStatus').textContent = I18n.t('status.unavailable');
+    document.getElementById('propertyModalTitle').textContent = p.title;
+    document.getElementById('propertyModalMeta').innerHTML = `
+      <span>${iconBed} ${propertyStats[i].beds}</span>
+      <span>${iconBath} ${propertyStats[i].baths}</span>
+      <span>${iconSize} ${propertyStats[i].size}</span>
+    `;
+    document.getElementById('propertyModalPrice').textContent = p.price;
+    document.getElementById('propertyModalNote').textContent = I18n.t('properties.soldNote');
+
+    propertyModalOverlay.classList.add('open');
+  }
+
+  function closePropertyModal() {
+    propertyModalOverlay.classList.remove('open');
+  }
+
+  if (propertyModalClose) propertyModalClose.addEventListener('click', closePropertyModal);
+  if (propertyModalOverlay) {
+    propertyModalOverlay.addEventListener('click', (e) => {
+      if (e.target === propertyModalOverlay) closePropertyModal();
+    });
+  }
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closePropertyModal();
+  });
 
   function renderFunnel() {
     const steps = I18n.t('funnelSteps');
