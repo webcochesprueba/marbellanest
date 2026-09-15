@@ -273,7 +273,6 @@ document.addEventListener('DOMContentLoaded', () => {
       <article class="property-card is-unavailable" data-index="${i}">
         <div class="property-media">
           <img src="${propertyImages[i] || PLACEHOLDER}" alt="${p.title}" loading="lazy">
-          <span class="property-sold-badge">${I18n.t('status.unavailable')}</span>
           <button class="fav-btn" data-index="${i}" aria-label="Save property" aria-pressed="false">
             ${iconHeart}
           </button>
@@ -500,9 +499,72 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  /* ---------------- Gated sections (nav-only access) ---------------- */
+
+  const gatedSections = Array.from(document.querySelectorAll('.nav-gated'));
+  const header = document.getElementById('siteHeader');
+
+  const closeGated = () => {
+    gatedSections.forEach((s) => s.classList.remove('is-open'));
+    if (history.replaceState) history.replaceState(null, '', location.pathname + location.search);
+  };
+
+  const openGated = (id) => {
+    const target = document.getElementById(id);
+    if (!target || !target.classList.contains('nav-gated')) return false;
+
+    gatedSections.forEach((s) => {
+      const partOf = s.getAttribute('data-gate-with');
+      s.classList.toggle('is-open', s.id === id || partOf === id);
+    });
+
+    // Let layout settle, then bring the section under the sticky header.
+    requestAnimationFrame(() => {
+      const offset = header ? header.offsetHeight : 0;
+      const top = target.getBoundingClientRect().top + window.scrollY - offset - 8;
+      window.scrollTo({ top, behavior: 'smooth' });
+    });
+    return true;
+  };
+
+  // Give each gated section a way back.
+  gatedSections.forEach((section) => {
+    // Skip a section that has a companion rendered after it; the
+    // companion carries the back button for the whole group.
+    if (document.querySelector('[data-gate-with="' + section.id + '"]')) return;
+    const back = document.createElement('button');
+    back.type = 'button';
+    back.className = 'gated-close';
+    back.textContent = '\u2190 Back';
+    back.addEventListener('click', () => {
+      closeGated();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    section.appendChild(back);
+  });
+
+  // Intercept every in-page anchor so gated sections open on click only.
+  document.addEventListener('click', (e) => {
+    const link = e.target.closest('a[href^="#"]');
+    if (!link) return;
+    const id = link.getAttribute('href').slice(1);
+    if (!id) return;
+    if (openGated(id)) {
+      e.preventDefault();
+    }
+  });
+
+  // Block deep-linking straight into a gated section on load.
+  if (location.hash) {
+    const id = location.hash.slice(1);
+    const target = document.getElementById(id);
+    if (target && target.classList.contains('nav-gated')) {
+      openGated(id);
+    }
+  }
+
   /* ---------------- Sticky header shadow ---------------- */
 
-  const header = document.getElementById('siteHeader');
   const updateHeader = () => header.classList.toggle('scrolled', window.scrollY > 8);
   window.addEventListener('scroll', updateHeader, { passive: true });
   updateHeader();
