@@ -273,6 +273,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <article class="property-card is-unavailable" data-index="${i}">
         <div class="property-media">
           <img src="${propertyImages[i] || PLACEHOLDER}" alt="${p.title}" loading="lazy">
+          <span class="property-sold-badge">${I18n.t('status.tooLate')}</span>
           <button class="fav-btn" data-index="${i}" aria-label="Save property" aria-pressed="false">
             ${iconHeart}
           </button>

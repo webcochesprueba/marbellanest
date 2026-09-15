@@ -206,7 +206,8 @@ const TRANSLATIONS = {
     "cta.enquire": "Enquire",
     "cta.whatsapp": "WhatsApp",
     "status.new": "New listing",
-    "status.unavailable": "No Longer Available"
+    "status.unavailable": "No Longer Available",
+    "status.tooLate": "Too Late"
   },
 
   es: {
@@ -409,7 +410,8 @@ const TRANSLATIONS = {
     "cta.enquire": "Consultar",
     "cta.whatsapp": "WhatsApp",
     "status.new": "Nuevo",
-    "status.unavailable": "Ya No Disponible"
+    "status.unavailable": "Ya No Disponible",
+    "status.tooLate": "Demasiado Tarde"
   },
 
   de: {
@@ -612,7 +614,8 @@ const TRANSLATIONS = {
     "cta.enquire": "Anfragen",
     "cta.whatsapp": "WhatsApp",
     "status.new": "Neu",
-    "status.unavailable": "Nicht Mehr Verfügbar"
+    "status.unavailable": "Nicht Mehr Verfügbar",
+    "status.tooLate": "Zu Spät"
   },
 
   fr: {
@@ -815,7 +818,8 @@ const TRANSLATIONS = {
     "cta.enquire": "Se renseigner",
     "cta.whatsapp": "WhatsApp",
     "status.new": "Nouveau",
-    "status.unavailable": "Plus Disponible"
+    "status.unavailable": "Plus Disponible",
+    "status.tooLate": "Trop Tard"
   },
 
   nl: {
@@ -1018,7 +1022,8 @@ const TRANSLATIONS = {
     "cta.enquire": "Aanvragen",
     "cta.whatsapp": "WhatsApp",
     "status.new": "Nieuw",
-    "status.unavailable": "Niet Meer Beschikbaar"
+    "status.unavailable": "Niet Meer Beschikbaar",
+    "status.tooLate": "Te Laat"
   }
 };
 
