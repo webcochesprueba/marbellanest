@@ -472,10 +472,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const country = formData.get('country');
     const budget = formData.get('budget');
 
-    // TODO: replace with a real submission endpoint (e.g. your CRM's
-    // form API, a serverless function, or a service like Formspree).
-    // The event fires regardless so ad platforms can attribute the lead.
-    console.info('[Form] Enquiry submitted', Object.fromEntries(formData.entries()));
+    const firstName = formData.get('firstName') || '';
+    const lastName = formData.get('lastName') || '';
+    const email = formData.get('email') || '';
+    const phone = formData.get('phone') || '';
+    const message = formData.get('message') || '';
+
+    const subject = `Property enquiry from ${firstName} ${lastName}`.trim();
+    const body =
+      `Name: ${firstName} ${lastName}\n` +
+      `Email: ${email}\n` +
+      `Phone: ${phone}\n` +
+      `Country: ${country}\n` +
+      `Budget: ${budget}\n\n` +
+      `Message:\n${message}`;
+
+    const mailtoLink = `mailto:contact@themarbellanest.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    window.location.href = mailtoLink;
 
     Tracking.trackLead('enquiry_form', { country, budget });
 
