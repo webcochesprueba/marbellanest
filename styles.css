@@ -177,6 +177,12 @@ button { cursor: pointer; }
   white-space: nowrap;
 }
 
+.logo-img {
+  height: 34px;
+  width: auto;
+  display: block;
+}
+
 .logo-bold { font-weight: 600; }
 .logo-light { font-weight: 400; color: var(--muted); }
 .logo-dot { font-weight: 400; color: var(--muted); font-size: 0.85em; }
