@@ -411,6 +411,12 @@ button { cursor: pointer; }
   flex-wrap: wrap;
 }
 
+.why-header {
+  margin-top: clamp(56px, 8vw, 96px);
+  padding-top: clamp(40px, 6vw, 64px);
+  border-top: 1px solid var(--line);
+}
+
 .section-header h2 {
   font-size: clamp(28px, 3.2vw, 38px);
   max-width: 560px;
@@ -1142,6 +1148,14 @@ button { cursor: pointer; }
   font-size: clamp(20px, 2.2vw, 26px);
   font-weight: 500;
   color: var(--olive);
+}
+
+.about-emphasis {
+  font-family: var(--serif);
+  font-size: clamp(17px, 1.6vw, 20px);
+  font-weight: 500;
+  color: var(--ink);
+  margin-top: 18px;
 }
 
 .about-stats {
