@@ -296,10 +296,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const enquireLabel = I18n.t('cta.enquire');
     const waLabel = I18n.t('cta.whatsapp');
 
-    propertyGrid.innerHTML = properties.map((p, i) => `
+    // Show available listings first, sold/unavailable ones below.
+    const order = properties.map((_, i) => i).sort((a, b) => {
+      const availA = propertyAvailable[a] ? 0 : 1;
+      const availB = propertyAvailable[b] ? 0 : 1;
+      return availA - availB;
+    });
+
+    propertyGrid.innerHTML = order.map((i) => {
+      const p = properties[i];
+      return `
       <article class="property-card${propertyAvailable[i] ? '' : ' is-unavailable'}" data-index="${i}">
         <div class="property-media">
           <img src="${propertyImages[i] || PLACEHOLDER}" alt="${p.title}" loading="lazy">
+          ${propertyAvailable[i] ? `<span class="property-new-badge">${I18n.t('status.new')}</span>` : ''}
           <button class="fav-btn" data-index="${i}" aria-label="Save property" aria-pressed="false">
             ${iconHeart}
           </button>
@@ -320,7 +330,8 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
         </div>
       </article>
-    `).join('');
+    `;
+    }).join('');
 
     // re-attach lead tracking for newly injected WhatsApp buttons
     propertyGrid.querySelectorAll('[data-track="lead"]').forEach(el => {
@@ -366,6 +377,12 @@ document.addEventListener('DOMContentLoaded', () => {
     propertyModalDots.querySelectorAll('button').forEach((dot, i) => {
       dot.classList.toggle('active', i === currentSlide);
     });
+    const lightboxOverlay = document.getElementById('photoLightboxOverlay');
+    if (lightboxOverlay && lightboxOverlay.classList.contains('open')) {
+      const lightboxImg = document.getElementById('photoLightboxImg');
+      lightboxImg.src = slide.src;
+      lightboxImg.alt = slide.alt || '';
+    }
   }
 
   function goToSlide(i) {
@@ -410,18 +427,24 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('propertyModalPrice').textContent = p.price;
     const descEl = document.getElementById('propertyModalDescription');
     const noteEl = document.getElementById('propertyModalNote');
-    if (available && (p.overview || p.features || p.location)) {
-      const sections = [];
+    const hasSections = p.sections && p.sections.length;
+    if (available && (p.overview || hasSections || p.features || p.location)) {
+      const blocks = [];
       if (p.overview) {
-        sections.push(`
-          <div class="property-detail-section">
-            <h4>${I18n.t('properties.overviewLabel')}</h4>
-            <p>${p.overview}</p>
-          </div>
-        `);
+        blocks.push(`<p class="property-detail-overview">${p.overview}</p>`);
+      }
+      if (hasSections) {
+        p.sections.forEach(s => {
+          blocks.push(`
+            <div class="property-detail-section">
+              <h4>${s.heading}</h4>
+              <p>${s.text}</p>
+            </div>
+          `);
+        });
       }
       if (p.features && p.features.length) {
-        sections.push(`
+        blocks.push(`
           <div class="property-detail-section">
             <h4>${I18n.t('properties.featuresLabel')}</h4>
             <ul class="property-detail-features">
@@ -431,14 +454,14 @@ document.addEventListener('DOMContentLoaded', () => {
         `);
       }
       if (p.location) {
-        sections.push(`
+        blocks.push(`
           <div class="property-detail-section">
             <h4>${I18n.t('properties.locationLabel')}</h4>
             <p>${p.location}</p>
           </div>
         `);
       }
-      descEl.innerHTML = sections.join('');
+      descEl.innerHTML = blocks.join('');
       descEl.style.display = '';
       noteEl.style.display = 'none';
     } else {
@@ -453,6 +476,34 @@ document.addEventListener('DOMContentLoaded', () => {
   function closePropertyModal() {
     propertyModalOverlay.classList.remove('open');
   }
+
+  /* ---------------- Fullscreen photo lightbox ---------------- */
+
+  const photoLightboxOverlay = document.getElementById('photoLightboxOverlay');
+  const photoLightboxImg = document.getElementById('photoLightboxImg');
+  const photoLightboxClose = document.getElementById('photoLightboxClose');
+
+  function openLightbox() {
+    if (!currentGallery.length) return;
+    photoLightboxImg.src = currentGallery[currentSlide].src;
+    photoLightboxImg.alt = currentGallery[currentSlide].alt || '';
+    photoLightboxOverlay.classList.add('open');
+  }
+
+  function closeLightbox() {
+    photoLightboxOverlay.classList.remove('open');
+  }
+
+  if (propertyModalImg) propertyModalImg.addEventListener('click', openLightbox);
+  if (photoLightboxClose) photoLightboxClose.addEventListener('click', closeLightbox);
+  if (photoLightboxOverlay) {
+    photoLightboxOverlay.addEventListener('click', (e) => {
+      if (e.target === photoLightboxOverlay || e.target === photoLightboxImg) closeLightbox();
+    });
+  }
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && photoLightboxOverlay.classList.contains('open')) closeLightbox();
+  });
 
   if (propertyModalPrev) propertyModalPrev.addEventListener('click', () => goToSlide(currentSlide - 1));
   if (propertyModalNext) propertyModalNext.addEventListener('click', () => goToSlide(currentSlide + 1));

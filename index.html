@@ -475,7 +475,7 @@
 <div class="property-modal-overlay" id="propertyModalOverlay">
   <div class="property-modal" id="propertyModal" role="dialog" aria-modal="true">
     <div class="property-modal-media">
-      <img id="propertyModalImg" src="" alt="">
+      <img id="propertyModalImg" src="" alt="" class="property-modal-img-clickable">
       <button type="button" class="property-modal-close" id="propertyModalClose" aria-label="Close">&times;</button>
       <button type="button" class="property-modal-nav property-modal-prev" id="propertyModalPrev" aria-label="Previous photo">&#10094;</button>
       <button type="button" class="property-modal-nav property-modal-next" id="propertyModalNext" aria-label="Next photo">&#10095;</button>
@@ -491,6 +491,12 @@
       <p class="property-modal-note" id="propertyModalNote">This property has already been sold and is no longer available. Get in touch with us to see our current listings.</p>
     </div>
   </div>
+</div>
+
+<!-- Fullscreen photo lightbox -->
+<div class="photo-lightbox-overlay" id="photoLightboxOverlay">
+  <button type="button" class="photo-lightbox-close" id="photoLightboxClose" aria-label="Close">&times;</button>
+  <img id="photoLightboxImg" src="" alt="">
 </div>
 
 <!-- Cookie / tracking consent banner (required for EU ad targeting + retargeting pixels) -->
