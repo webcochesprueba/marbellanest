@@ -597,6 +597,9 @@ button { cursor: pointer; }
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.property-modal.is-unavailable .property-modal-media img {
   filter: grayscale(1);
 }
 
@@ -616,7 +619,66 @@ button { cursor: pointer; }
   cursor: pointer;
   font-size: 18px;
   line-height: 1;
+  z-index: 3;
 }
+
+.property-modal-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(20, 20, 15, 0.45);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1;
+  transition: background 0.2s var(--ease);
+  z-index: 3;
+}
+
+.property-modal-nav:hover { background: rgba(20, 20, 15, 0.7); }
+.property-modal-prev { left: 14px; }
+.property-modal-next { right: 14px; }
+.property-modal-nav[hidden] { display: none; }
+
+.property-modal-counter {
+  position: absolute;
+  bottom: 14px;
+  right: 14px;
+  background: rgba(20, 20, 15, 0.5);
+  color: #fff;
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  z-index: 3;
+}
+
+.property-modal-dots {
+  position: absolute;
+  bottom: 14px;
+  left: 14px;
+  display: flex;
+  gap: 6px;
+  z-index: 3;
+}
+
+.property-modal-dots button {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.45);
+  cursor: pointer;
+  padding: 0;
+}
+
+.property-modal-dots button.active { background: #fff; }
 
 .property-modal-body { padding: 24px 26px 28px; }
 
@@ -653,6 +715,7 @@ button { cursor: pointer; }
 .property-modal-price { font-weight: 600; font-size: 17px; margin-bottom: 16px; }
 
 .property-modal-note { color: var(--muted); font-size: 14px; line-height: 1.6; }
+.property-modal-description { color: var(--ink); font-size: 14px; line-height: 1.7; max-height: 220px; overflow-y: auto; }
 
 /* ---------- Funnel / process ---------- */
 .funnel {

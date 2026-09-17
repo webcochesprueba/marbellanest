@@ -243,12 +243,39 @@ document.addEventListener('DOMContentLoaded', () => {
     { image: 'images/lifestyle-4.png', alt: 'Marbella old town culture' }
   ];
 
-  const propertyImages = [PLACEHOLDER, 'images/placeholder-2.png', 'images/placeholder-3.png'];
+  const propertyImages = [PLACEHOLDER, 'images/placeholder-2.png', 'images/placeholder-3.png', 'images/penthouse-santa-clara/01-lifestyle-terrace.jpg'];
   const propertyStats = [
     { beds: 5, baths: 6, size: '712 m²' },
     { beds: 6, baths: 7, size: '860 m²' },
-    { beds: 4, baths: 4, size: '477 m²' }
+    { beds: 4, baths: 4, size: '477 m²' },
+    { beds: 3, baths: 3, size: '200+ m² terraces' }
   ];
+  const propertyAvailable = [false, false, false, true];
+
+  // Full photo galleries per property (index-matched to `properties` in i18n.js).
+  // Only the new listing (index 3) has a gallery for now; others fall back to their single card image.
+  const propertyGalleries = {
+    3: [
+      { src: 'images/penthouse-santa-clara/01-lifestyle-terrace.jpg', alt: 'Lifestyle terrace' },
+      { src: 'images/penthouse-santa-clara/02-dining.jpg', alt: 'Dining area' },
+      { src: 'images/penthouse-santa-clara/03-viewing-and-media-lounge.png', alt: 'Viewing and media lounge' },
+      { src: 'images/penthouse-santa-clara/04-kitchen-with-view.png', alt: 'Kitchen with view' },
+      { src: 'images/penthouse-santa-clara/05-dining.jpg', alt: 'Dining' },
+      { src: 'images/penthouse-santa-clara/06-viewing-lounge.png', alt: 'Viewing lounge' },
+      { src: 'images/penthouse-santa-clara/07-media-lounge.jpg', alt: 'Media lounge' },
+      { src: 'images/penthouse-santa-clara/08-media-lounge.jpg', alt: 'Media lounge' },
+      { src: 'images/penthouse-santa-clara/09-terrace.jpg', alt: 'Terrace' },
+      { src: 'images/penthouse-santa-clara/10-terrace-without-toldos.png', alt: 'Terrace without toldos' },
+      { src: 'images/penthouse-santa-clara/11-primary.jpg', alt: 'Primary suite' },
+      { src: 'images/penthouse-santa-clara/12-primary.jpg', alt: 'Primary suite' },
+      { src: 'images/penthouse-santa-clara/13-third-bed.jpg', alt: 'Third bedroom' },
+      { src: 'images/penthouse-santa-clara/14-bedroom-terrace.jpg', alt: 'Bedroom terrace' },
+      { src: 'images/penthouse-santa-clara/15-facade.jpg', alt: 'Facade' },
+      { src: 'images/penthouse-santa-clara/16-pool.jpg', alt: 'Pool' },
+      { src: 'images/penthouse-santa-clara/17-calle-sand-10.jpg', alt: 'Calle Sand 10' },
+      { src: 'images/penthouse-santa-clara/18-la-cabane-dg.jpg', alt: 'La Cabane by Dolce & Gabbana' }
+    ]
+  };
 
   /* ---------------- Render: everything driven by i18n data ---------------- */
 
@@ -270,7 +297,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const waLabel = I18n.t('cta.whatsapp');
 
     propertyGrid.innerHTML = properties.map((p, i) => `
-      <article class="property-card is-unavailable" data-index="${i}">
+      <article class="property-card${propertyAvailable[i] ? '' : ' is-unavailable'}" data-index="${i}">
         <div class="property-media">
           <img src="${propertyImages[i] || PLACEHOLDER}" alt="${p.title}" loading="lazy">
           <button class="fav-btn" data-index="${i}" aria-label="Save property" aria-pressed="false">
@@ -319,16 +346,61 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ---------------- Property detail modal ---------------- */
 
   const propertyModalOverlay = document.getElementById('propertyModalOverlay');
+  const propertyModal = document.getElementById('propertyModal');
   const propertyModalClose = document.getElementById('propertyModalClose');
+  const propertyModalImg = document.getElementById('propertyModalImg');
+  const propertyModalPrev = document.getElementById('propertyModalPrev');
+  const propertyModalNext = document.getElementById('propertyModalNext');
+  const propertyModalCounter = document.getElementById('propertyModalCounter');
+  const propertyModalDots = document.getElementById('propertyModalDots');
+
+  let currentGallery = [];
+  let currentSlide = 0;
+
+  function renderModalSlide() {
+    if (!currentGallery.length) return;
+    const slide = currentGallery[currentSlide];
+    propertyModalImg.src = slide.src;
+    propertyModalImg.alt = slide.alt || '';
+    propertyModalCounter.textContent = `${currentSlide + 1} / ${currentGallery.length}`;
+    propertyModalDots.querySelectorAll('button').forEach((dot, i) => {
+      dot.classList.toggle('active', i === currentSlide);
+    });
+  }
+
+  function goToSlide(i) {
+    if (!currentGallery.length) return;
+    currentSlide = (i + currentGallery.length) % currentGallery.length;
+    renderModalSlide();
+  }
 
   function openPropertyModal(i) {
     const properties = I18n.t('properties');
     const p = properties[i];
     if (!p) return;
 
-    document.getElementById('propertyModalImg').src = propertyImages[i] || PLACEHOLDER;
-    document.getElementById('propertyModalImg').alt = p.title;
-    document.getElementById('propertyModalStatus').textContent = I18n.t('status.unavailable');
+    const available = propertyAvailable[i];
+    propertyModal.classList.toggle('is-unavailable', !available);
+
+    const gallery = propertyGalleries[i] && propertyGalleries[i].length
+      ? propertyGalleries[i]
+      : [{ src: propertyImages[i] || PLACEHOLDER, alt: p.title }];
+
+    currentGallery = gallery;
+    currentSlide = 0;
+
+    const showCarousel = gallery.length > 1;
+    propertyModalPrev.hidden = !showCarousel;
+    propertyModalNext.hidden = !showCarousel;
+    propertyModalCounter.hidden = !showCarousel;
+    propertyModalDots.hidden = !showCarousel;
+    propertyModalDots.innerHTML = showCarousel
+      ? gallery.map((_, idx) => `<button type="button" data-slide="${idx}" aria-label="Go to photo ${idx + 1}"></button>`).join('')
+      : '';
+
+    renderModalSlide();
+
+    document.getElementById('propertyModalStatus').textContent = available ? I18n.t('status.new') : I18n.t('status.unavailable');
     document.getElementById('propertyModalTitle').textContent = p.title;
     document.getElementById('propertyModalMeta').innerHTML = `
       <span>${iconBed} ${propertyStats[i].beds}</span>
@@ -336,7 +408,17 @@ document.addEventListener('DOMContentLoaded', () => {
       <span>${iconSize} ${propertyStats[i].size}</span>
     `;
     document.getElementById('propertyModalPrice').textContent = p.price;
-    document.getElementById('propertyModalNote').textContent = I18n.t('properties.soldNote');
+    const descEl = document.getElementById('propertyModalDescription');
+    const noteEl = document.getElementById('propertyModalNote');
+    if (available && p.description) {
+      descEl.textContent = p.description;
+      descEl.style.display = '';
+      noteEl.style.display = 'none';
+    } else {
+      descEl.style.display = 'none';
+      noteEl.style.display = '';
+      noteEl.textContent = I18n.t('properties.soldNote');
+    }
 
     propertyModalOverlay.classList.add('open');
   }
@@ -344,6 +426,20 @@ document.addEventListener('DOMContentLoaded', () => {
   function closePropertyModal() {
     propertyModalOverlay.classList.remove('open');
   }
+
+  if (propertyModalPrev) propertyModalPrev.addEventListener('click', () => goToSlide(currentSlide - 1));
+  if (propertyModalNext) propertyModalNext.addEventListener('click', () => goToSlide(currentSlide + 1));
+  if (propertyModalDots) {
+    propertyModalDots.addEventListener('click', (e) => {
+      const btn = e.target.closest('button[data-slide]');
+      if (btn) goToSlide(Number(btn.getAttribute('data-slide')));
+    });
+  }
+  document.addEventListener('keydown', (e) => {
+    if (!propertyModalOverlay.classList.contains('open')) return;
+    if (e.key === 'ArrowRight') goToSlide(currentSlide + 1);
+    if (e.key === 'ArrowLeft') goToSlide(currentSlide - 1);
+  });
 
   if (propertyModalClose) propertyModalClose.addEventListener('click', closePropertyModal);
   if (propertyModalOverlay) {

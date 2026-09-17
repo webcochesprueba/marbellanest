@@ -207,7 +207,8 @@ const TRANSLATIONS = {
     "properties": [
       { title: "Elegant Villa in Lomas del Rey", price: "€5,950,000" },
       { title: "Contemporary Villa with Sea Views", price: "€8,750,000" },
-      { title: "Andalusian Charm in Nueva Andalucía", price: "€3,650,000" }
+      { title: "Andalusian Charm in Nueva Andalucía", price: "€3,650,000" },
+      { title: "Detached Penthouse in Santa Clara", price: "€1,650,000", description: "A detached penthouse offering a high degree of privacy, panoramic sea and mountain views, and more than 200 m² of terraces. The property combines the space and independence of a villa with the comfort, security and convenience of luxury penthouse living within a 24/7 gated community. Recently upgraded by a Marbella-based German builder with home automation, alarm system and CCTV. Two spacious designer suites plus a separate bedroom/atelier, private parking with EV charging, Energy Certificate A, and a tourist rental licence. Situated next to Spain's first Waldorf Astoria Resort, between the future Waldorf Astoria Golf Course and Santa Clara Golf Club, around 1.5 km from Marbella's finest beaches and 25 minutes from Málaga Airport." }
     ],
     "cta.enquire": "Enquire",
     "cta.whatsapp": "WhatsApp",
@@ -417,7 +418,8 @@ const TRANSLATIONS = {
     "properties": [
       { title: "Elegante Villa en Lomas del Rey", price: "5.950.000 €" },
       { title: "Villa Contemporánea con Vistas al Mar", price: "8.750.000 €" },
-      { title: "Encanto Andaluz en Nueva Andalucía", price: "3.650.000 €" }
+      { title: "Encanto Andaluz en Nueva Andalucía", price: "3.650.000 €" },
+      { title: "Ático Independiente en Santa Clara", price: "1.650.000 €", description: "Un ático independiente que ofrece un alto grado de privacidad, vistas panorámicas al mar y a la montaña, y más de 200 m² de terrazas. La propiedad combina el espacio e independencia de una villa con la comodidad, seguridad y conveniencia de un ático de lujo dentro de una urbanización cerrada con seguridad 24/7. Recientemente reformado por un constructor alemán afincado en Marbella, con domotización, alarma y CCTV. Dos suites de diseño más un dormitorio/atelier independiente, parking privado con carga para vehículo eléctrico, Certificado Energético A y licencia de alquiler turístico. Situado junto al primer Waldorf Astoria Resort de España, entre el futuro Waldorf Astoria Golf Course y el Santa Clara Golf Club, a unos 1,5 km de las mejores playas de Marbella y a 25 minutos del aeropuerto de Málaga." }
     ],
     "cta.enquire": "Consultar",
     "cta.whatsapp": "WhatsApp",
@@ -627,7 +629,8 @@ const TRANSLATIONS = {
     "properties": [
       { title: "Elegante Villa in Lomas del Rey", price: "5.950.000 €" },
       { title: "Zeitgenössische Villa mit Meerblick", price: "8.750.000 €" },
-      { title: "Andalusischer Charme in Nueva Andalucía", price: "3.650.000 €" }
+      { title: "Andalusischer Charme in Nueva Andalucía", price: "3.650.000 €" },
+      { title: "Freistehendes Penthouse in Santa Clara", price: "1.650.000 €", description: "Ein freistehendes Penthouse mit hoher Privatsphäre, Panoramablick auf Meer und Berge sowie mehr als 200 m² Terrassenfläche. Die Immobilie vereint den Raum und die Unabhängigkeit einer Villa mit dem Komfort, der Sicherheit und der Bequemlichkeit eines luxuriösen Penthouse-Lebens in einer rund um die Uhr bewachten Wohnanlage. Kürzlich von einem in Marbella ansässigen deutschen Bauunternehmer mit Hausautomation, Alarmanlage und CCTV modernisiert. Zwei geräumige Designer-Suiten sowie ein separates Schlafzimmer/Atelier, private Parkplätze mit E-Ladestation, Energieausweis A und Touristenvermietungslizenz. Direkt neben Spaniens erstem Waldorf Astoria Resort gelegen, zwischen dem zukünftigen Waldorf Astoria Golf Course und dem Santa Clara Golf Club, etwa 1,5 km von Marbellas schönsten Stränden und 25 Minuten vom Flughafen Málaga entfernt." }
     ],
     "cta.enquire": "Anfragen",
     "cta.whatsapp": "WhatsApp",
@@ -837,7 +840,8 @@ const TRANSLATIONS = {
     "properties": [
       { title: "Villa Élégante à Lomas del Rey", price: "5 950 000 €" },
       { title: "Villa Contemporaine avec Vue sur Mer", price: "8 750 000 €" },
-      { title: "Charme Andalou à Nueva Andalucía", price: "3 650 000 €" }
+      { title: "Charme Andalou à Nueva Andalucía", price: "3 650 000 €" },
+      { title: "Penthouse Indépendant à Santa Clara", price: "1 650 000 €", description: "Un penthouse indépendant offrant un haut degré d'intimité, des vues panoramiques sur la mer et les montagnes, et plus de 200 m² de terrasses. La propriété combine l'espace et l'indépendance d'une villa avec le confort, la sécurité et la commodité d'un penthouse de luxe au sein d'une résidence sécurisée 24h/24 et 7j/7. Récemment rénové par un constructeur allemand basé à Marbella, avec domotique, alarme et vidéosurveillance. Deux suites design spacieuses ainsi qu'une chambre/atelier séparée, places de parking privées avec borne de recharge électrique, certificat énergétique A et licence de location touristique. Située juste à côté du premier Waldorf Astoria Resort d'Espagne, entre le futur Waldorf Astoria Golf Course et le Santa Clara Golf Club, à environ 1,5 km des plus belles plages de Marbella et à 25 minutes de l'aéroport de Málaga." }
     ],
     "cta.enquire": "Se renseigner",
     "cta.whatsapp": "WhatsApp",
@@ -1047,7 +1051,8 @@ const TRANSLATIONS = {
     "properties": [
       { title: "Elegante Villa in Lomas del Rey", price: "€ 5.950.000" },
       { title: "Eigentijdse Villa met Zeezicht", price: "€ 8.750.000" },
-      { title: "Andalusische Charme in Nueva Andalucía", price: "€ 3.650.000" }
+      { title: "Andalusische Charme in Nueva Andalucía", price: "€ 3.650.000" },
+      { title: "Vrijstaand Penthouse in Santa Clara", price: "€ 1.650.000", description: "Een vrijstaand penthouse met een hoge mate van privacy, panoramisch uitzicht op zee en bergen, en meer dan 200 m² aan terrassen. Het object combineert de ruimte en onafhankelijkheid van een villa met het comfort, de veiligheid en het gemak van luxe penthouse-wonen binnen een 24/7 beveiligde, afgesloten community. Recent gerenoveerd door een in Marbella gevestigde Duitse bouwer, met domotica, alarmsysteem en CCTV. Twee ruime designersuites plus een aparte slaapkamer/atelier, privéparkeerplaatsen met EV-laadpunt, energielabel A en een toeristische verhuurlicentie. Gelegen naast Spanje's eerste Waldorf Astoria Resort, tussen de toekomstige Waldorf Astoria Golf Course en Santa Clara Golf Club, op zo'n 1,5 km van Marbella's mooiste stranden en 25 minuten van de luchthaven van Málaga." }
     ],
     "cta.enquire": "Aanvragen",
     "cta.whatsapp": "WhatsApp",
