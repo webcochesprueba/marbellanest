@@ -715,7 +715,36 @@ button { cursor: pointer; }
 .property-modal-price { font-weight: 600; font-size: 17px; margin-bottom: 16px; }
 
 .property-modal-note { color: var(--muted); font-size: 14px; line-height: 1.6; }
-.property-modal-description { color: var(--ink); font-size: 14px; line-height: 1.7; max-height: 220px; overflow-y: auto; }
+.property-modal-description { color: var(--ink); font-size: 14px; line-height: 1.7; max-height: 320px; overflow-y: auto; padding-right: 4px; }
+.property-detail-section { margin-bottom: 18px; }
+.property-detail-section:last-child { margin-bottom: 0; }
+.property-detail-section h4 {
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--brass-dark);
+  margin: 0 0 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--line);
+}
+.property-detail-section p { margin: 0; }
+.property-detail-features { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 7px; }
+.property-detail-features li {
+  position: relative;
+  padding-left: 18px;
+}
+.property-detail-features li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--brass);
+}
 
 /* ---------- Funnel / process ---------- */
 .funnel {

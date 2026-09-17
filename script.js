@@ -243,19 +243,19 @@ document.addEventListener('DOMContentLoaded', () => {
     { image: 'images/lifestyle-4.png', alt: 'Marbella old town culture' }
   ];
 
-  const propertyImages = [PLACEHOLDER, 'images/placeholder-2.png', 'images/placeholder-3.png', 'images/penthouse-santa-clara/01-lifestyle-terrace.jpg'];
+  const propertyImages = ['images/penthouse-santa-clara/01-lifestyle-terrace.jpg', PLACEHOLDER, 'images/placeholder-2.png', 'images/placeholder-3.png'];
   const propertyStats = [
+    { beds: 3, baths: 3, size: '387 m²' },
     { beds: 5, baths: 6, size: '712 m²' },
     { beds: 6, baths: 7, size: '860 m²' },
-    { beds: 4, baths: 4, size: '477 m²' },
-    { beds: 3, baths: 3, size: '200+ m² terraces' }
+    { beds: 4, baths: 4, size: '477 m²' }
   ];
-  const propertyAvailable = [false, false, false, true];
+  const propertyAvailable = [true, false, false, false];
 
   // Full photo galleries per property (index-matched to `properties` in i18n.js).
-  // Only the new listing (index 3) has a gallery for now; others fall back to their single card image.
+  // Only the available listing (index 0) has a gallery for now; others fall back to their single card image.
   const propertyGalleries = {
-    3: [
+    0: [
       { src: 'images/penthouse-santa-clara/01-lifestyle-terrace.jpg', alt: 'Lifestyle terrace' },
       { src: 'images/penthouse-santa-clara/02-dining.jpg', alt: 'Dining area' },
       { src: 'images/penthouse-santa-clara/03-viewing-and-media-lounge.png', alt: 'Viewing and media lounge' },
@@ -410,8 +410,35 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('propertyModalPrice').textContent = p.price;
     const descEl = document.getElementById('propertyModalDescription');
     const noteEl = document.getElementById('propertyModalNote');
-    if (available && p.description) {
-      descEl.textContent = p.description;
+    if (available && (p.overview || p.features || p.location)) {
+      const sections = [];
+      if (p.overview) {
+        sections.push(`
+          <div class="property-detail-section">
+            <h4>${I18n.t('properties.overviewLabel')}</h4>
+            <p>${p.overview}</p>
+          </div>
+        `);
+      }
+      if (p.features && p.features.length) {
+        sections.push(`
+          <div class="property-detail-section">
+            <h4>${I18n.t('properties.featuresLabel')}</h4>
+            <ul class="property-detail-features">
+              ${p.features.map(f => `<li>${f}</li>`).join('')}
+            </ul>
+          </div>
+        `);
+      }
+      if (p.location) {
+        sections.push(`
+          <div class="property-detail-section">
+            <h4>${I18n.t('properties.locationLabel')}</h4>
+            <p>${p.location}</p>
+          </div>
+        `);
+      }
+      descEl.innerHTML = sections.join('');
       descEl.style.display = '';
       noteEl.style.display = 'none';
     } else {
