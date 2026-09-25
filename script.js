@@ -243,14 +243,114 @@ document.addEventListener('DOMContentLoaded', () => {
     { image: 'images/lifestyle-4.png', alt: 'Marbella old town culture' }
   ];
 
-  const propertyImages = ['images/penthouse-santa-clara/01-lifestyle-terrace.jpg', PLACEHOLDER, 'images/placeholder-2.png', 'images/placeholder-3.png'];
-  const propertyStats = [
-    { beds: 3, baths: 3, size: '387 m²' },
+  // "Sold / no longer available" listings stay hardcoded (index-matched to
+  // the SOLD_* arrays below and to i18n.js `properties` entries 0-2, reused
+  // as-is across all languages since these are historical/off-market records).
+  const SOLD_IMAGES = [PLACEHOLDER, 'images/placeholder-2.png', 'images/placeholder-3.png'];
+  const SOLD_STATS = [
     { beds: 5, baths: 6, size: '712 m²' },
     { beds: 6, baths: 7, size: '860 m²' },
     { beds: 4, baths: 4, size: '477 m²' }
   ];
-  const propertyAvailable = [true, false, false, false];
+
+  /* ======================================================================
+     RESALES ONLINE — LIVE FEED (XML, direct from the browser)
+     ------------------------------------------------------------------
+     NOTE: this calls the Resales Online feed directly from client-side JS.
+     The API key below is therefore visible to anyone who opens dev tools
+     or inspects network traffic — there is no way to hide a secret that a
+     browser must use to make the request. This was a deliberate choice
+     (per explicit request) rather than an oversight. If Resales Online
+     offers referrer/domain-restricted keys, ask them to apply that
+     restriction to reduce misuse. The robust fix is a tiny server/
+     serverless function that holds the key and the browser never sees it.
+     ====================================================================== */
+
+  const RESALES_FEED_URL = 'https://xmlout.resales-online.com/live/Resales/Export/CreateXMLFeedV3.asp?U=RESALES@THMANE&P=SPHWPJSZNN&FV=2&Sandbox=TRUE';
+  const RESALES_MAX_LISTINGS = 12; // "Our properties" is a featured grid, not a full listings page — cap it
+
+  const ResalesFeed = {
+    listings: [],   // parsed + mapped, in property-card shape
+    loaded: false,
+
+    async load() {
+      try {
+        const res = await fetch(RESALES_FEED_URL);
+        if (!res.ok) throw new Error('Feed HTTP ' + res.status);
+        const text = await res.text();
+        const xml = new DOMParser().parseFromString(text, 'application/xml');
+        if (xml.querySelector('parsererror')) throw new Error('Feed XML parse error');
+
+        this.listings = Array.from(xml.querySelectorAll('property'))
+          .filter(node => (node.querySelector('status')?.textContent || '').trim() === 'Available')
+          .map(node => this.mapNode(node))
+          .filter(Boolean)
+          .sort((a, b) => b.lastUpdated.localeCompare(a.lastUpdated)) // newest first
+          .slice(0, RESALES_MAX_LISTINGS);
+      } catch (err) {
+        console.warn('Resales Online feed: could not load live listings.', err);
+        this.listings = [];
+      } finally {
+        this.loaded = true; // don't block rendering either way — falls back to sold-only view
+      }
+    },
+
+    text(node, selector) {
+      return node.querySelector(selector)?.textContent?.trim() || '';
+    },
+
+    mapNode(node) {
+      const id = this.text(node, 'id');
+      const ref = this.text(node, 'ref') || id;
+      if (!ref) return null;
+
+      const typeUk = this.text(node, 'type > uk');
+      const subtypeUk = this.text(node, 'subtype > uk');
+      const town = this.text(node, 'town');
+      const area = this.text(node, 'area');
+      const price = Number(this.text(node, 'price')) || 0;
+      const currency = this.text(node, 'currency') || 'EUR';
+      const beds = Number(this.text(node, 'beds')) || 0;
+      const baths = Number(this.text(node, 'baths')) || 0;
+      const built = Number(node.querySelector('surface_area > built')?.textContent) || 0;
+
+      const descUk = this.text(node, 'description > uk');
+
+      const images = Array.from(node.querySelectorAll('images > image > url'))
+        .map(el => el.textContent.trim())
+        .filter(Boolean);
+
+      const characteristics = Array.from(node.querySelectorAll('characteristics > category > value > uk'))
+        .map(el => el.textContent.trim())
+        .filter(Boolean);
+
+      const title = [subtypeUk || typeUk, town ? `in ${town}` : ''].filter(Boolean).join(' ') || `Property ${ref}`;
+      const priceFormatted = currency === 'EUR'
+        ? '€' + price.toLocaleString('en-GB')
+        : price.toLocaleString('en-GB') + ' ' + currency;
+
+      return {
+        ref,
+        lastUpdated: this.text(node, 'last_updated'),
+        card: {
+          title,
+          price: priceFormatted,
+          overview: descUk,
+          features: characteristics.slice(0, 8),
+          location: [town, area].filter(Boolean).join(', ')
+        },
+        stats: {
+          beds,
+          baths,
+          size: built ? `${built} m²` : '—'
+        },
+        image: images[0] || PLACEHOLDER,
+        gallery: images.length
+          ? images.map((src, i) => ({ src, alt: `${title} — photo ${i + 1}` }))
+          : [{ src: PLACEHOLDER, alt: title }]
+      };
+    }
+  };
 
   // Full photo galleries per property (index-matched to `properties` in i18n.js).
   // Only the available listing (index 0) has a gallery for now; others fall back to their single card image.
@@ -290,27 +390,55 @@ document.addEventListener('DOMContentLoaded', () => {
     updateLangActiveStates();
   }
 
+  // Builds the combined list rendered in the grid: live feed listings first
+  // (index space "live:0", "live:1", ...), then the hardcoded sold listings
+  // (index space "sold:0", "sold:1", ...). Kept as string keys so the two
+  // sources never collide even if their lengths change.
+  function getCombinedProperties() {
+    const soldProps = I18n.t('properties'); // entries 0-2 in i18n.js are the sold ones
+
+    const live = ResalesFeed.listings.map((item, i) => ({
+      key: `live:${i}`,
+      available: true,
+      title: item.card.title,
+      price: item.card.price,
+      overview: item.card.overview,
+      features: item.card.features,
+      location: item.card.location,
+      stats: item.stats,
+      image: item.image,
+      gallery: item.gallery
+    }));
+
+    const sold = soldProps.map((p, i) => ({
+      key: `sold:${i}`,
+      available: false,
+      title: p.title,
+      price: p.price,
+      overview: p.overview,
+      sections: p.sections,
+      features: p.features,
+      location: p.location,
+      stats: SOLD_STATS[i] || { beds: 0, baths: 0, size: '—' },
+      image: SOLD_IMAGES[i] || PLACEHOLDER,
+      gallery: [{ src: SOLD_IMAGES[i] || PLACEHOLDER, alt: p.title }]
+    }));
+
+    return [...live, ...sold];
+  }
+
   function renderProperties() {
-    const properties = I18n.t('properties');
     const propertyGrid = document.getElementById('propertyGrid');
     const enquireLabel = I18n.t('cta.enquire');
     const waLabel = I18n.t('cta.whatsapp');
+    const items = getCombinedProperties();
 
-    // Show available listings first, sold/unavailable ones below.
-    const order = properties.map((_, i) => i).sort((a, b) => {
-      const availA = propertyAvailable[a] ? 0 : 1;
-      const availB = propertyAvailable[b] ? 0 : 1;
-      return availA - availB;
-    });
-
-    propertyGrid.innerHTML = order.map((i) => {
-      const p = properties[i];
-      return `
-      <article class="property-card${propertyAvailable[i] ? '' : ' is-unavailable'}" data-index="${i}">
+    propertyGrid.innerHTML = items.map((p) => `
+      <article class="property-card${p.available ? '' : ' is-unavailable'}" data-key="${p.key}">
         <div class="property-media">
-          <img src="${propertyImages[i] || PLACEHOLDER}" alt="${p.title}" loading="lazy">
-          ${propertyAvailable[i] ? `<span class="property-new-badge">${I18n.t('status.new')}</span>` : ''}
-          <button class="fav-btn" data-index="${i}" aria-label="Save property" aria-pressed="false">
+          <img src="${p.image}" alt="${p.title}" loading="lazy">
+          ${p.available ? `<span class="property-new-badge">${I18n.t('status.new')}</span>` : ''}
+          <button class="fav-btn" data-key="${p.key}" aria-label="Save property" aria-pressed="false">
             ${iconHeart}
           </button>
         </div>
@@ -318,9 +446,9 @@ document.addEventListener('DOMContentLoaded', () => {
           <h3 class="property-title">${p.title}</h3>
           <div class="property-meta">
             <div class="property-stats">
-              <span>${iconBed} ${propertyStats[i].beds}</span>
-              <span>${iconBath} ${propertyStats[i].baths}</span>
-              <span>${iconSize} ${propertyStats[i].size}</span>
+              <span>${iconBed} ${p.stats.beds}</span>
+              <span>${iconBath} ${p.stats.baths}</span>
+              <span>${iconSize} ${p.stats.size}</span>
             </div>
             <span class="property-price">${p.price}</span>
           </div>
@@ -330,28 +458,31 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
         </div>
       </article>
-    `;
-    }).join('');
+    `).join('');
 
     // re-attach lead tracking for newly injected WhatsApp buttons
     propertyGrid.querySelectorAll('[data-track="lead"]').forEach(el => {
       el.addEventListener('click', () => Tracking.trackLead(el.getAttribute('data-lead-type') || 'unknown'));
     });
 
-    propertyGrid.addEventListener('click', (e) => {
-      const favBtn = e.target.closest('.fav-btn');
-      if (favBtn) {
-        e.stopPropagation();
-        const isActive = favBtn.classList.toggle('active');
-        favBtn.setAttribute('aria-pressed', String(isActive));
-        return;
-      }
-      const card = e.target.closest('.property-card');
-      if (card) {
-        const idx = Number(card.getAttribute('data-index'));
-        openPropertyModal(idx);
-      }
-    });
+    // Grid click handling is delegated and attached once (renderProperties can
+    // run multiple times: on language switch and again when the feed loads).
+    if (!propertyGrid.dataset.clickBound) {
+      propertyGrid.dataset.clickBound = 'true';
+      propertyGrid.addEventListener('click', (e) => {
+        const favBtn = e.target.closest('.fav-btn');
+        if (favBtn) {
+          e.stopPropagation();
+          const isActive = favBtn.classList.toggle('active');
+          favBtn.setAttribute('aria-pressed', String(isActive));
+          return;
+        }
+        const card = e.target.closest('.property-card');
+        if (card) {
+          openPropertyModal(card.getAttribute('data-key'));
+        }
+      });
+    }
   }
 
   /* ---------------- Property detail modal ---------------- */
@@ -391,17 +522,17 @@ document.addEventListener('DOMContentLoaded', () => {
     renderModalSlide();
   }
 
-  function openPropertyModal(i) {
-    const properties = I18n.t('properties');
-    const p = properties[i];
+  function openPropertyModal(key) {
+    const items = getCombinedProperties();
+    const p = items.find(item => item.key === key);
     if (!p) return;
 
-    const available = propertyAvailable[i];
+    const available = p.available;
     propertyModal.classList.toggle('is-unavailable', !available);
 
-    const gallery = propertyGalleries[i] && propertyGalleries[i].length
-      ? propertyGalleries[i]
-      : [{ src: propertyImages[i] || PLACEHOLDER, alt: p.title }];
+    const gallery = (key === 'sold:0' && propertyGalleries[0] && propertyGalleries[0].length)
+      ? propertyGalleries[0]
+      : (p.gallery && p.gallery.length ? p.gallery : [{ src: p.image || PLACEHOLDER, alt: p.title }]);
 
     currentGallery = gallery;
     currentSlide = 0;
@@ -420,9 +551,9 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('propertyModalStatus').textContent = available ? I18n.t('status.new') : I18n.t('status.unavailable');
     document.getElementById('propertyModalTitle').textContent = p.title;
     document.getElementById('propertyModalMeta').innerHTML = `
-      <span>${iconBed} ${propertyStats[i].beds}</span>
-      <span>${iconBath} ${propertyStats[i].baths}</span>
-      <span>${iconSize} ${propertyStats[i].size}</span>
+      <span>${iconBed} ${p.stats.beds}</span>
+      <span>${iconBath} ${p.stats.baths}</span>
+      <span>${iconSize} ${p.stats.size}</span>
     `;
     document.getElementById('propertyModalPrice').textContent = p.price;
     const descEl = document.getElementById('propertyModalDescription');
@@ -763,5 +894,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ---------------- Boot ---------------- */
 
-  I18n.apply();
+  I18n.apply(); // first paint: sold listings show immediately, feed listings appear once loaded
+
+  ResalesFeed.load().then(() => {
+    renderProperties(); // re-render property grid only, once live listings are in
+  });
 });
