@@ -243,15 +243,23 @@ document.addEventListener('DOMContentLoaded', () => {
     { image: 'images/lifestyle-4.png', alt: 'Marbella old town culture' }
   ];
 
-  // "Sold / no longer available" listings stay hardcoded (index-matched to
-  // the SOLD_* arrays below and to i18n.js `properties` entries 0-2, reused
-  // as-is across all languages since these are historical/off-market records).
-  const SOLD_IMAGES = [PLACEHOLDER, 'images/placeholder-2.png', 'images/placeholder-3.png'];
-  const SOLD_STATS = [
-    { beds: 5, baths: 6, size: '712 m²' },
-    { beds: 6, baths: 7, size: '860 m²' },
-    { beds: 4, baths: 4, size: '477 m²' }
-  ];
+  // "Sold / no longer available" listings stay hardcoded — these are
+  // i18n.js `properties` entries 1, 2 and 3 ("Elegant Villa in Lomas del
+  // Rey", "Contemporary Villa with Sea Views", "Andalusian Charm in Nueva
+  // Andalucía"). Entry 0 ("Detached Penthouse in Santa Clara") has been
+  // fully removed from the page — that "new listing" slot is now sourced
+  // entirely from the Resales Online feed (see ResalesFeed below).
+  const SOLD_ENTRY_INDEXES = [1, 2, 3];
+  const SOLD_IMAGES = {
+    1: PLACEHOLDER,
+    2: 'images/placeholder-2.png',
+    3: 'images/placeholder-3.png'
+  };
+  const SOLD_STATS = {
+    1: { beds: 5, baths: 6, size: '712 m²' },
+    2: { beds: 6, baths: 7, size: '860 m²' },
+    3: { beds: 4, baths: 4, size: '477 m²' }
+  };
 
   /* ======================================================================
      RESALES ONLINE — LIVE FEED (XML, direct from the browser)
@@ -352,31 +360,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  // Full photo galleries per property (index-matched to `properties` in i18n.js).
-  // Only the available listing (index 0) has a gallery for now; others fall back to their single card image.
-  const propertyGalleries = {
-    0: [
-      { src: 'images/penthouse-santa-clara/01-lifestyle-terrace.jpg', alt: 'Lifestyle terrace' },
-      { src: 'images/penthouse-santa-clara/02-dining.jpg', alt: 'Dining area' },
-      { src: 'images/penthouse-santa-clara/03-viewing-and-media-lounge.png', alt: 'Viewing and media lounge' },
-      { src: 'images/penthouse-santa-clara/04-kitchen-with-view.png', alt: 'Kitchen with view' },
-      { src: 'images/penthouse-santa-clara/05-dining.jpg', alt: 'Dining' },
-      { src: 'images/penthouse-santa-clara/06-viewing-lounge.png', alt: 'Viewing lounge' },
-      { src: 'images/penthouse-santa-clara/07-media-lounge.jpg', alt: 'Media lounge' },
-      { src: 'images/penthouse-santa-clara/08-media-lounge.jpg', alt: 'Media lounge' },
-      { src: 'images/penthouse-santa-clara/09-terrace.jpg', alt: 'Terrace' },
-      { src: 'images/penthouse-santa-clara/10-terrace-without-toldos.png', alt: 'Terrace without toldos' },
-      { src: 'images/penthouse-santa-clara/11-primary.jpg', alt: 'Primary suite' },
-      { src: 'images/penthouse-santa-clara/12-primary.jpg', alt: 'Primary suite' },
-      { src: 'images/penthouse-santa-clara/13-third-bed.jpg', alt: 'Third bedroom' },
-      { src: 'images/penthouse-santa-clara/14-bedroom-terrace.jpg', alt: 'Bedroom terrace' },
-      { src: 'images/penthouse-santa-clara/15-facade.jpg', alt: 'Facade' },
-      { src: 'images/penthouse-santa-clara/16-pool.jpg', alt: 'Pool' },
-      { src: 'images/penthouse-santa-clara/17-calle-sand-10.jpg', alt: 'Calle Sand 10' },
-      { src: 'images/penthouse-santa-clara/18-la-cabane-dg.jpg', alt: 'La Cabane by Dolce & Gabbana' }
-    ]
-  };
-
   /* ---------------- Render: everything driven by i18n data ---------------- */
 
   function renderContent() {
@@ -392,10 +375,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Builds the combined list rendered in the grid: live feed listings first
   // (index space "live:0", "live:1", ...), then the hardcoded sold listings
-  // (index space "sold:0", "sold:1", ...). Kept as string keys so the two
-  // sources never collide even if their lengths change.
+  // (index space "sold:1", "sold:2", "sold:3"). If the feed hasn't returned
+  // anything (still loading, or the request failed), the grid simply shows
+  // the sold listings alone until the feed comes through.
   function getCombinedProperties() {
-    const soldProps = I18n.t('properties'); // entries 0-2 in i18n.js are the sold ones
+    const allProps = I18n.t('properties');
 
     const live = ResalesFeed.listings.map((item, i) => ({
       key: `live:${i}`,
@@ -410,19 +394,22 @@ document.addEventListener('DOMContentLoaded', () => {
       gallery: item.gallery
     }));
 
-    const sold = soldProps.map((p, i) => ({
-      key: `sold:${i}`,
-      available: false,
-      title: p.title,
-      price: p.price,
-      overview: p.overview,
-      sections: p.sections,
-      features: p.features,
-      location: p.location,
-      stats: SOLD_STATS[i] || { beds: 0, baths: 0, size: '—' },
-      image: SOLD_IMAGES[i] || PLACEHOLDER,
-      gallery: [{ src: SOLD_IMAGES[i] || PLACEHOLDER, alt: p.title }]
-    }));
+    const sold = SOLD_ENTRY_INDEXES.map((idx) => {
+      const p = allProps[idx];
+      return {
+        key: `sold:${idx}`,
+        available: false,
+        title: p.title,
+        price: p.price,
+        overview: p.overview,
+        sections: p.sections,
+        features: p.features,
+        location: p.location,
+        stats: SOLD_STATS[idx] || { beds: 0, baths: 0, size: '—' },
+        image: SOLD_IMAGES[idx] || PLACEHOLDER,
+        gallery: [{ src: SOLD_IMAGES[idx] || PLACEHOLDER, alt: p.title }]
+      };
+    });
 
     return [...live, ...sold];
   }
@@ -530,9 +517,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const available = p.available;
     propertyModal.classList.toggle('is-unavailable', !available);
 
-    const gallery = (key === 'sold:0' && propertyGalleries[0] && propertyGalleries[0].length)
-      ? propertyGalleries[0]
-      : (p.gallery && p.gallery.length ? p.gallery : [{ src: p.image || PLACEHOLDER, alt: p.title }]);
+    const gallery = (p.gallery && p.gallery.length) ? p.gallery : [{ src: p.image || PLACEHOLDER, alt: p.title }];
 
     currentGallery = gallery;
     currentSlide = 0;
