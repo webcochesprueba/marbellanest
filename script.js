@@ -274,7 +274,7 @@ document.addEventListener('DOMContentLoaded', () => {
      serverless function that holds the key and the browser never sees it.
      ====================================================================== */
 
-  const RESALES_FEED_URL = 'https://xmlout.resales-online.com/live/Resales/Export/CreateXMLFeedV3.asp?U=RESALES@THMANE&P=SPHWPJSZNN&FV=2&Sandbox=TRUE';
+  const RESALES_FEED_URL = 'https://xmlout.resales-online.com/live/Resales/Export/CreateXMLFeedV3.asp?U=RESALES@THMANE&P=SPHWPJSZNN&FV=2';
   const RESALES_MAX_LISTINGS = 12; // "Our properties" is a featured grid, not a full listings page — cap it
 
   const ResalesFeed = {
