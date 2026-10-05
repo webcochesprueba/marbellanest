@@ -243,121 +243,38 @@ document.addEventListener('DOMContentLoaded', () => {
     { image: 'images/lifestyle-4.png', alt: 'Marbella old town culture' }
   ];
 
-  // "Sold / no longer available" listings stay hardcoded — these are
-  // i18n.js `properties` entries 1, 2 and 3 ("Elegant Villa in Lomas del
-  // Rey", "Contemporary Villa with Sea Views", "Andalusian Charm in Nueva
-  // Andalucía"). Entry 0 ("Detached Penthouse in Santa Clara") has been
-  // fully removed from the page — that "new listing" slot is now sourced
-  // entirely from the Resales Online feed (see ResalesFeed below).
-  const SOLD_ENTRY_INDEXES = [1, 2, 3];
-  const SOLD_IMAGES = {
-    1: PLACEHOLDER,
-    2: 'images/placeholder-2.png',
-    3: 'images/placeholder-3.png'
-  };
-  const SOLD_STATS = {
-    1: { beds: 5, baths: 6, size: '712 m²' },
-    2: { beds: 6, baths: 7, size: '860 m²' },
-    3: { beds: 4, baths: 4, size: '477 m²' }
-  };
+  const propertyImages = ['images/penthouse-santa-clara/01-lifestyle-terrace.jpg', PLACEHOLDER, 'images/placeholder-2.png', 'images/placeholder-3.png'];
+  const propertyStats = [
+    { beds: 3, baths: 3, size: '387 m²' },
+    { beds: 5, baths: 6, size: '712 m²' },
+    { beds: 6, baths: 7, size: '860 m²' },
+    { beds: 4, baths: 4, size: '477 m²' }
+  ];
+  const propertyAvailable = [true, false, false, false];
 
-  /* ======================================================================
-     RESALES ONLINE — LIVE FEED (XML, direct from the browser)
-     ------------------------------------------------------------------
-     NOTE: this calls the Resales Online feed directly from client-side JS.
-     The API key below is therefore visible to anyone who opens dev tools
-     or inspects network traffic — there is no way to hide a secret that a
-     browser must use to make the request. This was a deliberate choice
-     (per explicit request) rather than an oversight. If Resales Online
-     offers referrer/domain-restricted keys, ask them to apply that
-     restriction to reduce misuse. The robust fix is a tiny server/
-     serverless function that holds the key and the browser never sees it.
-     ====================================================================== */
-
-  const RESALES_FEED_URL = 'https://xmlout.resales-online.com/live/Resales/Export/CreateXMLFeedV3.asp?U=RESALES@THMANE&P=SPHWPJSZNN&FV=2';
-  const RESALES_MAX_LISTINGS = 12; // "Our properties" is a featured grid, not a full listings page — cap it
-
-  const ResalesFeed = {
-    listings: [],   // parsed + mapped, in property-card shape
-    loaded: false,
-
-    async load() {
-      try {
-        const res = await fetch(RESALES_FEED_URL);
-        if (!res.ok) throw new Error('Feed HTTP ' + res.status);
-        const text = await res.text();
-        const xml = new DOMParser().parseFromString(text, 'application/xml');
-        if (xml.querySelector('parsererror')) throw new Error('Feed XML parse error');
-
-        this.listings = Array.from(xml.querySelectorAll('property'))
-          .filter(node => (node.querySelector('status')?.textContent || '').trim() === 'Available')
-          .map(node => this.mapNode(node))
-          .filter(Boolean)
-          .sort((a, b) => b.lastUpdated.localeCompare(a.lastUpdated)) // newest first
-          .slice(0, RESALES_MAX_LISTINGS);
-      } catch (err) {
-        console.warn('Resales Online feed: could not load live listings.', err);
-        this.listings = [];
-      } finally {
-        this.loaded = true; // don't block rendering either way — falls back to sold-only view
-      }
-    },
-
-    text(node, selector) {
-      return node.querySelector(selector)?.textContent?.trim() || '';
-    },
-
-    mapNode(node) {
-      const id = this.text(node, 'id');
-      const ref = this.text(node, 'ref') || id;
-      if (!ref) return null;
-
-      const typeUk = this.text(node, 'type > uk');
-      const subtypeUk = this.text(node, 'subtype > uk');
-      const town = this.text(node, 'town');
-      const area = this.text(node, 'area');
-      const price = Number(this.text(node, 'price')) || 0;
-      const currency = this.text(node, 'currency') || 'EUR';
-      const beds = Number(this.text(node, 'beds')) || 0;
-      const baths = Number(this.text(node, 'baths')) || 0;
-      const built = Number(node.querySelector('surface_area > built')?.textContent) || 0;
-
-      const descUk = this.text(node, 'description > uk');
-
-      const images = Array.from(node.querySelectorAll('images > image > url'))
-        .map(el => el.textContent.trim())
-        .filter(Boolean);
-
-      const characteristics = Array.from(node.querySelectorAll('characteristics > category > value > uk'))
-        .map(el => el.textContent.trim())
-        .filter(Boolean);
-
-      const title = [subtypeUk || typeUk, town ? `in ${town}` : ''].filter(Boolean).join(' ') || `Property ${ref}`;
-      const priceFormatted = currency === 'EUR'
-        ? '€' + price.toLocaleString('en-GB')
-        : price.toLocaleString('en-GB') + ' ' + currency;
-
-      return {
-        ref,
-        lastUpdated: this.text(node, 'last_updated'),
-        card: {
-          title,
-          price: priceFormatted,
-          overview: descUk,
-          features: characteristics.slice(0, 8),
-          location: [town, area].filter(Boolean).join(', ')
-        },
-        stats: {
-          beds,
-          baths,
-          size: built ? `${built} m²` : '—'
-        },
-        image: images[0] || PLACEHOLDER,
-        gallery: images.length
-          ? images.map((src, i) => ({ src, alt: `${title} — photo ${i + 1}` }))
-          : [{ src: PLACEHOLDER, alt: title }]
-      };
-    }
+  // Full photo galleries per property (index-matched to `properties` in i18n.js).
+  // Only the available listing (index 0) has a gallery for now; others fall back to their single card image.
+  const propertyGalleries = {
+    0: [
+      { src: 'images/penthouse-santa-clara/01-lifestyle-terrace.jpg', alt: 'Lifestyle terrace' },
+      { src: 'images/penthouse-santa-clara/02-dining.jpg', alt: 'Dining area' },
+      { src: 'images/penthouse-santa-clara/03-viewing-and-media-lounge.png', alt: 'Viewing and media lounge' },
+      { src: 'images/penthouse-santa-clara/04-kitchen-with-view.png', alt: 'Kitchen with view' },
+      { src: 'images/penthouse-santa-clara/05-dining.jpg', alt: 'Dining' },
+      { src: 'images/penthouse-santa-clara/06-viewing-lounge.png', alt: 'Viewing lounge' },
+      { src: 'images/penthouse-santa-clara/07-media-lounge.jpg', alt: 'Media lounge' },
+      { src: 'images/penthouse-santa-clara/08-media-lounge.jpg', alt: 'Media lounge' },
+      { src: 'images/penthouse-santa-clara/09-terrace.jpg', alt: 'Terrace' },
+      { src: 'images/penthouse-santa-clara/10-terrace-without-toldos.png', alt: 'Terrace without toldos' },
+      { src: 'images/penthouse-santa-clara/11-primary.jpg', alt: 'Primary suite' },
+      { src: 'images/penthouse-santa-clara/12-primary.jpg', alt: 'Primary suite' },
+      { src: 'images/penthouse-santa-clara/13-third-bed.jpg', alt: 'Third bedroom' },
+      { src: 'images/penthouse-santa-clara/14-bedroom-terrace.jpg', alt: 'Bedroom terrace' },
+      { src: 'images/penthouse-santa-clara/15-facade.jpg', alt: 'Facade' },
+      { src: 'images/penthouse-santa-clara/16-pool.jpg', alt: 'Pool' },
+      { src: 'images/penthouse-santa-clara/17-calle-sand-10.jpg', alt: 'Calle Sand 10' },
+      { src: 'images/penthouse-santa-clara/18-la-cabane-dg.jpg', alt: 'La Cabane by Dolce & Gabbana' }
+    ]
   };
 
   /* ---------------- Render: everything driven by i18n data ---------------- */
@@ -373,59 +290,27 @@ document.addEventListener('DOMContentLoaded', () => {
     updateLangActiveStates();
   }
 
-  // Builds the combined list rendered in the grid: live feed listings first
-  // (index space "live:0", "live:1", ...), then the hardcoded sold listings
-  // (index space "sold:1", "sold:2", "sold:3"). If the feed hasn't returned
-  // anything (still loading, or the request failed), the grid simply shows
-  // the sold listings alone until the feed comes through.
-  function getCombinedProperties() {
-    const allProps = I18n.t('properties');
-
-    const live = ResalesFeed.listings.map((item, i) => ({
-      key: `live:${i}`,
-      available: true,
-      title: item.card.title,
-      price: item.card.price,
-      overview: item.card.overview,
-      features: item.card.features,
-      location: item.card.location,
-      stats: item.stats,
-      image: item.image,
-      gallery: item.gallery
-    }));
-
-    const sold = SOLD_ENTRY_INDEXES.map((idx) => {
-      const p = allProps[idx];
-      return {
-        key: `sold:${idx}`,
-        available: false,
-        title: p.title,
-        price: p.price,
-        overview: p.overview,
-        sections: p.sections,
-        features: p.features,
-        location: p.location,
-        stats: SOLD_STATS[idx] || { beds: 0, baths: 0, size: '—' },
-        image: SOLD_IMAGES[idx] || PLACEHOLDER,
-        gallery: [{ src: SOLD_IMAGES[idx] || PLACEHOLDER, alt: p.title }]
-      };
-    });
-
-    return [...live, ...sold];
-  }
-
   function renderProperties() {
+    const properties = I18n.t('properties');
     const propertyGrid = document.getElementById('propertyGrid');
     const enquireLabel = I18n.t('cta.enquire');
     const waLabel = I18n.t('cta.whatsapp');
-    const items = getCombinedProperties();
 
-    propertyGrid.innerHTML = items.map((p) => `
-      <article class="property-card${p.available ? '' : ' is-unavailable'}" data-key="${p.key}">
+    // Show available listings first, sold/unavailable ones below.
+    const order = properties.map((_, i) => i).sort((a, b) => {
+      const availA = propertyAvailable[a] ? 0 : 1;
+      const availB = propertyAvailable[b] ? 0 : 1;
+      return availA - availB;
+    });
+
+    propertyGrid.innerHTML = order.map((i) => {
+      const p = properties[i];
+      return `
+      <article class="property-card${propertyAvailable[i] ? '' : ' is-unavailable'}" data-index="${i}">
         <div class="property-media">
-          <img src="${p.image}" alt="${p.title}" loading="lazy">
-          ${p.available ? `<span class="property-new-badge">${I18n.t('status.new')}</span>` : ''}
-          <button class="fav-btn" data-key="${p.key}" aria-label="Save property" aria-pressed="false">
+          <img src="${propertyImages[i] || PLACEHOLDER}" alt="${p.title}" loading="lazy">
+          ${propertyAvailable[i] ? `<span class="property-new-badge">${I18n.t('status.new')}</span>` : ''}
+          <button class="fav-btn" data-index="${i}" aria-label="Save property" aria-pressed="false">
             ${iconHeart}
           </button>
         </div>
@@ -433,9 +318,9 @@ document.addEventListener('DOMContentLoaded', () => {
           <h3 class="property-title">${p.title}</h3>
           <div class="property-meta">
             <div class="property-stats">
-              <span>${iconBed} ${p.stats.beds}</span>
-              <span>${iconBath} ${p.stats.baths}</span>
-              <span>${iconSize} ${p.stats.size}</span>
+              <span>${iconBed} ${propertyStats[i].beds}</span>
+              <span>${iconBath} ${propertyStats[i].baths}</span>
+              <span>${iconSize} ${propertyStats[i].size}</span>
             </div>
             <span class="property-price">${p.price}</span>
           </div>
@@ -445,31 +330,28 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
         </div>
       </article>
-    `).join('');
+    `;
+    }).join('');
 
     // re-attach lead tracking for newly injected WhatsApp buttons
     propertyGrid.querySelectorAll('[data-track="lead"]').forEach(el => {
       el.addEventListener('click', () => Tracking.trackLead(el.getAttribute('data-lead-type') || 'unknown'));
     });
 
-    // Grid click handling is delegated and attached once (renderProperties can
-    // run multiple times: on language switch and again when the feed loads).
-    if (!propertyGrid.dataset.clickBound) {
-      propertyGrid.dataset.clickBound = 'true';
-      propertyGrid.addEventListener('click', (e) => {
-        const favBtn = e.target.closest('.fav-btn');
-        if (favBtn) {
-          e.stopPropagation();
-          const isActive = favBtn.classList.toggle('active');
-          favBtn.setAttribute('aria-pressed', String(isActive));
-          return;
-        }
-        const card = e.target.closest('.property-card');
-        if (card) {
-          openPropertyModal(card.getAttribute('data-key'));
-        }
-      });
-    }
+    propertyGrid.addEventListener('click', (e) => {
+      const favBtn = e.target.closest('.fav-btn');
+      if (favBtn) {
+        e.stopPropagation();
+        const isActive = favBtn.classList.toggle('active');
+        favBtn.setAttribute('aria-pressed', String(isActive));
+        return;
+      }
+      const card = e.target.closest('.property-card');
+      if (card) {
+        const idx = Number(card.getAttribute('data-index'));
+        openPropertyModal(idx);
+      }
+    });
   }
 
   /* ---------------- Property detail modal ---------------- */
@@ -509,15 +391,17 @@ document.addEventListener('DOMContentLoaded', () => {
     renderModalSlide();
   }
 
-  function openPropertyModal(key) {
-    const items = getCombinedProperties();
-    const p = items.find(item => item.key === key);
+  function openPropertyModal(i) {
+    const properties = I18n.t('properties');
+    const p = properties[i];
     if (!p) return;
 
-    const available = p.available;
+    const available = propertyAvailable[i];
     propertyModal.classList.toggle('is-unavailable', !available);
 
-    const gallery = (p.gallery && p.gallery.length) ? p.gallery : [{ src: p.image || PLACEHOLDER, alt: p.title }];
+    const gallery = propertyGalleries[i] && propertyGalleries[i].length
+      ? propertyGalleries[i]
+      : [{ src: propertyImages[i] || PLACEHOLDER, alt: p.title }];
 
     currentGallery = gallery;
     currentSlide = 0;
@@ -536,9 +420,9 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('propertyModalStatus').textContent = available ? I18n.t('status.new') : I18n.t('status.unavailable');
     document.getElementById('propertyModalTitle').textContent = p.title;
     document.getElementById('propertyModalMeta').innerHTML = `
-      <span>${iconBed} ${p.stats.beds}</span>
-      <span>${iconBath} ${p.stats.baths}</span>
-      <span>${iconSize} ${p.stats.size}</span>
+      <span>${iconBed} ${propertyStats[i].beds}</span>
+      <span>${iconBath} ${propertyStats[i].baths}</span>
+      <span>${iconSize} ${propertyStats[i].size}</span>
     `;
     document.getElementById('propertyModalPrice').textContent = p.price;
     const descEl = document.getElementById('propertyModalDescription');
@@ -879,9 +763,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ---------------- Boot ---------------- */
 
-  I18n.apply(); // first paint: sold listings show immediately, feed listings appear once loaded
-
-  ResalesFeed.load().then(() => {
-    renderProperties(); // re-render property grid only, once live listings are in
-  });
+  I18n.apply();
 });
