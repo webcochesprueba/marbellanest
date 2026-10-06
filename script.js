@@ -243,17 +243,18 @@ document.addEventListener('DOMContentLoaded', () => {
     { image: 'images/lifestyle-4.png', alt: 'Marbella old town culture' }
   ];
 
-  const propertyImages = ['images/penthouse-santa-clara/01-lifestyle-terrace.jpg', PLACEHOLDER, 'images/placeholder-2.png', 'images/placeholder-3.png'];
+  const propertyImages = ['images/penthouse-santa-clara/01-lifestyle-terrace.jpg', 'images/property1.jpg', PLACEHOLDER, 'images/placeholder-2.png', 'images/placeholder-3.png'];
   const propertyStats = [
     { beds: 3, baths: 3, size: '387 m²' },
+    { beds: 3, baths: 3.5, size: '188 m²' },
     { beds: 5, baths: 6, size: '712 m²' },
     { beds: 6, baths: 7, size: '860 m²' },
     { beds: 4, baths: 4, size: '477 m²' }
   ];
-  const propertyAvailable = [true, false, false, false];
+  const propertyAvailable = [true, true, false, false, false];
 
   // Full photo galleries per property (index-matched to `properties` in i18n.js).
-  // Only the available listing (index 0) has a gallery for now; others fall back to their single card image.
+  // Only the available listings (index 0 and 1) have a gallery for now; others fall back to their single card image.
   const propertyGalleries = {
     0: [
       { src: 'images/penthouse-santa-clara/01-lifestyle-terrace.jpg', alt: 'Lifestyle terrace' },
@@ -274,6 +275,23 @@ document.addEventListener('DOMContentLoaded', () => {
       { src: 'images/penthouse-santa-clara/16-pool.jpg', alt: 'Pool' },
       { src: 'images/penthouse-santa-clara/17-calle-sand-10.jpg', alt: 'Calle Sand 10' },
       { src: 'images/penthouse-santa-clara/18-la-cabane-dg.jpg', alt: 'La Cabane by Dolce & Gabbana' }
+    ],
+    1: [
+      { src: 'images/property1.jpg', alt: 'Duplex in Señorío de Aloha – photo 1' },
+      { src: 'images/property2.jpg', alt: 'Duplex in Señorío de Aloha – photo 2' },
+      { src: 'images/property3.jpg', alt: 'Duplex in Señorío de Aloha – photo 3' },
+      { src: 'images/property4.jpg', alt: 'Duplex in Señorío de Aloha – photo 4' },
+      { src: 'images/property5.jpg', alt: 'Duplex in Señorío de Aloha – photo 5' },
+      { src: 'images/property6.jpg', alt: 'Duplex in Señorío de Aloha – photo 6' },
+      { src: 'images/property7.jpg', alt: 'Duplex in Señorío de Aloha – photo 7' },
+      { src: 'images/property8.jpg', alt: 'Duplex in Señorío de Aloha – photo 8' },
+      { src: 'images/property9.jpg', alt: 'Duplex in Señorío de Aloha – photo 9' },
+      { src: 'images/property10.jpg', alt: 'Duplex in Señorío de Aloha – photo 10' },
+      { src: 'images/property11.jpg', alt: 'Duplex in Señorío de Aloha – photo 11' },
+      { src: 'images/property12.jpg', alt: 'Duplex in Señorío de Aloha – photo 12' },
+      { src: 'images/property13.jpg', alt: 'Duplex in Señorío de Aloha – photo 13' },
+      { src: 'images/property14.jpg', alt: 'Duplex in Señorío de Aloha – photo 14' },
+      { src: 'images/property15.jpg', alt: 'Duplex in Señorío de Aloha – photo 15' }
     ]
   };
 
