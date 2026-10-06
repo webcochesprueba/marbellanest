@@ -343,7 +343,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <span class="property-price">${p.price}</span>
           </div>
           <div class="property-card-cta">
-            <a href="#contact" class="btn btn-outline" onclick="event.stopPropagation()">${enquireLabel}</a>
+            <a href="#contact" class="btn btn-outline">${enquireLabel}</a>
             <a href="https://wa.me/34711095254?text=${encodeURIComponent('Hi, I\'m interested in: ' + p.title)}" target="_blank" rel="noopener" class="btn btn-whatsapp" data-track="lead" data-lead-type="whatsapp_property" onclick="event.stopPropagation()">${waLabel}</a>
           </div>
         </div>
@@ -364,6 +364,8 @@ document.addEventListener('DOMContentLoaded', () => {
         favBtn.setAttribute('aria-pressed', String(isActive));
         return;
       }
+      // Let Enquire / WhatsApp links do their own thing instead of opening the modal.
+      if (e.target.closest('.property-card-cta')) return;
       const card = e.target.closest('.property-card');
       if (card) {
         const idx = Number(card.getAttribute('data-index'));
