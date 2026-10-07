@@ -397,7 +397,7 @@
           </div>
           <label class="form-consent">
             <input type="checkbox" required name="consent">
-            <span data-i18n="form.consent">I agree to be contacted by MarbellaNest about this enquiry and to the <a href="#" data-i18n="form.privacy">privacy policy</a>.</span>
+            <span data-i18n="form.consent">I agree to be contacted by MarbellaNest about this enquiry and to the <a href="#" data-legal="privacy" data-i18n="form.privacy">privacy policy</a>.</span>
           </label>
           <button type="submit" class="btn btn-primary btn-block" data-i18n="form.submit">Request Information</button>
         </div>
@@ -447,7 +447,7 @@
       </div>
       <div class="footer-col">
         <h4 data-i18n="footer.contact">Contact</h4>
-        <a href="mailto:info@marbellanest.com">info@marbellanest.com</a>
+        <a href="mailto:contact@themarbellanest.com">contact@themarbellanest.com</a>
         <a href="tel:+34711095254">+34 711 095 254</a>
         <span data-i18n="footer.address">Puebla Agata, Las Chapas, Marbella, Málaga, Spain</span>
         <span>CIF: B24746927</span>
@@ -456,9 +456,9 @@
     <div class="footer-bottom">
       <p>&copy; <span id="year"></span> MarbellaNest.com</p>
       <div class="footer-bottom-links">
-        <a href="#" data-i18n="footer.privacy">Privacy Policy</a>
-        <a href="#" data-i18n="footer.cookies">Cookie Policy</a>
-        <a href="#" data-i18n="footer.terms">Terms</a>
+        <a href="#" data-legal="privacy" data-i18n="footer.privacy">Privacy Policy</a>
+        <a href="#" data-legal="cookies" data-i18n="footer.cookies">Cookie Policy</a>
+        <a href="#" data-legal="terms" data-i18n="footer.terms">Terms</a>
       </div>
     </div>
   </div>
@@ -489,11 +489,21 @@
       <div class="property-modal-price" id="propertyModalPrice"></div>
       <p class="property-modal-description" id="propertyModalDescription"></p>
       <p class="property-modal-note" id="propertyModalNote">This property has already been sold and is no longer available. Get in touch with us to see our current listings.</p>
+      <p class="property-modal-ref" id="propertyModalRef" style="display:none"></p>
     </div>
   </div>
 </div>
 
 <!-- Fullscreen photo lightbox -->
+<div class="legal-modal-overlay" id="legalModalOverlay" role="dialog" aria-modal="true" aria-labelledby="legalModalTitle">
+  <div class="legal-modal">
+    <button type="button" class="legal-modal-close" id="legalModalClose" aria-label="Close">&times;</button>
+    <h3 id="legalModalTitle"></h3>
+    <p class="legal-modal-date" id="legalModalDate"></p>
+    <div class="legal-modal-body" id="legalModalBody"></div>
+  </div>
+</div>
+
 <div class="photo-lightbox-overlay" id="photoLightboxOverlay">
   <button type="button" class="photo-lightbox-close" id="photoLightboxClose" aria-label="Close">&times;</button>
   <img id="photoLightboxImg" src="" alt="">
@@ -501,7 +511,7 @@
 
 <!-- Cookie / tracking consent banner (required for EU ad targeting + retargeting pixels) -->
 <div class="consent-banner" id="consentBanner">
-  <p data-i18n="consent.text">We use cookies to run retargeting for our Instagram, YouTube and TikTok campaigns, and to understand which markets our visitors come from. <a href="#">Learn more</a>.</p>
+  <p data-i18n="consent.text">We use cookies to run retargeting for our Instagram, YouTube and TikTok campaigns, and to understand which markets our visitors come from. <a href="#" data-legal="cookies">Learn more</a>.</p>
   <div class="consent-actions">
     <button class="btn btn-outline btn-small" id="consentDecline" data-i18n="consent.decline">Decline</button>
     <button class="btn btn-primary btn-small" id="consentAccept" data-i18n="consent.accept">Accept</button>
@@ -509,6 +519,7 @@
 </div>
 
 <script src="i18n.js"></script>
+<script src="legal.js"></script>
 <script src="script.js"></script>
 </body>
 </html>

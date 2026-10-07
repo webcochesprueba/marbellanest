@@ -243,18 +243,22 @@ document.addEventListener('DOMContentLoaded', () => {
     { image: 'images/lifestyle-4.png', alt: 'Marbella old town culture' }
   ];
 
-  const propertyImages = ['images/penthouse-santa-clara/01-lifestyle-terrace.jpg', 'images/property1.jpg', PLACEHOLDER, 'images/placeholder-2.png', 'images/placeholder-3.png'];
+  const propertyImages = ['images/penthouse-santa-clara/01-lifestyle-terrace.jpg', 'images/property1.jpg', 'https://cdn.resales-online.com/public/6ocoehzhpl/properties/ceb7cc0178f911f182490652962539d5/w1200/1-7980e48d732b6fc85c14b43b94d2aa54.jpg?v=1791293864&NewImageUrl=1', PLACEHOLDER, 'images/placeholder-2.png', 'images/placeholder-3.png'];
   const propertyStats = [
     { beds: 3, baths: 3, size: '387 m²' },
     { beds: 3, baths: 3.5, size: '188 m²' },
+    { beds: 3, baths: 3, size: '260 m²' },
     { beds: 5, baths: 6, size: '712 m²' },
     { beds: 6, baths: 7, size: '860 m²' },
     { beds: 4, baths: 4, size: '477 m²' }
   ];
-  const propertyAvailable = [true, true, false, false, false];
+  const propertyAvailable = [true, true, true, false, false, false];
+
+  // Reference numbers shown at the bottom of the property popup (index-matched; null = none).
+  const propertyRefs = [null, null, 'R5431951', null, null, null];
 
   // Full photo galleries per property (index-matched to `properties` in i18n.js).
-  // Only the available listings (index 0 and 1) have a gallery for now; others fall back to their single card image.
+  // Only the available listings (index 0, 1 and 2) have a gallery for now; others fall back to their single card image.
   const propertyGalleries = {
     0: [
       { src: 'images/penthouse-santa-clara/01-lifestyle-terrace.jpg', alt: 'Lifestyle terrace' },
@@ -292,6 +296,34 @@ document.addEventListener('DOMContentLoaded', () => {
       { src: 'images/property13.jpg', alt: 'Duplex in Señorío de Aloha – photo 13' },
       { src: 'images/property14.jpg', alt: 'Duplex in Señorío de Aloha – photo 14' },
       { src: 'images/property15.jpg', alt: 'Duplex in Señorío de Aloha – photo 15' }
+    ],
+    2: [
+      { src: 'https://cdn.resales-online.com/public/6ocoehzhpl/properties/ceb7cc0178f911f182490652962539d5/w1200/1-7980e48d732b6fc85c14b43b94d2aa54.jpg?v=1791293864&NewImageUrl=1', alt: 'Residence in Real de La Quinta – photo 1' },
+      { src: 'https://cdn.resales-online.com/public/6ocoehzhpl/properties/ceb7cc0178f911f182490652962539d5/w1200/2-5bd7b9d04b45e33852eaf0ec6670150d.jpg?v=1791293864&NewImageUrl=1', alt: 'Residence in Real de La Quinta – photo 2' },
+      { src: 'https://cdn.resales-online.com/public/6ocoehzhpl/properties/ceb7cc0178f911f182490652962539d5/w1200/3-e898b2bb2a2fdfd06d2c39894dce8316.jpg?v=1791293864&NewImageUrl=1', alt: 'Residence in Real de La Quinta – photo 3' },
+      { src: 'https://cdn.resales-online.com/public/6ocoehzhpl/properties/ceb7cc0178f911f182490652962539d5/w1200/4-c23c0f86247804fa50226aecd8b0b2c8.jpg?v=1791293864&NewImageUrl=1', alt: 'Residence in Real de La Quinta – photo 4' },
+      { src: 'https://cdn.resales-online.com/public/6ocoehzhpl/properties/ceb7cc0178f911f182490652962539d5/w1200/5-3595ad71cbd87be6c3643a4285ef4791.jpg?v=1791293864&NewImageUrl=1', alt: 'Residence in Real de La Quinta – photo 5' },
+      { src: 'https://cdn.resales-online.com/public/6ocoehzhpl/properties/ceb7cc0178f911f182490652962539d5/w1200/6-241328e1bcc9c0d8ce1222beb6c967a8.jpg?v=1791293864&NewImageUrl=1', alt: 'Residence in Real de La Quinta – photo 6' },
+      { src: 'https://cdn.resales-online.com/public/6ocoehzhpl/properties/ceb7cc0178f911f182490652962539d5/w1200/7-aa4cc561180b369757c0bb4af9886cd3.jpg?v=1791293864&NewImageUrl=1', alt: 'Residence in Real de La Quinta – photo 7' },
+      { src: 'https://cdn.resales-online.com/public/6ocoehzhpl/properties/ceb7cc0178f911f182490652962539d5/w1200/8-e64a9055bba3e77ac8aca3b893cdf826.jpg?v=1791293864&NewImageUrl=1', alt: 'Residence in Real de La Quinta – photo 8' },
+      { src: 'https://cdn.resales-online.com/public/6ocoehzhpl/properties/ceb7cc0178f911f182490652962539d5/w1200/9-467d0cee5b725f3ef65f102a0c2e69c0.jpg?v=1791293864&NewImageUrl=1', alt: 'Residence in Real de La Quinta – photo 9' },
+      { src: 'https://cdn.resales-online.com/public/6ocoehzhpl/properties/ceb7cc0178f911f182490652962539d5/w1200/10-bb915d1cb19341576dcdc994b81ab9c5.jpg?v=1791293864&NewImageUrl=1', alt: 'Residence in Real de La Quinta – photo 10' },
+      { src: 'https://cdn.resales-online.com/public/6ocoehzhpl/properties/ceb7cc0178f911f182490652962539d5/w1200/11-20939a0134ad724a8cb2a801094d15a4.jpg?v=1791293864&NewImageUrl=1', alt: 'Residence in Real de La Quinta – photo 11' },
+      { src: 'https://cdn.resales-online.com/public/6ocoehzhpl/properties/ceb7cc0178f911f182490652962539d5/w1200/12-53013098fcab6c38b1379cd33298e050.jpg?v=1791293864&NewImageUrl=1', alt: 'Residence in Real de La Quinta – photo 12' },
+      { src: 'https://cdn.resales-online.com/public/6ocoehzhpl/properties/ceb7cc0178f911f182490652962539d5/w1200/13-5fd73dea700db77384c091ca9818b1a9.jpg?v=1791293864&NewImageUrl=1', alt: 'Residence in Real de La Quinta – photo 13' },
+      { src: 'https://cdn.resales-online.com/public/6ocoehzhpl/properties/ceb7cc0178f911f182490652962539d5/w1200/14-d70dc3102c00d7be0e872dfe1c1f86d7.jpg?v=1791293864&NewImageUrl=1', alt: 'Residence in Real de La Quinta – photo 14' },
+      { src: 'https://cdn.resales-online.com/public/6ocoehzhpl/properties/ceb7cc0178f911f182490652962539d5/w1200/19-d0ed7da2012a09046d307c195d98e7d6.jpg?v=1791293864&NewImageUrl=1', alt: 'Residence in Real de La Quinta – photo 15' },
+      { src: 'https://cdn.resales-online.com/public/6ocoehzhpl/properties/ceb7cc0178f911f182490652962539d5/w1200/15-11d12f2f454f2f5e9b981fdd8b901d51.jpg?v=1791293864&NewImageUrl=1', alt: 'Residence in Real de La Quinta – photo 16' },
+      { src: 'https://cdn.resales-online.com/public/6ocoehzhpl/properties/ceb7cc0178f911f182490652962539d5/w1200/17-dd5fcd4f0eb487dfa3803f7e20814c0e.jpg?v=1791293864&NewImageUrl=1', alt: 'Residence in Real de La Quinta – photo 17' },
+      { src: 'https://cdn.resales-online.com/public/6ocoehzhpl/properties/ceb7cc0178f911f182490652962539d5/w1200/20-d1f7658cbe4ba6cd8666fec30fba80ad.jpg?v=1791293864&NewImageUrl=1', alt: 'Residence in Real de La Quinta – photo 18' },
+      { src: 'https://cdn.resales-online.com/public/6ocoehzhpl/properties/ceb7cc0178f911f182490652962539d5/w1200/21-2c707e7c511429b4f8ec4ee5f221ddb6.jpg?v=1791293864&NewImageUrl=1', alt: 'Residence in Real de La Quinta – photo 19' },
+      { src: 'https://cdn.resales-online.com/public/6ocoehzhpl/properties/ceb7cc0178f911f182490652962539d5/w1200/22-bcf8e6250e0bab365f900a8ac31ac040.jpg?v=1791293864&NewImageUrl=1', alt: 'Residence in Real de La Quinta – photo 20' },
+      { src: 'https://cdn.resales-online.com/public/6ocoehzhpl/properties/ceb7cc0178f911f182490652962539d5/w1200/23-79897b85162c6a486c7a4d1eb46924dd.jpg?v=1791293864&NewImageUrl=1', alt: 'Residence in Real de La Quinta – photo 21' },
+      { src: 'https://cdn.resales-online.com/public/6ocoehzhpl/properties/ceb7cc0178f911f182490652962539d5/w1200/24-613bbc26f32d7013d348ef202dd30a43.jpg?v=1791293864&NewImageUrl=1', alt: 'Residence in Real de La Quinta – photo 22' },
+      { src: 'https://cdn.resales-online.com/public/6ocoehzhpl/properties/ceb7cc0178f911f182490652962539d5/w1200/25-45e7a00e8ada30030040e20a35fbccfd.jpg?v=1791293864&NewImageUrl=1', alt: 'Residence in Real de La Quinta – photo 23' },
+      { src: 'https://cdn.resales-online.com/public/6ocoehzhpl/properties/ceb7cc0178f911f182490652962539d5/w1200/28-ef19a2c59920e2e087cd278a51b6dbf8.jpg?v=1791293864&NewImageUrl=1', alt: 'Residence in Real de La Quinta – photo 24' },
+      { src: 'https://cdn.resales-online.com/public/6ocoehzhpl/properties/ceb7cc0178f911f182490652962539d5/w1200/30-5e8634ec9576c9ad4825a6dec5b5d375.jpg?v=1791293864&NewImageUrl=1', alt: 'Residence in Real de La Quinta – photo 25' },
+      { src: 'https://cdn.resales-online.com/public/6ocoehzhpl/properties/ceb7cc0178f911f182490652962539d5/w1200/35-53608d01401493ba18e3704836160563.jpg?v=1791293864&NewImageUrl=1', alt: 'Residence in Real de La Quinta – photo 26' }
     ]
   };
 
@@ -489,6 +521,11 @@ document.addEventListener('DOMContentLoaded', () => {
       noteEl.style.display = '';
       noteEl.textContent = I18n.t('properties.soldNote');
     }
+
+    const refEl = document.getElementById('propertyModalRef');
+    const ref = propertyRefs[i];
+    refEl.textContent = ref ? `${I18n.t('properties.refLabel')}: ${ref}` : '';
+    refEl.style.display = ref ? '' : 'none';
 
     propertyModalOverlay.classList.add('open');
   }

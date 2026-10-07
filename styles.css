@@ -1675,3 +1675,61 @@ button { cursor: pointer; }
 }
 
 .gated-close:hover { color: var(--ink); border-color: var(--ink); }
+
+
+/* ---------- Property reference number ---------- */
+.property-modal-ref {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ---------- Legal popup (Privacy / Cookies / Terms) ---------- */
+.legal-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 15, 12, 0.62);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  z-index: 1500;
+}
+.legal-modal-overlay.open { display: flex; }
+.legal-modal {
+  position: relative;
+  background: #fff;
+  border-radius: var(--radius-md);
+  max-width: 720px;
+  width: 100%;
+  max-height: 88vh;
+  overflow-y: auto;
+  padding: clamp(28px, 4vw, 44px);
+  color: var(--ink);
+}
+.legal-modal h3 { font-family: var(--serif); font-weight: 500; font-size: clamp(24px, 3vw, 30px); margin: 0 36px 6px 0; }
+.legal-modal-date { font-size: 12px; color: var(--muted); margin: 0 0 22px; }
+.legal-modal-body { font-size: 14px; line-height: 1.7; }
+.legal-modal-body h4 { font-family: var(--sans); font-size: 14px; font-weight: 600; margin: 22px 0 6px; }
+.legal-modal-body p { margin: 0 0 10px; }
+.legal-modal-body ul { margin: 0 0 10px; padding-left: 20px; }
+.legal-modal-body li { margin-bottom: 6px; }
+.legal-modal-body a { color: var(--olive); text-decoration: underline; }
+.legal-modal-close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  width: 36px;
+  height: 36px;
+  border: 0;
+  background: transparent;
+  font-size: 28px;
+  line-height: 1;
+  color: var(--muted);
+  cursor: pointer;
+}
+.legal-modal-close:hover { color: var(--ink); }

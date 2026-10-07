@@ -26,6 +26,7 @@ const TRANSLATIONS = {
     "properties.overviewLabel": "Overview",
     "properties.featuresLabel": "Features",
     "properties.locationLabel": "Location",
+    "properties.refLabel": "Reference",
     "funnel.title": "From first click to keys in hand",
     "funnel.subtitle": "A clear, guided process for international buyers purchasing from abroad.",
     "why.title": "Why buyers work with us",
@@ -119,7 +120,7 @@ const TRANSLATIONS = {
     "form.budget": "Budget range",
     "form.message": "What are you looking for?",
     "form.messagePlaceholder": "Villa, apartment, number of bedrooms, area, timeline to buy...",
-    "form.consent": 'I agree to be contacted by MarbellaNest about this enquiry and to the <a href="#">privacy policy</a>.',
+    "form.consent": 'I agree to be contacted by MarbellaNest about this enquiry and to the <a href="#" data-legal="privacy">privacy policy</a>.',
     "form.privacy": "privacy policy",
     "form.submit": "Request Information",
     "form.successTitle": "Thank you",
@@ -191,7 +192,7 @@ const TRANSLATIONS = {
     "footer.privacy": "Privacy Policy",
     "footer.cookies": "Cookie Policy",
     "footer.terms": "Terms",
-    "consent.text": 'We use cookies to run retargeting for our Instagram, YouTube and TikTok campaigns, and to understand which markets our visitors come from. <a href="#">Learn more</a>.',
+    "consent.text": 'We use cookies to run retargeting for our Instagram, YouTube and TikTok campaigns, and to understand which markets our visitors come from. <a href="#" data-legal="cookies">Learn more</a>.',
     "consent.decline": "Decline",
     "consent.accept": "Accept",
 
@@ -210,6 +211,7 @@ const TRANSLATIONS = {
     "properties": [
       { title: "Detached Penthouse Duplex in Santa Clara", price: "€1,650,000", overview: "A detached penthouse duplex with 387 m² of total built space, offering a high degree of privacy and panoramic sea and mountain views within a 24/7 gated community. It combines the scale and independence of a villa with the comfort, security and convenience of luxury penthouse living.", features: ["Two spacious designer suites plus a separate bedroom/atelier", "Recently upgraded by a Marbella-based German builder", "Home automation, alarm system and CCTV", "Private parking with EV charging", "Energy Certificate A", "Tourist rental licence"], location: "Situated next to Spain's first Waldorf Astoria Resort, between the future Waldorf Astoria Golf Course and Santa Clara Golf Club, around 1.5 km from Marbella's finest beaches and 25 minutes from Málaga Airport." },
       { title: "Spacious 3-Bedroom Duplex with Tourist Licence in Señorío de Aloha", price: "€649,000", overview: "Located in the prestigious Señorío de Aloha urbanisation in Nueva Andalucía, this spacious and beautifully maintained duplex with 188 m² of total space offers an excellent combination of space, comfort and location. Presented in excellent condition and ready to move into, it holds a valid tourist rental licence, making it an attractive option both as a private residence and as an investment.", features: ["Excellent condition, fully furnished, with a fully fitted kitchen", "Valid tourist rental licence", "Private underground parking space and storage room included in the price", "Private covered terrace of 58 m² with mountain views", "Hot and cold air conditioning, fibre optic and Wi-Fi included in community fees", "Three communal swimming pools in landscaped gardens, with 24-hour security"], location: "A well-established gated community, a short distance from the beach and Puerto Banús, with restaurants, cafés, bars, shops and golf all within easy reach." },
+      { title: "New-Build Luxury Residence by Rafael de La-Hoz in Real de La Quinta", price: "€1,480,000", overview: "A newly built contemporary residence designed by acclaimed Spanish architect Rafael de La-Hoz, set in Palmitos, one of the most exclusive enclaves of Real de La Quinta Resort. Floor-to-ceiling glazing and 105 m² of southeast-facing terraces open the interiors to panoramic views of the Mediterranean Sea, the Lake Club and La Concha Mountain.", features: ["Three spacious bedrooms, all with direct terrace access: principal suite, two en-suite bedrooms and a guest bathroom", "Open-plan living and dining area with floor-to-ceiling windows", "Contemporary kitchen with premium finishes and state-of-the-art appliances", "Underfloor heating, advanced home automation and high-performance glazing", "Two underground parking spaces, private storage room and guest parking", "Gated community of just 16 homes in three low-density buildings, with landscaped gardens and communal pool"], location: "Within Real de La Quinta, beside the Sierra de las Nieves Natural Park, a UNESCO Biosphere Reserve, with a 35,000 m² recreational lake, Lake Club, golf course, spa and wellness centre, and tennis and paddle courts. Around 10 minutes from Nueva Andalucía and Golf Valley, and 15 minutes from Puerto Banús and Marbella's beaches." },
       { title: "Elegant Villa in Lomas del Rey", price: "€5,950,000" },
       { title: "Contemporary Villa with Sea Views", price: "€8,750,000" },
       { title: "Andalusian Charm in Nueva Andalucía", price: "€3,650,000" }
@@ -240,6 +242,7 @@ const TRANSLATIONS = {
     "properties.overviewLabel": "Descripción general",
     "properties.featuresLabel": "Características",
     "properties.locationLabel": "Ubicación",
+    "properties.refLabel": "Referencia",
     "properties.viewAll": "Ver todas las propiedades",
     "funnel.title": "Del primer clic a las llaves en mano",
     "funnel.subtitle": "Un proceso claro y guiado para compradores internacionales que compran desde el extranjero.",
@@ -334,7 +337,7 @@ const TRANSLATIONS = {
     "form.budget": "Presupuesto",
     "form.message": "¿Qué estás buscando?",
     "form.messagePlaceholder": "Villa, apartamento, número de habitaciones, zona, plazos de compra...",
-    "form.consent": 'Acepto ser contactado por MarbellaNest sobre esta consulta y la <a href="#">política de privacidad</a>.',
+    "form.consent": 'Acepto ser contactado por MarbellaNest sobre esta consulta y la <a href="#" data-legal="privacy">política de privacidad</a>.',
     "form.privacy": "política de privacidad",
     "form.submit": "Solicitar Información",
     "form.successTitle": "Gracias",
@@ -406,7 +409,7 @@ const TRANSLATIONS = {
     "footer.privacy": "Política de Privacidad",
     "footer.cookies": "Política de Cookies",
     "footer.terms": "Términos",
-    "consent.text": 'Usamos cookies para gestionar el retargeting de nuestras campañas en Instagram, YouTube y TikTok, y para entender de qué mercados proceden nuestros visitantes. <a href="#">Más información</a>.',
+    "consent.text": 'Usamos cookies para gestionar el retargeting de nuestras campañas en Instagram, YouTube y TikTok, y para entender de qué mercados proceden nuestros visitantes. <a href="#" data-legal="cookies">Más información</a>.',
     "consent.decline": "Rechazar",
     "consent.accept": "Aceptar",
 
@@ -425,6 +428,7 @@ const TRANSLATIONS = {
     "properties": [
       { title: "Ático Dúplex Independiente en Santa Clara", price: "1.650.000 €", overview: "Un ático dúplex independiente de 387 m² construidos, que ofrece un alto grado de privacidad y vistas panorámicas al mar y a la montaña dentro de una urbanización cerrada con seguridad 24/7. Combina la amplitud e independencia de una villa con la comodidad, seguridad y conveniencia de un ático de lujo.", features: ["Dos suites de diseño más un dormitorio/atelier independiente", "Recientemente reformado por un constructor alemán afincado en Marbella", "Domotización, alarma y CCTV", "Parking privado con carga para vehículo eléctrico", "Certificado Energético A", "Licencia de alquiler turístico"], location: "Situado junto al primer Waldorf Astoria Resort de España, entre el futuro Waldorf Astoria Golf Course y el Santa Clara Golf Club, a unos 1,5 km de las mejores playas de Marbella y a 25 minutos del aeropuerto de Málaga." },
       { title: "Dúplex Espacioso de 3 Dormitorios con Licencia Turística en Señorío de Aloha", price: "649.000 €", overview: "Situado en la prestigiosa urbanización Señorío de Aloha, en Nueva Andalucía, este espacioso y cuidado dúplex de 188 m² totales ofrece una excelente combinación de espacio, confort y ubicación. Se presenta en excelente estado, listo para entrar a vivir, y cuenta con licencia de alquiler turístico en vigor, lo que lo convierte en una opción atractiva tanto como residencia privada como inversión.", features: ["Excelente estado, totalmente amueblado y con cocina totalmente equipada", "Licencia de alquiler turístico en vigor", "Plaza de parking subterráneo privada y trastero incluidos en el precio", "Terraza privada cubierta de 58 m² con vistas a la montaña", "Aire acondicionado frío/calor, fibra óptica y Wi-Fi incluido en los gastos de comunidad", "Tres piscinas comunitarias en jardines cuidados, con seguridad 24 horas"], location: "Una urbanización cerrada consolidada, a poca distancia de la playa y de Puerto Banús, con restaurantes, cafés, bares, tiendas y golf al alcance." },
+      { title: "Residencia de Lujo de Nueva Construcción de Rafael de La-Hoz en Real de La Quinta", price: "1.480.000 €", overview: "Residencia contemporánea de nueva construcción diseñada por el reconocido arquitecto español Rafael de La-Hoz, en Palmitos, uno de los enclaves más exclusivos del resort Real de La Quinta. Los ventanales de suelo a techo y 105 m² de terrazas orientadas al sureste abren los interiores a vistas panorámicas del Mediterráneo, el Lake Club y la montaña La Concha.", features: ["Tres amplios dormitorios, todos con acceso directo a las terrazas: suite principal, dos dormitorios en suite y un baño de invitados", "Salón-comedor de planta abierta con ventanales de suelo a techo", "Cocina contemporánea con acabados premium y electrodomésticos de última generación", "Suelo radiante, domótica avanzada y acristalamiento de alto rendimiento", "Dos plazas de parking subterráneo, trastero privado y parking para invitados", "Comunidad cerrada de solo 16 viviendas en tres edificios de baja densidad, con jardines y piscina comunitaria"], location: "Dentro de Real de La Quinta, junto al Parque Natural Sierra de las Nieves, Reserva de la Biosfera de la UNESCO, con un lago recreativo de 35.000 m², Lake Club, campo de golf, centro de bienestar con spa y pistas de tenis y pádel. A unos 10 minutos de Nueva Andalucía y el Valle del Golf, y a 15 minutos de Puerto Banús y las playas de Marbella." },
       { title: "Elegante Villa en Lomas del Rey", price: "5.950.000 €" },
       { title: "Villa Contemporánea con Vistas al Mar", price: "8.750.000 €" },
       { title: "Encanto Andaluz en Nueva Andalucía", price: "3.650.000 €" }
@@ -455,6 +459,7 @@ const TRANSLATIONS = {
     "properties.overviewLabel": "Überblick",
     "properties.featuresLabel": "Ausstattung",
     "properties.locationLabel": "Lage",
+    "properties.refLabel": "Referenz",
     "properties.viewAll": "Alle Immobilien ansehen",
     "funnel.title": "Vom ersten Klick bis zum Schlüssel",
     "funnel.subtitle": "Ein klarer, begleiteter Prozess für internationale Käufer aus dem Ausland.",
@@ -549,7 +554,7 @@ const TRANSLATIONS = {
     "form.budget": "Budget",
     "form.message": "Wonach suchen Sie?",
     "form.messagePlaceholder": "Villa, Apartment, Anzahl Schlafzimmer, Gegend, Kaufzeitraum...",
-    "form.consent": 'Ich stimme zu, von MarbellaNest zu dieser Anfrage kontaktiert zu werden, gemäß der <a href="#">Datenschutzerklärung</a>.',
+    "form.consent": 'Ich stimme zu, von MarbellaNest zu dieser Anfrage kontaktiert zu werden, gemäß der <a href="#" data-legal="privacy">Datenschutzerklärung</a>.',
     "form.privacy": "Datenschutzerklärung",
     "form.submit": "Informationen anfordern",
     "form.successTitle": "Vielen Dank",
@@ -621,7 +626,7 @@ const TRANSLATIONS = {
     "footer.privacy": "Datenschutz",
     "footer.cookies": "Cookie-Richtlinie",
     "footer.terms": "AGB",
-    "consent.text": 'Wir verwenden Cookies für Retargeting unserer Instagram-, YouTube- und TikTok-Kampagnen und um zu verstehen, aus welchen Märkten unsere Besucher kommen. <a href="#">Mehr erfahren</a>.',
+    "consent.text": 'Wir verwenden Cookies für Retargeting unserer Instagram-, YouTube- und TikTok-Kampagnen und um zu verstehen, aus welchen Märkten unsere Besucher kommen. <a href="#" data-legal="cookies">Mehr erfahren</a>.',
     "consent.decline": "Ablehnen",
     "consent.accept": "Akzeptieren",
 
@@ -640,6 +645,7 @@ const TRANSLATIONS = {
     "properties": [
       { title: "Freistehendes Penthouse-Duplex in Santa Clara", price: "1.650.000 €", overview: "Ein freistehendes Penthouse-Duplex mit 387 m² Gesamtbaufläche, hoher Privatsphäre und Panoramablick auf Meer und Berge in einer rund um die Uhr bewachten Wohnanlage. Es vereint die Großzügigkeit und Unabhängigkeit einer Villa mit dem Komfort, der Sicherheit und der Bequemlichkeit eines luxuriösen Penthouse-Lebens.", features: ["Zwei geräumige Designer-Suiten sowie ein separates Schlafzimmer/Atelier", "Kürzlich von einem in Marbella ansässigen deutschen Bauunternehmer modernisiert", "Hausautomation, Alarmanlage und CCTV", "Private Parkplätze mit E-Ladestation", "Energieausweis A", "Touristenvermietungslizenz"], location: "Direkt neben Spaniens erstem Waldorf Astoria Resort gelegen, zwischen dem zukünftigen Waldorf Astoria Golf Course und dem Santa Clara Golf Club, etwa 1,5 km von Marbellas schönsten Stränden und 25 Minuten vom Flughafen Málaga entfernt." },
       { title: "Geräumiges 3-Schlafzimmer-Duplex mit Touristenlizenz in Señorío de Aloha", price: "649.000 €", overview: "In der angesehenen Urbanisation Señorío de Aloha in Nueva Andalucía gelegen, bietet dieses geräumige und gepflegte Duplex mit 188 m² Gesamtfläche eine ausgezeichnete Kombination aus Platz, Komfort und Lage. Es befindet sich in ausgezeichnetem Zustand, ist sofort bezugsfertig und verfügt über eine gültige Lizenz für die touristische Vermietung – attraktiv als Privatresidenz ebenso wie als Kapitalanlage.", features: ["Ausgezeichneter Zustand, voll möbliert, voll ausgestattete Küche", "Gültige Lizenz für die touristische Vermietung", "Privater Tiefgaragenstellplatz und Abstellraum im Preis inbegriffen", "Private überdachte Terrasse von 58 m² mit Bergblick", "Heiz- und Kühlklimaanlage, Glasfaser und WLAN in den Gemeinschaftskosten enthalten", "Drei Gemeinschaftspools in gepflegten Gartenanlagen, 24-Stunden-Sicherheitsdienst"], location: "Eine etablierte, bewachte Wohnanlage, nur eine kurze Strecke vom Strand und von Puerto Banús entfernt – Restaurants, Cafés, Bars, Geschäfte und Golf sind leicht erreichbar." },
+      { title: "Neubau-Luxusresidenz von Rafael de La-Hoz in Real de La Quinta", price: "1.480.000 €", overview: "Eine neu gebaute, zeitgenössische Residenz des renommierten spanischen Architekten Rafael de La-Hoz in Palmitos, einer der exklusivsten Enklaven des Real de La Quinta Resorts. Raumhohe Verglasung und 105 m² Terrassen mit Südostausrichtung öffnen die Innenräume zu einem Panoramablick auf das Mittelmeer, den Lake Club und den Berg La Concha.", features: ["Drei großzügige Schlafzimmer, alle mit direktem Terrassenzugang: Hauptsuite, zwei Schlafzimmer mit eigenem Bad und ein Gästebad", "Offener Wohn- und Essbereich mit raumhohen Fenstern", "Moderne Küche mit hochwertigen Materialien und modernsten Geräten", "Fußbodenheizung, fortschrittliche Hausautomation und hochleistungsfähige Verglasung", "Zwei Tiefgaragenstellplätze, privater Abstellraum und Gästeparkplätze", "Geschlossene Anlage mit nur 16 Wohnungen in drei Gebäuden geringer Dichte, mit Gärten und Gemeinschaftspool"], location: "In Real de La Quinta, direkt am Naturpark Sierra de las Nieves, einem UNESCO-Biosphärenreservat, mit einem 35.000 m² großen Freizeitsee, Lake Club, Golfplatz, Wellnesscenter mit Spa sowie Tennis- und Padelplätzen. Etwa 10 Minuten von Nueva Andalucía und dem Golf Valley sowie 15 Minuten von Puerto Banús und den Stränden Marbellas entfernt." },
       { title: "Elegante Villa in Lomas del Rey", price: "5.950.000 €" },
       { title: "Zeitgenössische Villa mit Meerblick", price: "8.750.000 €" },
       { title: "Andalusischer Charme in Nueva Andalucía", price: "3.650.000 €" }
@@ -670,6 +676,7 @@ const TRANSLATIONS = {
     "properties.overviewLabel": "Aperçu",
     "properties.featuresLabel": "Caractéristiques",
     "properties.locationLabel": "Emplacement",
+    "properties.refLabel": "Référence",
     "properties.viewAll": "Voir toutes les propriétés",
     "funnel.title": "Du premier clic aux clés en main",
     "funnel.subtitle": "Un processus clair et accompagné pour les acheteurs internationaux qui achètent depuis l'étranger.",
@@ -764,7 +771,7 @@ const TRANSLATIONS = {
     "form.budget": "Budget",
     "form.message": "Que recherchez-vous ?",
     "form.messagePlaceholder": "Villa, appartement, nombre de chambres, zone, délai d'achat...",
-    "form.consent": 'J\'accepte d\'être contacté par MarbellaNest au sujet de cette demande, conformément à la <a href="#">politique de confidentialité</a>.',
+    "form.consent": 'J\'accepte d\'être contacté par MarbellaNest au sujet de cette demande, conformément à la <a href="#" data-legal="privacy">politique de confidentialité</a>.',
     "form.privacy": "politique de confidentialité",
     "form.submit": "Demander des Informations",
     "form.successTitle": "Merci",
@@ -836,7 +843,7 @@ const TRANSLATIONS = {
     "footer.privacy": "Politique de Confidentialité",
     "footer.cookies": "Politique de Cookies",
     "footer.terms": "Conditions",
-    "consent.text": 'Nous utilisons des cookies pour le retargeting de nos campagnes Instagram, YouTube et TikTok, et pour comprendre de quels marchés proviennent nos visiteurs. <a href="#">En savoir plus</a>.',
+    "consent.text": 'Nous utilisons des cookies pour le retargeting de nos campagnes Instagram, YouTube et TikTok, et pour comprendre de quels marchés proviennent nos visiteurs. <a href="#" data-legal="cookies">En savoir plus</a>.',
     "consent.decline": "Refuser",
     "consent.accept": "Accepter",
 
@@ -855,6 +862,7 @@ const TRANSLATIONS = {
     "properties": [
       { title: "Penthouse Duplex Indépendant à Santa Clara", price: "1 650 000 €", overview: "Un penthouse duplex indépendant de 387 m² construits, offrant un haut degré d'intimité et des vues panoramiques sur la mer et les montagnes au sein d'une résidence sécurisée 24h/24 et 7j/7. Il combine l'ampleur et l'indépendance d'une villa avec le confort, la sécurité et la commodité d'un penthouse de luxe.", features: ["Deux suites design spacieuses ainsi qu'une chambre/atelier séparée", "Récemment rénové par un constructeur allemand basé à Marbella", "Domotique, alarme et vidéosurveillance", "Places de parking privées avec borne de recharge électrique", "Certificat énergétique A", "Licence de location touristique"], location: "Située juste à côté du premier Waldorf Astoria Resort d'Espagne, entre le futur Waldorf Astoria Golf Course et le Santa Clara Golf Club, à environ 1,5 km des plus belles plages de Marbella et à 25 minutes de l'aéroport de Málaga." },
       { title: "Spacieux Duplex de 3 Chambres avec Licence Touristique à Señorío de Aloha", price: "649 000 €", overview: "Situé dans la prestigieuse urbanisation Señorío de Aloha à Nueva Andalucía, ce duplex spacieux et soigneusement entretenu de 188 m² au total offre un excellent équilibre entre espace, confort et emplacement. Présenté en excellent état et prêt à être habité, il bénéficie d'une licence de location touristique valide, ce qui en fait une option attrayante comme résidence privée ou comme investissement.", features: ["Excellent état, entièrement meublé, cuisine entièrement équipée", "Licence de location touristique valide", "Place de parking souterrain privée et cave incluses dans le prix", "Terrasse privée couverte de 58 m² avec vue sur la montagne", "Climatisation réversible, fibre optique et Wi-Fi inclus dans les charges de copropriété", "Trois piscines communes dans des jardins paysagers, sécurité 24h/24"], location: "Une résidence sécurisée établie, à courte distance de la plage et de Puerto Banús, avec restaurants, cafés, bars, commerces et golf à proximité." },
+      { title: "Résidence de Luxe Neuve signée Rafael de La-Hoz à Real de La Quinta", price: "1 480 000 €", overview: "Une résidence contemporaine neuve conçue par l'architecte espagnol de renom Rafael de La-Hoz, à Palmitos, l'une des enclaves les plus exclusives du resort Real de La Quinta. Des baies vitrées du sol au plafond et 105 m² de terrasses orientées sud-est ouvrent les intérieurs sur une vue panoramique sur la Méditerranée, le Lake Club et la montagne La Concha.", features: ["Trois chambres spacieuses, toutes avec accès direct aux terrasses : suite parentale, deux chambres avec salle de bains privée et une salle de bains d'invités", "Séjour et salle à manger ouverts avec baies vitrées du sol au plafond", "Cuisine contemporaine aux finitions haut de gamme et électroménager dernier cri", "Chauffage au sol, domotique avancée et vitrage haute performance", "Deux places de parking souterrain, cave privée et parking visiteurs", "Résidence sécurisée de seulement 16 logements répartis en trois bâtiments à faible densité, avec jardins et piscine commune"], location: "Au cœur de Real de La Quinta, à côté du parc naturel de la Sierra de las Nieves, réserve de biosphère de l'UNESCO, avec un lac de loisirs de 35 000 m², le Lake Club, un golf, un centre de bien-être avec spa et des courts de tennis et de padel. À environ 10 minutes de Nueva Andalucía et du Golf Valley, et à 15 minutes de Puerto Banús et des plages de Marbella." },
       { title: "Villa Élégante à Lomas del Rey", price: "5 950 000 €" },
       { title: "Villa Contemporaine avec Vue sur Mer", price: "8 750 000 €" },
       { title: "Charme Andalou à Nueva Andalucía", price: "3 650 000 €" }
@@ -885,6 +893,7 @@ const TRANSLATIONS = {
     "properties.overviewLabel": "Overzicht",
     "properties.featuresLabel": "Kenmerken",
     "properties.locationLabel": "Ligging",
+    "properties.refLabel": "Referentie",
     "properties.viewAll": "Bekijk alle woningen",
     "funnel.title": "Van eerste klik tot sleuteloverdracht",
     "funnel.subtitle": "Een duidelijk, begeleid proces voor internationale kopers die vanuit het buitenland kopen.",
@@ -979,7 +988,7 @@ const TRANSLATIONS = {
     "form.budget": "Budget",
     "form.message": "Wat zoekt u?",
     "form.messagePlaceholder": "Villa, appartement, aantal slaapkamers, regio, aankooptermijn...",
-    "form.consent": 'Ik ga akkoord om door MarbellaNest gecontacteerd te worden over deze aanvraag, conform het <a href="#">privacybeleid</a>.',
+    "form.consent": 'Ik ga akkoord om door MarbellaNest gecontacteerd te worden over deze aanvraag, conform het <a href="#" data-legal="privacy">privacybeleid</a>.',
     "form.privacy": "privacybeleid",
     "form.submit": "Informatie Aanvragen",
     "form.successTitle": "Dank u wel",
@@ -1051,7 +1060,7 @@ const TRANSLATIONS = {
     "footer.privacy": "Privacybeleid",
     "footer.cookies": "Cookiebeleid",
     "footer.terms": "Voorwaarden",
-    "consent.text": 'We gebruiken cookies voor retargeting van onze Instagram-, YouTube- en TikTok-campagnes, en om te begrijpen uit welke markten onze bezoekers komen. <a href="#">Meer info</a>.',
+    "consent.text": 'We gebruiken cookies voor retargeting van onze Instagram-, YouTube- en TikTok-campagnes, en om te begrijpen uit welke markten onze bezoekers komen. <a href="#" data-legal="cookies">Meer info</a>.',
     "consent.decline": "Weigeren",
     "consent.accept": "Accepteren",
 
@@ -1070,6 +1079,7 @@ const TRANSLATIONS = {
     "properties": [
       { title: "Vrijstaand Penthouse Duplex in Santa Clara", price: "€ 1.650.000", overview: "Een vrijstaand penthouse duplex met 387 m² totale bebouwde oppervlakte, met een hoge mate van privacy en panoramisch uitzicht op zee en bergen binnen een 24/7 beveiligde, afgesloten community. Het combineert de ruimte en onafhankelijkheid van een villa met het comfort, de veiligheid en het gemak van luxe penthouse-wonen.", features: ["Twee ruime designersuites plus een aparte slaapkamer/atelier", "Recent gerenoveerd door een in Marbella gevestigde Duitse bouwer", "Domotica, alarmsysteem en CCTV", "Privéparkeerplaatsen met EV-laadpunt", "Energielabel A", "Toeristische verhuurlicentie"], location: "Gelegen naast Spanje's eerste Waldorf Astoria Resort, tussen de toekomstige Waldorf Astoria Golf Course en Santa Clara Golf Club, op zo'n 1,5 km van Marbella's mooiste stranden en 25 minuten van de luchthaven van Málaga." },
       { title: "Ruime Duplex met 3 Slaapkamers en Toeristenlicentie in Señorío de Aloha", price: "€ 649.000", overview: "Gelegen in de prestigieuze urbanisatie Señorío de Aloha in Nueva Andalucía biedt deze ruime en goed onderhouden duplex van 188 m² totaal een uitstekende combinatie van ruimte, comfort en ligging. De woning verkeert in uitstekende staat, is direct bewoonbaar en beschikt over een geldige toeristische verhuurlicentie, waardoor ze zowel als privéverblijf als investering aantrekkelijk is.", features: ["Uitstekende staat, volledig gemeubileerd, volledig ingerichte keuken", "Geldige toeristische verhuurlicentie", "Privé ondergrondse parkeerplaats en berging inbegrepen in de prijs", "Privé overdekt terras van 58 m² met uitzicht op de bergen", "Warme en koude airco, glasvezel en wifi inbegrepen in de servicekosten", "Drie gemeenschappelijke zwembaden in aangelegde tuinen, 24-uursbeveiliging"], location: "Een gevestigde, afgesloten community, op korte afstand van het strand en Puerto Banús, met restaurants, cafés, bars, winkels en golf binnen handbereik." },
+      { title: "Nieuwbouw Luxe Residentie van Rafael de La-Hoz in Real de La Quinta", price: "€ 1.480.000", overview: "Een nieuwbouwresidentie in hedendaagse stijl, ontworpen door de gevierde Spaanse architect Rafael de La-Hoz, in Palmitos, een van de meest exclusieve enclaves van Real de La Quinta Resort. Vloerhoge beglazing en 105 m² terrassen op het zuidoosten openen de woonruimtes naar panoramisch uitzicht op de Middellandse Zee, de Lake Club en de berg La Concha.", features: ["Drie ruime slaapkamers, allemaal met directe toegang tot de terrassen: hoofdsuite, twee slaapkamers met eigen badkamer en een gastenbadkamer", "Open woon- en eetkamer met vloerhoge ramen", "Eigentijdse keuken met hoogwaardige afwerking en state-of-the-art apparatuur", "Vloerverwarming, geavanceerde domotica en hoogwaardige beglazing", "Twee ondergrondse parkeerplaatsen, privéberging en gastenparkeerplaats", "Afgesloten community van slechts 16 woningen in drie gebouwen met lage dichtheid, met tuinen en gemeenschappelijk zwembad"], location: "In Real de La Quinta, naast het natuurpark Sierra de las Nieves, een UNESCO-biosfeerreservaat, met een recreatiemeer van 35.000 m², de Lake Club, een golfbaan, een wellnesscentrum met spa en tennis- en padelbanen. Ongeveer 10 minuten van Nueva Andalucía en Golf Valley en 15 minuten van Puerto Banús en de stranden van Marbella." },
       { title: "Elegante Villa in Lomas del Rey", price: "€ 5.950.000" },
       { title: "Eigentijdse Villa met Zeezicht", price: "€ 8.750.000" },
       { title: "Andalusische Charme in Nueva Andalucía", price: "€ 3.650.000" }
