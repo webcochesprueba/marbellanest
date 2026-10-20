@@ -243,22 +243,27 @@ document.addEventListener('DOMContentLoaded', () => {
     { image: 'images/lifestyle-4.png', alt: 'Marbella old town culture' }
   ];
 
-  const propertyImages = ['images/penthouse-santa-clara/01-lifestyle-terrace.jpg', 'images/property1.jpg', 'https://cdn.resales-online.com/public/6ocoehzhpl/properties/ceb7cc0178f911f182490652962539d5/w1200/1-7980e48d732b6fc85c14b43b94d2aa54.jpg?v=1791293864&NewImageUrl=1', PLACEHOLDER, 'images/placeholder-2.png', 'images/placeholder-3.png'];
+  const propertyImages = ['images/penthouse-santa-clara/01-lifestyle-terrace.jpg', 'images/property1.jpg', 'https://cdn.resales-online.com/public/6ocoehzhpl/properties/ceb7cc0178f911f182490652962539d5/w1200/1-7980e48d732b6fc85c14b43b94d2aa54.jpg?v=1791293864&NewImageUrl=1', 'https://cdn.resales-online.com/public/j9liq8uvvv/properties/jvlvrbkjepylzip/w1200/3-e898b2bb2a2fdfd06d2c39894dce8316.jpg?v=1790600697&NewImageUrl=1', 'https://cdn.resales-online.com/public/6a8fhr78el/properties/d38fd7f6919611f182490652962539d5/w1200/1-7980e48d732b6fc85c14b43b94d2aa54.jpg?v=1786028440&NewImageUrl=1', PLACEHOLDER, 'images/placeholder-2.png', 'images/placeholder-3.png'];
   const propertyStats = [
     { beds: 3, baths: 3, size: '387 m²' },
     { beds: 3, baths: 3.5, size: '188 m²' },
     { beds: 3, baths: 3, size: '260 m²' },
+    { beds: 4, baths: 4, size: '600 m²' },
+    { beds: 3, baths: 3, size: '280 m²' },
     { beds: 5, baths: 6, size: '712 m²' },
     { beds: 6, baths: 7, size: '860 m²' },
     { beds: 4, baths: 4, size: '477 m²' }
   ];
-  const propertyAvailable = [true, true, true, false, false, false];
+  const propertyAvailable = [true, true, true, true, true, false, false, false];
+
+  // URL slugs used for shareable links: yoursite.com/#property/<slug> (index-matched).
+  const propertySlugs = ['santa-clara', 'senorio-de-aloha', 'real-de-la-quinta', 'villa-la-cala-de-mijas', 'villa-san-pedro-beach', 'lomas-del-rey', 'sea-view-villa', 'nueva-andalucia'];
 
   // Reference numbers shown at the bottom of the property popup (index-matched; null = none).
-  const propertyRefs = [null, null, 'R5431951', null, null, null];
+  const propertyRefs = [null, null, 'R5431951', null, 'R5455501', null, null, null];
 
   // Full photo galleries per property (index-matched to `properties` in i18n.js).
-  // Only the available listings (index 0, 1 and 2) have a gallery for now; others fall back to their single card image.
+  // Only the available listings (index 0 to 4) have a gallery for now; others fall back to their single card image.
   const propertyGalleries = {
     0: [
       { src: 'images/penthouse-santa-clara/01-lifestyle-terrace.jpg', alt: 'Lifestyle terrace' },
@@ -324,6 +329,39 @@ document.addEventListener('DOMContentLoaded', () => {
       { src: 'https://cdn.resales-online.com/public/6ocoehzhpl/properties/ceb7cc0178f911f182490652962539d5/w1200/28-ef19a2c59920e2e087cd278a51b6dbf8.jpg?v=1791293864&NewImageUrl=1', alt: 'Residence in Real de La Quinta – photo 24' },
       { src: 'https://cdn.resales-online.com/public/6ocoehzhpl/properties/ceb7cc0178f911f182490652962539d5/w1200/30-5e8634ec9576c9ad4825a6dec5b5d375.jpg?v=1791293864&NewImageUrl=1', alt: 'Residence in Real de La Quinta – photo 25' },
       { src: 'https://cdn.resales-online.com/public/6ocoehzhpl/properties/ceb7cc0178f911f182490652962539d5/w1200/35-53608d01401493ba18e3704836160563.jpg?v=1791293864&NewImageUrl=1', alt: 'Residence in Real de La Quinta – photo 26' }
+    ],
+    3: [
+      { src: 'https://cdn.resales-online.com/public/j9liq8uvvv/properties/jvlvrbkjepylzip/w1200/3-e898b2bb2a2fdfd06d2c39894dce8316.jpg?v=1790600697&NewImageUrl=1', alt: 'Villa in La Cala de Mijas – photo 1' },
+      { src: 'https://cdn.resales-online.com/public/j9liq8uvvv/properties/jvlvrbkjepylzip/w1200/4-c23c0f86247804fa50226aecd8b0b2c8.jpg?v=1790600697&NewImageUrl=1', alt: 'Villa in La Cala de Mijas – photo 2' },
+      { src: 'https://cdn.resales-online.com/public/j9liq8uvvv/properties/jvlvrbkjepylzip/w1200/5-3595ad71cbd87be6c3643a4285ef4791.jpg?v=1790600697&NewImageUrl=1', alt: 'Villa in La Cala de Mijas – photo 3' },
+      { src: 'https://cdn.resales-online.com/public/j9liq8uvvv/properties/jvlvrbkjepylzip/w1200/6-241328e1bcc9c0d8ce1222beb6c967a8.jpg?v=1790600697&NewImageUrl=1', alt: 'Villa in La Cala de Mijas – photo 4' },
+      { src: 'https://cdn.resales-online.com/public/j9liq8uvvv/properties/jvlvrbkjepylzip/w1200/7-aa4cc561180b369757c0bb4af9886cd3.jpg?v=1790600697&NewImageUrl=1', alt: 'Villa in La Cala de Mijas – photo 5' },
+      { src: 'https://cdn.resales-online.com/public/j9liq8uvvv/properties/jvlvrbkjepylzip/w1200/8-e64a9055bba3e77ac8aca3b893cdf826.jpg?v=1790600697&NewImageUrl=1', alt: 'Villa in La Cala de Mijas – photo 6' },
+      { src: 'https://cdn.resales-online.com/public/j9liq8uvvv/properties/jvlvrbkjepylzip/w1200/11-20939a0134ad724a8cb2a801094d15a4.jpg?v=1790600697&NewImageUrl=1', alt: 'Villa in La Cala de Mijas – photo 7' },
+      { src: 'https://cdn.resales-online.com/public/j9liq8uvvv/properties/jvlvrbkjepylzip/w1200/13-5fd73dea700db77384c091ca9818b1a9.jpg?v=1790600697&NewImageUrl=1', alt: 'Villa in La Cala de Mijas – photo 8' },
+      { src: 'https://cdn.resales-online.com/public/j9liq8uvvv/properties/jvlvrbkjepylzip/w1200/15-11d12f2f454f2f5e9b981fdd8b901d51.jpg?v=1790600697&NewImageUrl=1', alt: 'Villa in La Cala de Mijas – photo 9' },
+      { src: 'https://cdn.resales-online.com/public/j9liq8uvvv/properties/jvlvrbkjepylzip/w1200/18-cc72f169493c096e712837ff5d8b6e41.jpg?v=1790600697&NewImageUrl=1', alt: 'Villa in La Cala de Mijas – photo 10' },
+      { src: 'https://cdn.resales-online.com/public/j9liq8uvvv/properties/jvlvrbkjepylzip/w1200/19-d0ed7da2012a09046d307c195d98e7d6.jpg?v=1790600697&NewImageUrl=1', alt: 'Villa in La Cala de Mijas – photo 11' },
+      { src: 'https://cdn.resales-online.com/public/j9liq8uvvv/properties/jvlvrbkjepylzip/w1200/20-d1f7658cbe4ba6cd8666fec30fba80ad.jpg?v=1790600697&NewImageUrl=1', alt: 'Villa in La Cala de Mijas – photo 12' }
+    ],
+    4: [
+      { src: 'https://cdn.resales-online.com/public/6a8fhr78el/properties/d38fd7f6919611f182490652962539d5/w1200/1-7980e48d732b6fc85c14b43b94d2aa54.jpg?v=1786028440&NewImageUrl=1', alt: 'Villa in San Pedro de Alcántara – photo 1' },
+      { src: 'https://cdn.resales-online.com/public/6a8fhr78el/properties/d38fd7f6919611f182490652962539d5/w1200/2-5bd7b9d04b45e33852eaf0ec6670150d.jpg?v=1786028440&NewImageUrl=1', alt: 'Villa in San Pedro de Alcántara – photo 2' },
+      { src: 'https://cdn.resales-online.com/public/6a8fhr78el/properties/d38fd7f6919611f182490652962539d5/w1200/3-e898b2bb2a2fdfd06d2c39894dce8316.jpg?v=1786028440&NewImageUrl=1', alt: 'Villa in San Pedro de Alcántara – photo 3' },
+      { src: 'https://cdn.resales-online.com/public/6a8fhr78el/properties/d38fd7f6919611f182490652962539d5/w1200/4-c23c0f86247804fa50226aecd8b0b2c8.jpg?v=1786028440&NewImageUrl=1', alt: 'Villa in San Pedro de Alcántara – photo 4' },
+      { src: 'https://cdn.resales-online.com/public/6a8fhr78el/properties/d38fd7f6919611f182490652962539d5/w1200/5-3595ad71cbd87be6c3643a4285ef4791.jpg?v=1786028440&NewImageUrl=1', alt: 'Villa in San Pedro de Alcántara – photo 5' },
+      { src: 'https://cdn.resales-online.com/public/6a8fhr78el/properties/d38fd7f6919611f182490652962539d5/w1200/6-241328e1bcc9c0d8ce1222beb6c967a8.jpg?v=1786028440&NewImageUrl=1', alt: 'Villa in San Pedro de Alcántara – photo 6' },
+      { src: 'https://cdn.resales-online.com/public/6a8fhr78el/properties/d38fd7f6919611f182490652962539d5/w1200/7-aa4cc561180b369757c0bb4af9886cd3.jpg?v=1786028440&NewImageUrl=1', alt: 'Villa in San Pedro de Alcántara – photo 7' },
+      { src: 'https://cdn.resales-online.com/public/6a8fhr78el/properties/d38fd7f6919611f182490652962539d5/w1200/8-e64a9055bba3e77ac8aca3b893cdf826.jpg?v=1786028440&NewImageUrl=1', alt: 'Villa in San Pedro de Alcántara – photo 8' },
+      { src: 'https://cdn.resales-online.com/public/6a8fhr78el/properties/d38fd7f6919611f182490652962539d5/w1200/9-467d0cee5b725f3ef65f102a0c2e69c0.jpg?v=1786028440&NewImageUrl=1', alt: 'Villa in San Pedro de Alcántara – photo 9' },
+      { src: 'https://cdn.resales-online.com/public/6a8fhr78el/properties/d38fd7f6919611f182490652962539d5/w1200/10-bb915d1cb19341576dcdc994b81ab9c5.jpg?v=1786028440&NewImageUrl=1', alt: 'Villa in San Pedro de Alcántara – photo 10' },
+      { src: 'https://cdn.resales-online.com/public/6a8fhr78el/properties/d38fd7f6919611f182490652962539d5/w1200/11-20939a0134ad724a8cb2a801094d15a4.jpg?v=1786028440&NewImageUrl=1', alt: 'Villa in San Pedro de Alcántara – photo 11' },
+      { src: 'https://cdn.resales-online.com/public/6a8fhr78el/properties/d38fd7f6919611f182490652962539d5/w1200/12-53013098fcab6c38b1379cd33298e050.jpg?v=1786028440&NewImageUrl=1', alt: 'Villa in San Pedro de Alcántara – photo 12' },
+      { src: 'https://cdn.resales-online.com/public/6a8fhr78el/properties/d38fd7f6919611f182490652962539d5/w1200/13-5fd73dea700db77384c091ca9818b1a9.jpg?v=1786028440&NewImageUrl=1', alt: 'Villa in San Pedro de Alcántara – photo 13' },
+      { src: 'https://cdn.resales-online.com/public/6a8fhr78el/properties/d38fd7f6919611f182490652962539d5/w1200/14-d70dc3102c00d7be0e872dfe1c1f86d7.jpg?v=1786028440&NewImageUrl=1', alt: 'Villa in San Pedro de Alcántara – photo 14' },
+      { src: 'https://cdn.resales-online.com/public/6a8fhr78el/properties/d38fd7f6919611f182490652962539d5/w1200/15-11d12f2f454f2f5e9b981fdd8b901d51.jpg?v=1786028440&NewImageUrl=1', alt: 'Villa in San Pedro de Alcántara – photo 15' },
+      { src: 'https://cdn.resales-online.com/public/6a8fhr78el/properties/d38fd7f6919611f182490652962539d5/w1200/16-ec67b526875bf0124b6ce4328a754439.jpg?v=1786028440&NewImageUrl=1', alt: 'Villa in San Pedro de Alcántara – photo 16' },
+      { src: 'https://cdn.resales-online.com/public/6a8fhr78el/properties/d38fd7f6919611f182490652962539d5/w1200/18-cc72f169493c096e712837ff5d8b6e41.jpg?v=1786028440&NewImageUrl=1', alt: 'Villa in San Pedro de Alcántara – photo 17' }
     ]
   };
 
@@ -527,12 +565,55 @@ document.addEventListener('DOMContentLoaded', () => {
     refEl.textContent = ref ? `${I18n.t('properties.refLabel')}: ${ref}` : '';
     refEl.style.display = ref ? '' : 'none';
 
+    const shareBtn = document.getElementById('propertyModalShare');
+    shareBtn.textContent = I18n.t('properties.share');
+    shareBtn.dataset.slug = propertySlugs[i];
+    shareBtn.dataset.title = p.title;
+
     propertyModalOverlay.classList.add('open');
+    history.replaceState(null, '', '#property/' + propertySlugs[i]);
   }
 
   function closePropertyModal() {
     propertyModalOverlay.classList.remove('open');
+    if (location.hash.indexOf('#property/') === 0) {
+      history.replaceState(null, '', location.pathname + location.search);
+    }
   }
+
+  /* ---------------- Shareable property links ---------------- */
+
+  function openFromHash() {
+    const m = location.hash.match(/^#property\/([a-z0-9-]+)$/i);
+    if (!m) return false;
+    const idx = propertySlugs.indexOf(m[1].toLowerCase());
+    if (idx === -1) return false;
+    openPropertyModal(idx);
+    return true;
+  }
+
+  const propertyShareBtn = document.getElementById('propertyModalShare');
+  if (propertyShareBtn) {
+    propertyShareBtn.addEventListener('click', async () => {
+      const url = location.origin + location.pathname + location.search + '#property/' + propertyShareBtn.dataset.slug;
+      try {
+        if (navigator.share && /Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+          await navigator.share({ title: propertyShareBtn.dataset.title, url });
+          return;
+        }
+        await navigator.clipboard.writeText(url);
+      } catch (err) {
+        if (err && err.name === 'AbortError') return;
+        window.prompt('Copy this link:', url);
+        return;
+      }
+      const original = propertyShareBtn.textContent;
+      propertyShareBtn.textContent = I18n.t('properties.copied');
+      setTimeout(() => { propertyShareBtn.textContent = original; }, 2000);
+    });
+  }
+
+  window.addEventListener('hashchange', openFromHash);
 
   /* ---------------- Fullscreen photo lightbox ---------------- */
 
@@ -821,4 +902,7 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ---------------- Boot ---------------- */
 
   I18n.apply();
+
+  // Open a property straight away when the page is loaded from a shared link.
+  if (openFromHash()) openGated('properties');
 });

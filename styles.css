@@ -1733,3 +1733,18 @@ button { cursor: pointer; }
   cursor: pointer;
 }
 .legal-modal-close:hover { color: var(--ink); }
+
+
+/* ---------- Property popup footer: reference + share ---------- */
+.property-modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+.property-modal-footer .property-modal-ref { margin: 0; padding: 0; border: 0; }
+.property-modal-share { margin-left: auto; }
